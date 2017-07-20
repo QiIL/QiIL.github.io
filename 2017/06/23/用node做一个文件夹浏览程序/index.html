@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="python,Centos,Ipython," />
+  <meta name="keywords" content="node," />
 
 
 
@@ -42,22 +42,20 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="下载源码从python.org下载源码包有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xzPython-3.5.2.tar.xz 1cd Python-3.5.2.tar.xz 在文件夹中 12345./configuremakemake install #这里要用root权限 等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔  1python3 --">
-<meta name="keywords" content="python,Centos,Ipython">
+<meta name="description" content="Github项目链接https://github.com/QiIL/tcp-chat 程序简介首先用到的是 net 模块1var net = require(&apos;net&apos;) 服务器的具体细节：1.有新的成员连接需要需要保存该成员，连接数加12.监听3000端口3.监听断开连接事件，连接数减1，把该成员移除4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所">
+<meta name="keywords" content="node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos安装python3.5.x与Ipython">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/03/Centos安装python3-5-x与Ipython/index.html">
+<meta property="og:title" content="用node做一个基于TCP的聊天程序">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/23/用node做一个文件夹浏览程序/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="下载源码从python.org下载源码包有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xzPython-3.5.2.tar.xz 1cd Python-3.5.2.tar.xz 在文件夹中 12345./configuremakemake install #这里要用root权限 等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔  1python3 --">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908200559535">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908201032567">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908201922462">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908204913538">
-<meta property="og:updated_time" content="2017-06-03T16:01:08.668Z">
+<meta property="og:description" content="Github项目链接https://github.com/QiIL/tcp-chat 程序简介首先用到的是 net 模块1var net = require(&apos;net&apos;) 服务器的具体细节：1.有新的成员连接需要需要保存该成员，连接数加12.监听3000端口3.监听断开连接事件，连接数减1，把该成员移除4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所">
+<meta property="og:image" content="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png">
+<meta property="og:image" content="http://oqzgtjqen.bkt.clouddn.com/tcp-chat2.png">
+<meta property="og:updated_time" content="2017-06-23T09:59:34.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Centos安装python3.5.x与Ipython">
-<meta name="twitter:description" content="下载源码从python.org下载源码包有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xzPython-3.5.2.tar.xz 1cd Python-3.5.2.tar.xz 在文件夹中 12345./configuremakemake install #这里要用root权限 等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔  1python3 --">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20160908200559535">
+<meta name="twitter:title" content="用node做一个基于TCP的聊天程序">
+<meta name="twitter:description" content="Github项目链接https://github.com/QiIL/tcp-chat 程序简介首先用到的是 net 模块1var net = require(&apos;net&apos;) 服务器的具体细节：1.有新的成员连接需要需要保存该成员，连接数加12.监听3000端口3.监听断开连接事件，连接数减1，把该成员移除4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所">
+<meta name="twitter:image" content="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -67,7 +65,7 @@
   };
 </script>
 
-  <title> Centos安装python3.5.x与Ipython | Qill </title>
+  <title> 用node做一个基于TCP的聊天程序 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -317,7 +315,7 @@
           
           
             
-              Centos安装python3.5.x与Ipython
+              用node做一个基于TCP的聊天程序
             
           
         </h1>
@@ -326,8 +324,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-03T23:18:06+08:00" content="2017-06-03">
-            2017-06-03
+          <time itemprop="dateCreated" datetime="2017-06-23T17:21:01+08:00" content="2017-06-23">
+            2017-06-23
           </time>
         </span>
 
@@ -336,8 +334,8 @@
             &nbsp; | &nbsp; In
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/python/" itemprop="url" rel="index">
-                  <span itemprop="name">python</span>
+                <a href="/categories/Node-js之路/" itemprop="url" rel="index">
+                  <span itemprop="name">Node.js之路</span>
                 </a>
               </span>
 
@@ -352,8 +350,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/03/Centos安装python3-5-x与Ipython/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/03/Centos安装python3-5-x与Ipython/" itemprop="commentsCount"></span>
+            <a href="/2017/06/23/用node做一个文件夹浏览程序/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/23/用node做一个文件夹浏览程序/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -367,26 +365,11 @@
       
 
       
-        <span itemprop="articleBody"><p>下载源码<br>从python.org下载源码包<br>有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xz<br>Python-3.5.2.tar.xz</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd Python-3.5.2.tar.xz</div></pre></td></tr></table></figure>
-<p>在文件夹中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line"></div><div class="line">make</div><div class="line"></div><div class="line">make install #这里要用root权限</div></pre></td></tr></table></figure>
-<p>等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔</p>
-<p><img src="http://img.blog.csdn.net/20160908200559535" alt="这里写图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 --version #就能看到python的版本啦</div></pre></td></tr></table></figure>
-<p>接下来是ipython了<br>ipython源码下载页面：<br><a href="https://pypi.python.org/pypi/ipython" target="_blank" rel="external">https://pypi.python.org/pypi/ipython</a><br>或者去Git上下载：<br><a href="https://github.com/ipython/ipython/downloads" target="_blank" rel="external">https://github.com/ipython/ipython/downloads</a><br><img src="http://img.blog.csdn.net/20160908201032567" alt="这里写图片描述"><br>下好了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tar -zxvf ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">cd ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
-<p>在终端输入ipython就可以用啦</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ipython</div></pre></td></tr></table></figure>
-<p><img src="http://img.blog.csdn.net/20160908201922462" alt="这里写图片描述"><br>竟然出来这东东，吓死我了。最后一句说的是缺少一个traitlets这个模块，那就安装呗。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install traitlets</div></pre></td></tr></table></figure>
-<p>后来又缺少了各种模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install xxx #就行了</div></pre></td></tr></table></figure></p>
-<p>安装失败的话还有可能是因为pip的版本不够高</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install --upgrade pip #升级一下</div></pre></td></tr></table></figure>
-<p>升级有可能会失败的，那就重新安装pip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate</div><div class="line"></div><div class="line">python3 get-pip.py</div></pre></td></tr></table></figure>
-<p>安装了各个模块之后，就可以用啦<img src="http://img.blog.csdn.net/20160908204913538" alt="这里写图片描述"><br>BINGO！</p>
-</span>
+        <span itemprop="articleBody"><h3 id="Github项目链接"><a href="#Github项目链接" class="headerlink" title="Github项目链接"></a>Github项目链接</h3><p><a href="https://github.com/QiIL/tcp-chat" target="_blank" rel="external">https://github.com/QiIL/tcp-chat</a></p>
+<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>首先用到的是 net 模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="服务器的具体细节："><a href="#服务器的具体细节：" class="headerlink" title="服务器的具体细节："></a>服务器的具体细节：</h3><p>1.有新的成员连接需要需要保存该成员，连接数加1<br>2.监听3000端口<br>3.监听断开连接事件，连接数减1，把该成员移除<br>4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所有人推送内容</p>
+<p>样例：<br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png" alt=""><br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat2.png" alt=""></p>
+<center>完。</center></span>
       
     </div>
 
@@ -394,11 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
-          
-            <a href="/tags/Centos/" rel="tag">#Centos</a>
-          
-            <a href="/tags/Ipython/" rel="tag">#Ipython</a>
+            <a href="/tags/node/" rel="tag">#node</a>
           
         </div>
       
@@ -407,11 +386,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/04/ubuntu下安装gmp一些问题与解决方案/" rel="prev">ubuntu下安装gmp一些问题与解决方案</a>
+              <a href="/2017/07/12/nvm 换环境神器 nrm/" rel="prev">nvm 换环境神器 nrm</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/23/Tiny语言语法树的生成/" rel="next">Tiny语言语法树的生成</a>
             
           </div>
         </div>
@@ -627,7 +608,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github项目链接"><span class="nav-number">1.</span> <span class="nav-text">Github项目链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序简介"><span class="nav-number">2.</span> <span class="nav-text">程序简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器的具体细节："><span class="nav-number">3.</span> <span class="nav-text">服务器的具体细节：</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -680,9 +661,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/03/Centos安装python3-5-x与Ipython/';
-    var disqus_title = 'Centos安装python3.5.x与Ipython';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/03/Centos安装python3-5-x与Ipython/';
+    var disqus_identifier = '2017/06/23/用node做一个文件夹浏览程序/';
+    var disqus_title = '用node做一个基于TCP的聊天程序';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/23/用node做一个文件夹浏览程序/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');

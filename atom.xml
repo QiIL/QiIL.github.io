@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-23T09:59:34.767Z</updated>
+  <updated>2017-07-20T13:48:21.371Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -16,9 +16,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>nrm换环境工具</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/20/nrm%E6%8D%A2%E7%8E%AF%E5%A2%83%E5%B7%A5%E5%85%B7-1/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/20/nrm换环境工具-1/</id>
+    <published>2017-07-20T13:46:47.000Z</published>
+    <updated>2017-07-20T13:48:21.371Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="相关github链接："><a href="#相关github链接：" class="headerlink" title="相关github链接："></a>相关github链接：</h3><p><a href="https://github.com/Pana/nrm" target="_blank" rel="external">https://github.com/Pana/nrm</a></p>
+<p>因为镜像问题，有时用npm安装依赖会比较慢，这时我们通常都会考虑换一下环境，nrm就集成了一些常用的环境可供使用，而且命令也很简单，赶紧用起来吧！</p>
+<p>###Install<br>安装完node和npm后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g nrm</div></pre></td></tr></table></figure></p>
+<p>可以用nrm ls命令查看有什么镜像可用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ nrm ls</div><div class="line">* npm -----  https://registry.npmjs.org/</div><div class="line">  cnpm ----  http://r.cnpmjs.org/</div><div class="line">  taobao --  https://registry.npm.taobao.org/</div><div class="line">  nj ------  https://registry.nodejitsu.com/</div><div class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</div><div class="line">  skimdb -- https://skimdb.npmjs.com/registry</div></pre></td></tr></table></figure></p>
+<p>利用nrm use命令切换镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nrm use cnpm</div><div class="line">    Registry has been <span class="built_in">set</span> to: http://r.cnpmjs.org/</div><div class="line"><span class="comment">#表示切换成功了</span></div></pre></td></tr></table></figure></p>
+<p>nrm还可以通过命令添加镜像和删除镜像，具体就不一一介绍了，see you！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;相关github链接：&quot;&gt;&lt;a href=&quot;#相关github链接：&quot; class=&quot;headerlink&quot; title=&quot;相关github链接：&quot;&gt;&lt;/a&gt;相关github链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Pana/n
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="nrm" scheme="https://qiil.github.io/qill.github.io/tags/nrm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nrm换环境工具</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/13/nrm%E6%8D%A2%E7%8E%AF%E5%A2%83%E5%B7%A5%E5%85%B7/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/13/nrm换环境工具/</id>
+    <published>2017-07-12T16:02:45.000Z</published>
+    <updated>2017-07-12T16:03:53.506Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="相关github链接："><a href="#相关github链接：" class="headerlink" title="相关github链接："></a>相关github链接：</h3><p><a href="https://github.com/Pana/nrm" target="_blank" rel="external">https://github.com/Pana/nrm</a></p>
+<p>因为镜像问题，有时用npm安装依赖会比较慢，这时我们通常都会考虑缓缓环境，nrm就集成了一些常用的环境可供使用，而且命令也很简单，赶紧用起来吧！</p>
+<p>###Install<br>安装完node和npm后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g nrm</div></pre></td></tr></table></figure></p>
+<p>可以用nrm ls命令查看有什么镜像可用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ nrm ls</div><div class="line">* npm -----  https://registry.npmjs.org/</div><div class="line">  cnpm ----  http://r.cnpmjs.org/</div><div class="line">  taobao --  https://registry.npm.taobao.org/</div><div class="line">  nj ------  https://registry.nodejitsu.com/</div><div class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</div><div class="line">  skimdb -- https://skimdb.npmjs.com/registry</div></pre></td></tr></table></figure></p>
+<p>利用nrm use命令切换镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nrm use cnpm</div><div class="line">    Registry has been <span class="built_in">set</span> to: http://r.cnpmjs.org/</div><div class="line"><span class="comment">#表示切换成功了</span></div></pre></td></tr></table></figure></p>
+<p>nrm还可以通过命令添加镜像和删除镜像，具体就不一一介绍了，see you！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;相关github链接：&quot;&gt;&lt;a href=&quot;#相关github链接：&quot; class=&quot;headerlink&quot; title=&quot;相关github链接：&quot;&gt;&lt;/a&gt;相关github链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Pana/n
+    
+    </summary>
+    
+      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nvm 换环境神器 nrm</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/12/nvm%20%E6%8D%A2%E7%8E%AF%E5%A2%83%E7%A5%9E%E5%99%A8%20nrm/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/12/nvm 换环境神器 nrm/</id>
+    <published>2017-07-12T15:56:39.000Z</published>
+    <updated>2017-07-12T16:00:43.731Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="相关github链接："><a href="#相关github链接：" class="headerlink" title="相关github链接："></a>相关github链接：</h3><p><a href="https://github.com/Pana/nrm" target="_blank" rel="external">https://github.com/Pana/nrm</a></p>
+<p>因为镜像问题，有时用npm安装依赖会比较慢，这时我们通常都会考虑缓缓环境，nrm就集成了一些常用的环境可供使用，而且命令也很简单，赶紧用起来吧！</p>
+<p>###Install<br>安装完node和npm后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g nrm</div></pre></td></tr></table></figure></p>
+<p>可以用nrm ls命令查看有什么镜像可用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ nrm ls</div><div class="line">* npm -----  https://registry.npmjs.org/</div><div class="line">  cnpm ----  http://r.cnpmjs.org/</div><div class="line">  taobao --  https://registry.npm.taobao.org/</div><div class="line">  nj ------  https://registry.nodejitsu.com/</div><div class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</div><div class="line">  skimdb -- https://skimdb.npmjs.com/registry</div></pre></td></tr></table></figure></p>
+<p>利用nrm use命令切换镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nrm use cnpm</div><div class="line">    Registry has been <span class="built_in">set</span> to: http://r.cnpmjs.org/</div><div class="line"><span class="comment">#表示切换成功了</span></div></pre></td></tr></table></figure></p>
+<p>nrm还可以通过命令添加镜像和删除镜像，具体就不一一介绍了，see you！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;相关github链接：&quot;&gt;&lt;a href=&quot;#相关github链接：&quot; class=&quot;headerlink&quot; title=&quot;相关github链接：&quot;&gt;&lt;/a&gt;相关github链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Pana/n
+    
+    </summary>
+    
+      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="linux" scheme="https://qiil.github.io/qill.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用node做一个基于TCP的聊天程序</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/23/%E7%94%A8node%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8ETCP%E7%9A%84%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/23/用node做一个基于TCP的聊天程序/</id>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/23/%E7%94%A8node%E5%81%9A%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%B5%8F%E8%A7%88%E7%A8%8B%E5%BA%8F/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/23/用node做一个文件夹浏览程序/</id>
     <published>2017-06-23T09:21:01.000Z</published>
     <updated>2017-06-23T09:59:34.767Z</updated>
     
