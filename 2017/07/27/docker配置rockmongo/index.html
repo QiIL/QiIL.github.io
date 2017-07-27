@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="algorithm," />
+  <meta name="keywords" content="rockmongo,mongodb,docker," />
 
 
 
@@ -42,17 +42,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
-<meta name="keywords" content="algorithm">
+<meta name="description" content="###docker部署rockmongo用到的工具：三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf  然后进入目录控制台：1sudo docker build -t rockmongo .    *docker构建加速可以看下面这里   构建完成后运行项目： 1234567891011### 查看镜像sudo docker imagesRE">
+<meta name="keywords" content="rockmongo,mongodb,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GF(2^8)运算一一（一）">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/index.html">
+<meta property="og:title" content="docker配置rockmongo">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/07/27/docker配置rockmongo/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
-<meta property="og:updated_time" content="2017-06-03T16:08:27.818Z">
+<meta property="og:description" content="###docker部署rockmongo用到的工具：三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf  然后进入目录控制台：1sudo docker build -t rockmongo .    *docker构建加速可以看下面这里   构建完成后运行项目： 1234567891011### 查看镜像sudo docker imagesRE">
+<meta property="og:image" content="http://oqzgtjqen.bkt.clouddn.com/docker_rockmongo">
+<meta property="og:updated_time" content="2017-07-27T15:12:56.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GF(2^8)运算一一（一）">
-<meta name="twitter:description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
+<meta name="twitter:title" content="docker配置rockmongo">
+<meta name="twitter:description" content="###docker部署rockmongo用到的工具：三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf  然后进入目录控制台：1sudo docker build -t rockmongo .    *docker构建加速可以看下面这里   构建完成后运行项目： 1234567891011### 查看镜像sudo docker imagesRE">
+<meta name="twitter:image" content="http://oqzgtjqen.bkt.clouddn.com/docker_rockmongo">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +64,7 @@
   };
 </script>
 
-  <title> GF(2^8)运算一一（一） | Qill </title>
+  <title> docker配置rockmongo | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -312,7 +314,7 @@
           
           
             
-              GF(2^8)运算一一（一）
+              docker配置rockmongo
             
           
         </h1>
@@ -321,19 +323,34 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-04T00:06:37+08:00" content="2017-06-04">
-            2017-06-04
+          <time itemprop="dateCreated" datetime="2017-07-27T23:10:24+08:00" content="2017-07-27">
+            2017-07-27
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/linux琐碎事/" itemprop="url" rel="index">
+                  <span itemprop="name">linux琐碎事</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/04/GF-2-8-运算一一（一）/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/04/GF-2-8-运算一一（一）/" itemprop="commentsCount"></span>
+            <a href="/2017/07/27/docker配置rockmongo/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/27/docker配置rockmongo/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -347,15 +364,30 @@
       
 
       
-        <span itemprop="articleBody"><p>任务:<br>        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。</p>
-<p>首先分析一下思路：<br>加法思路：对每一位进行异或操作</p>
-<p>乘法：<br>①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结果，最后得出结果。<br>②利用无符号字符类型解释整形创建一个过度变量为result，然后根据字符b的最后一位决定结果值，如果b的最后一位是0则result等于上一个循环的result值，若b的最后一位是1，result值等于result异或a。需要做八次循环，每次循环一开始都要判断a是否大于127如果大于127则a需要左移一位并且异或1B，else a只需要左移一位。</p>
-<p>乘法逆元思路：<br>首先规定生成元是3（00000011，当然用其他生成元也可以，随便）然后生成一个以3为生成元的逆元表，然后查询用户输入的x查询到x之后利用255减去x所在位置那个位置的元素即为x的乘法逆元y</p>
-<p>离散对数思路：<br>用户输入生成元与X，多次调用乘法，调用乘法的次数则为所求的离散对数</p>
-<p>我大概用到的函数定义（忽略界面函数，输入输出函数等与算法无关的函数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;fstream&gt; </div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void set_genrator();           //用于开始设置生成元数组 </div><div class="line">void set_Inverse();           //用于开始设置逆元表</div><div class="line">unsigned char GFsum(unsigned char a, unsigned char b); //求和 </div><div class="line">unsigned char GFmul(unsigned char a, unsigned char b); //乘法 </div><div class="line">unsigned char inverse(unsigned char b);  //乘法逆元 </div><div class="line">bool judge_genrator(unsigned char a); //判断用户输入的生成元是否为生成元 </div><div class="line">int logarithm(unsigned char a, unsigned char b);  //离散对数</div><div class="line">int Genrator[256];           //保存生成元信息</div><div class="line">unsigned char Inverse[256];      //保存以3为生成元的逆元表</div></pre></td></tr></table></figure></p>
-<p>用于设置生成元数组用来判断用户输入的生成元是否为一个真实的生成元：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含所有生成元的记录文件，可以自己生成也可以网上去找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>生成逆元表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><p>###docker部署rockmongo<br>用到的工具：<br>三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf</p>
+<ul>
+<li>然后进入目录控制台：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker build -t rockmongo .</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>*docker构建加速可以看下面<a href="https://yq.aliyun.com/articles/29941" target="_blank" rel="external">这里</a></p>
+</blockquote>
+<ul>
+<li><p>构建完成后运行项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">### 查看镜像</span></div><div class="line">sudo docker images</div><div class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">rockmongo           latest              44f035828f9c        About an hour ago   220MB</div><div class="line">ubuntu              14.04               54333f1de4ed        3 days ago          188MB</div><div class="line"><span class="comment">### 根据REPOSITORY运行相关项目</span></div><div class="line">sudo docker run -d -p 8006:8006 --name rockmongo rockmongo</div><div class="line"><span class="comment">### 查看项目，看到真的跑起来了 ID 是第一条：3e18d38b5353这样子</span></div><div class="line">sudo docker ps -a</div><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</div><div class="line">3e18d38b5353        rockmongo           <span class="string">"/bin/sh -c 'servi..."</span>   33 minutes ago      Up 33 minutes       0.0.0.0:8006-&gt;8006/tcp   rockmongo</div></pre></td></tr></table></figure>
+</li>
+<li><p>这就算是部署完成了，但是里面config.php的配置是需要在本地改一改的，因为dockerfile是根据我本地配置的，难免不同机器上的是不一样的，那么说道配置就有两种方式</p>
+<ol>
+<li>是在download下来的配置文件config.php中修改（具体修改下面详细描述）然后重新构建（见上面第一步），这个比较麻烦。</li>
+<li>是在构建好项目后：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">### 查看项目</span></div><div class="line">sudo docker ps -a</div><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</div><div class="line">3e18d38b5353        rockmongo           <span class="string">"/bin/sh -c 'servi..."</span>   33 minutes ago      Up 33 minutes       0.0.0.0:8006-&gt;8006/tcp   rockmongo</div><div class="line"></div><div class="line"><span class="comment">### 进入项目内部</span></div><div class="line">sudo docker <span class="built_in">exec</span> -it  对应的CONTAINER ID  /bin/bash</div><div class="line"></div><div class="line"><span class="comment">### 现在进入项目内部了，进入app,就可以看到congfig.php了</span></div><div class="line">root@3e18d38b5353:<span class="comment"># ls</span></div><div class="line">app  bin  boot  build  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</div><div class="line">root@3e18d38b5353:/app<span class="comment"># ls</span></div><div class="line">CHANGELOG.txt  INSTALL.txt  LICENSE.txt  README.txt  app  config.php  config.sample.php  index.php  info.php  js  robots.txt  rock.php  themes</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>使用vim打开config.php按照本地的mongo编辑相关信息就可以了。只要保存好，就会自动重启项目的，然后浏览器登录localhost:8006就可以愉快地用上rockmongo了：<br><img src="http://oqzgtjqen.bkt.clouddn.com/docker_rockmongo" alt=""></p>
+</li>
+<li><p>最后关于config.php的配置选项详细可以看<a href="https://google.com" target="_blank" rel="external">这里</a></p>
+</li>
+</ul>
 </span>
       
     </div>
@@ -364,7 +396,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithm/" rel="tag">#algorithm</a>
+            <a href="/tags/rockmongo/" rel="tag">#rockmongo</a>
+          
+            <a href="/tags/mongodb/" rel="tag">#mongodb</a>
+          
+            <a href="/tags/docker/" rel="tag">#docker</a>
           
         </div>
       
@@ -373,13 +409,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/04/GF-2-8-运算一一（二）/" rel="prev">GF(2^8)运算一一（二）</a>
+              <a href="/2017/07/27/Rockmongo配置详解/" rel="prev">Rockmongo配置详解</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/04/ubuntu下安装gmp一些问题与解决方案/" rel="next">ubuntu下安装gmp一些问题与解决方案</a>
+              <a href="/2017/07/20/nrm换环境工具-1/" rel="next">nrm换环境工具</a>
             
           </div>
         </div>
@@ -648,9 +684,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/04/GF-2-8-运算一一（一）/';
-    var disqus_title = 'GF(2^8)运算一一（一）';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/';
+    var disqus_identifier = '2017/07/27/docker配置rockmongo/';
+    var disqus_title = 'docker配置rockmongo';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/07/27/docker配置rockmongo/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');

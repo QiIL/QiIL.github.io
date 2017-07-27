@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-07-20T13:48:21.371Z</updated>
+  <updated>2017-07-27T15:13:57.013Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,201 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rockmongo配置详解</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/27/Rockmongo%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/27/Rockmongo配置详解/</id>
+    <published>2017-07-27T15:10:41.000Z</published>
+    <updated>2017-07-27T15:13:57.013Z</updated>
+    
+    <content type="html"><![CDATA[<p>前面介绍了docker配置Rockmongo的流程：<br>下面是rockmongo的相关的配置<br>打开RockMongo安装目录下的config.php，所有的配置都在这里。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#进入里面的shell</span></div><div class="line">docker <span class="built_in">exec</span> -it CONTENER ID /bin/bash </div><div class="line"><span class="built_in">cd</span> app</div><div class="line">vim config.php</div></pre></td></tr></table></figure>
+<p>###认证</p>
+<ul>
+<li><strong>mongo_auth 和control_auth</strong></li>
+</ul>
+<p>在开始使用RockMongo之前，你需要决定使用哪种校验方式。</p>
+<pre><code>1. 如果mongo_auth被设成了true，用户必须使用MongoDB中的用户名和密码（由命令db.addUser()添加），所以配置中的mongo_user, mongo_pass和mongo_db就不再需要了，因为用户可以通过界面输入这些信息。
+
+2. 如果control_auth被设置了true，而且mongo_auth设成了false，用户必须根据control_users选项的配置进行登录，mongo_user, mongo_pass和mongo_db就生效了。为了安全起见，安装完毕之后，应该尽快将默认的用户名和密码改成一个较为复杂的用户名和密码。
+
+3. 如果mongo_auth和control_auth都被设置了false，则用户无需用户名和密码即可登录。
+</code></pre><ul>
+<li><strong>mongo_auth示范</strong></li>
+</ul>
+<p>你使用MongoDB的用户名、密码和数据库名进行登录：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_name"</span>] = <span class="string">"Localhost"</span>;  <span class="comment">//界面显示的名字，取一个自己能识别的就行</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_host"</span>] = <span class="string">"127.0.0.1"</span>;    <span class="comment">//服务器的host</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_port"</span>] = <span class="string">"27017"</span>;         <span class="comment">//服务器的端口</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_timeout"</span>] = <span class="number">0</span>;             <span class="comment">//关于超时的设置后面讲述</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_auth"</span>] = <span class="keyword">true</span>;          <span class="comment">//启用MongoDB校验 </span></div><div class="line">$i ++;                                                  <span class="comment">//i++后面能配置另一个数据库的链接信息，所以配置完一个数据库记得i++</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>control_auth示范</strong></li>
+</ul>
+<p>你使用control_users中的配置进行登录。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_name"</span>] = <span class="string">"Localhost"</span>;   <span class="comment">//同上</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_host"</span>] = <span class="string">"127.0.0.1"</span>;      <span class="comment">//同上</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_port"</span>] = <span class="string">"27017"</span>;          <span class="comment">//同上</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_timeout"</span>] = <span class="number">0</span>;            <span class="comment">//同上</span></div><div class="line"><span class="comment">//$MONGO["servers"][$i]["mongo_db"] = "MONGO_DATABASE";  //需要连接的数据库名</span></div><div class="line"><span class="comment">//$MONGO["servers"][$i]["mongo_user"] = "MONGO_USERNAME"   //数据库中的用户名</span></div><div class="line"><span class="comment">//$MONGO["servers"][$i]["mongo_pass"] = "MONGO_PASSWORD";  //对应密码</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_auth"</span>] = <span class="keyword">false</span>;<span class="comment">//禁用MongoDB校验  </span></div><div class="line">   </div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_auth"</span>] = <span class="keyword">true</span>;<span class="comment">//启用登录控制校验  </span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_users"</span>][<span class="string">"admin"</span>] = <span class="string">"admin"</span>;<span class="comment">//前一个是admin用户名，后一个admin是密码，可任意修改。这里是在rockmongo中用作登录的用户名和密码</span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_users"</span>][<span class="string">"iwind"</span>] = <span class="string">"123456"</span>;<span class="comment">//在下面可以复制更多的用户  </span></div><div class="line">$i ++;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>无认证示范</strong></li>
+</ul>
+<p>你无需任何用户名和密码即可登录。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_name"</span>] = <span class="string">"Localhost"</span>;  </div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_host"</span>] = <span class="string">"127.0.0.1"</span>;  </div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_port"</span>] = <span class="string">"27017"</span>;  </div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_timeout"</span>] = <span class="number">0</span>;  </div><div class="line"><span class="comment">//$MONGO["servers"][$i]["mongo_db"] = "MONGO数据库名";  </span></div><div class="line"><span class="comment">//$MONGO["servers"][$i]["mongo_user"] = "MONGO用户名"  </span></div><div class="line"><span class="comment">//$MONGO["servers"][$i]["mongo_pass"] = "MONGO密码";  </span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_auth"</span>] = <span class="keyword">false</span>;<span class="comment">//禁用MongoDB校验  </span></div><div class="line">   </div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_auth"</span>] = <span class="keyword">false</span>;<span class="comment">//禁用登录控制校验  </span></div><div class="line">$i ++;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>config.php中Mongo具体配置说明</strong></li>
+</ul>
+<ol>
+<li>mongo_name</li>
+</ol>
+<p>mongo服务器名字，可以是一个易懂的名字<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_name"</span>] = <span class="string">"Localhost"</span>;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>mongo_host</li>
+</ol>
+<p>mongo主机地址<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_host"</span>] = <span class="string">"127.0.0.1"</span>;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>mongo_port</li>
+</ol>
+<p>mongo端口<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_port"</span>] = <span class="string">"27017"</span>;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>mongo_db</li>
+</ol>
+<p>默认连接的数据库名称，只有mongo_auth=false的时候生效。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_db"</span>] = <span class="string">"my_own_database"</span>;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>mongo_user</p>
+<p>MongoDB验证的用户名，只有当mongo_auth=false时生效。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_user"</span>] = <span class="string">""</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>mongo_pass</p>
+<p>MongoDB验证的密码，只有当mongo_auth=false时生效。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_pass"</span>] = <span class="string">""</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>mongo_auth</p>
+</li>
+</ol>
+<p>是否开启MongoDB验证，如果该选项为true，则你登录时需要填写MongoDB中生成的用户名和密码。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_auth"</span>] = <span class="keyword">false</span>;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>mongo_timeout</p>
+<p>MongoDB连接超时时间，以秒为单位，如果设置0，则永远不超时。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_timeout"</span>] = <span class="number">0</span>;</div><div class="line">```   </div><div class="line">关于长查询的一个问题: http:<span class="comment">//code.google.com/p/rock-php/issues/detail?id=177</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="number">9.</span> mongo_options</div><div class="line"></div><div class="line">MongoDB连接的附加选项。</div><div class="line">```php</div><div class="line">$MONGO[<span class="string">"servers"</span>][$i] = <span class="keyword">array</span>(<span class="string">"replicaSet"</span> =&gt; <span class="string">"xxxxx"</span>);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><strong>Controls</strong></li>
+</ul>
+<ol>
+<li>control_auth</li>
+</ol>
+<p>开启控制控制面板验证，只有当mongo_auth=false时有效。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_auth"</span>] = <span class="keyword">true</span>;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>control_users</li>
+</ol>
+<p>其中一个控制用户[USERNAME]=PASSWORD，只有当control_auth=true时生效。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_users"</span>][<span class="string">"myusername"</span>] = <span class="string">"mypassword"</span>;  </div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_users"</span>][<span class="string">"iwind"</span>] = <span class="string">"123456"</span>;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>UI方面的配置</strong></li>
+</ul>
+<ol>
+<li>ui_only_dbs</li>
+</ol>
+<p>需要显示的数据库，可以是一个字符串或者一个数组，如果这个列表不是空的那么不在这个列表上的数据库就不会被看到<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"ui_only_dbs"</span>] = <span class="string">"admin,local"</span>;<span class="comment">//a string  </span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"ui_only_dbs"</span>] = <span class="keyword">array</span>( <span class="string">"admin"</span>, <span class="string">"local"</span> );<span class="comment">//an array</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>ui_hide_dbs</li>
+</ol>
+<p>需要隐藏的数据库，可以是一个字符串或者一个数组。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"ui_hide_dbs"</span>] = <span class="string">"shop,merchant"</span>;<span class="comment">//a string  </span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"ui_hide_dbs"</span>] = <span class="keyword">array</span>(<span class="string">"shop"</span>, <span class="string">"merchant"</span>);<span class="comment">//an array</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>ui_hide_collections</li>
+</ol>
+<p>需要隐藏的集合，可以是一个字符串或者数组，每一个集合的名称都可以用正则表达式表达<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"ui_hide_collections"</span>] = <span class="string">"users,admins"</span>;<span class="comment">//hide users and admins colleciton  </span></div><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"ui_hide_collections"</span>] = <span class="string">"mail_(.*)"</span>;<span class="comment">//hide all collections whose prefix is "mail_"</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>ui_hide_system_collections</li>
+</ol>
+<p>如果我们想隐藏系统的集合的话，例如system.js， system.indexes，等，就把这个选项设置默认为false<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"ui_hide_system_collections"</span>] = <span class="keyword">false</span>;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>MongoHQ配置</strong></li>
+</ul>
+<p>有两种方式，可以登录MongoHQ的MongoDB数据库。</p>
+<ol>
+<li>Log-in with MongoHQ account<pre><code class="php">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_name"</span>] = <span class="string">"MongoHQ"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_host"</span>] = <span class="string">"flame.local.mongohq.com"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_port"</span>] = <span class="string">"27075"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_auth"</span>] = <span class="keyword">true</span>;  
+$i ++;
+</code></pre>
+Then on log-in screen, you should input the username and password, dbname which registered on MongoHQ, then click “log-in”.</li>
+</ol>
+<ol>
+<li>Log-in with control account<pre><code class="php">$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_host"</span>] = <span class="string">"flame.local.mongohq.com"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_port"</span>] = <span class="string">"27075"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_user"</span>] = <span class="string">"MongoHQ account"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_pass"</span>] = <span class="string">"MongoHQ password"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_db"</span>] = <span class="string">"MongoHQ Database Name"</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"mongo_auth"</span>] = <span class="keyword">false</span>;  
+$MONGO[<span class="string">"servers"</span>][$i][<span class="string">"control_users"</span>][<span class="string">"admin"</span>] = <span class="string">"123456"</span>;<span class="comment">//control user name  is "admin", password is "123456"  </span>
+$i ++;
+</code></pre>
+Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with control user name and password (admin/123456 in this example).</li>
+</ol>
+<p>原文链接：<br><a href="http://rockmongo.com/wiki/configuration?lang=zh_cn" target="_blank" rel="external">http://rockmongo.com/wiki/configuration?lang=zh_cn</a><br><a href="http://www.cnblogs.com/moqiang02/p/4061140.html" target="_blank" rel="external">http://www.cnblogs.com/moqiang02/p/4061140.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前面介绍了docker配置Rockmongo的流程：&lt;br&gt;下面是rockmongo的相关的配置&lt;br&gt;打开RockMongo安装目录下的config.php，所有的配置都在这里。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;
+    
+    </summary>
+    
+      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
+    
+    
+      <category term="rockmongo" scheme="https://qiil.github.io/qill.github.io/tags/rockmongo/"/>
+    
+      <category term="mongodb" scheme="https://qiil.github.io/qill.github.io/tags/mongodb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker配置rockmongo</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/27/docker%E9%85%8D%E7%BD%AErockmongo/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/27/docker配置rockmongo/</id>
+    <published>2017-07-27T15:10:24.000Z</published>
+    <updated>2017-07-27T15:12:56.333Z</updated>
+    
+    <content type="html"><![CDATA[<p>###docker部署rockmongo<br>用到的工具：<br>三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf</p>
+<ul>
+<li>然后进入目录控制台：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker build -t rockmongo .</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>*docker构建加速可以看下面<a href="https://yq.aliyun.com/articles/29941" target="_blank" rel="external">这里</a></p>
+</blockquote>
+<ul>
+<li><p>构建完成后运行项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">### 查看镜像</span></div><div class="line">sudo docker images</div><div class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">rockmongo           latest              44f035828f9c        About an hour ago   220MB</div><div class="line">ubuntu              14.04               54333f1de4ed        3 days ago          188MB</div><div class="line"><span class="comment">### 根据REPOSITORY运行相关项目</span></div><div class="line">sudo docker run -d -p 8006:8006 --name rockmongo rockmongo</div><div class="line"><span class="comment">### 查看项目，看到真的跑起来了 ID 是第一条：3e18d38b5353这样子</span></div><div class="line">sudo docker ps -a</div><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</div><div class="line">3e18d38b5353        rockmongo           <span class="string">"/bin/sh -c 'servi..."</span>   33 minutes ago      Up 33 minutes       0.0.0.0:8006-&gt;8006/tcp   rockmongo</div></pre></td></tr></table></figure>
+</li>
+<li><p>这就算是部署完成了，但是里面config.php的配置是需要在本地改一改的，因为dockerfile是根据我本地配置的，难免不同机器上的是不一样的，那么说道配置就有两种方式</p>
+<ol>
+<li>是在download下来的配置文件config.php中修改（具体修改下面详细描述）然后重新构建（见上面第一步），这个比较麻烦。</li>
+<li>是在构建好项目后：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">### 查看项目</span></div><div class="line">sudo docker ps -a</div><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</div><div class="line">3e18d38b5353        rockmongo           <span class="string">"/bin/sh -c 'servi..."</span>   33 minutes ago      Up 33 minutes       0.0.0.0:8006-&gt;8006/tcp   rockmongo</div><div class="line"></div><div class="line"><span class="comment">### 进入项目内部</span></div><div class="line">sudo docker <span class="built_in">exec</span> -it  对应的CONTAINER ID  /bin/bash</div><div class="line"></div><div class="line"><span class="comment">### 现在进入项目内部了，进入app,就可以看到congfig.php了</span></div><div class="line">root@3e18d38b5353:<span class="comment"># ls</span></div><div class="line">app  bin  boot  build  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</div><div class="line">root@3e18d38b5353:/app<span class="comment"># ls</span></div><div class="line">CHANGELOG.txt  INSTALL.txt  LICENSE.txt  README.txt  app  config.php  config.sample.php  index.php  info.php  js  robots.txt  rock.php  themes</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>使用vim打开config.php按照本地的mongo编辑相关信息就可以了。只要保存好，就会自动重启项目的，然后浏览器登录localhost:8006就可以愉快地用上rockmongo了：<br><img src="http://oqzgtjqen.bkt.clouddn.com/docker_rockmongo" alt=""></p>
+</li>
+<li><p>最后关于config.php的配置选项详细可以看<a href="https://google.com" target="_blank" rel="external">这里</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###docker部署rockmongo&lt;br&gt;用到的工具：&lt;br&gt;三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;然后进入目录控制台：&lt;figure class=&quot;highlight ba
+    
+    </summary>
+    
+      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
+    
+    
+      <category term="rockmongo" scheme="https://qiil.github.io/qill.github.io/tags/rockmongo/"/>
+    
+      <category term="mongodb" scheme="https://qiil.github.io/qill.github.io/tags/mongodb/"/>
+    
+      <category term="docker" scheme="https://qiil.github.io/qill.github.io/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>nrm换环境工具</title>
@@ -69,9 +264,9 @@
       <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
     
     
-      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
-    
       <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
     
   </entry>
   
@@ -691,52 +886,6 @@ print (root.directory)
       <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
     
       <category term="gmp" scheme="https://qiil.github.io/qill.github.io/tags/gmp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Centos安装python3.5.x与Ipython</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/03/Centos%E5%AE%89%E8%A3%85python3-5-x%E4%B8%8EIpython/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/03/Centos安装python3-5-x与Ipython/</id>
-    <published>2017-06-03T15:18:06.000Z</published>
-    <updated>2017-06-03T16:01:08.668Z</updated>
-    
-    <content type="html"><![CDATA[<p>下载源码<br>从python.org下载源码包<br>有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xz<br>Python-3.5.2.tar.xz</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd Python-3.5.2.tar.xz</div></pre></td></tr></table></figure>
-<p>在文件夹中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line"></div><div class="line">make</div><div class="line"></div><div class="line">make install #这里要用root权限</div></pre></td></tr></table></figure>
-<p>等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔</p>
-<p><img src="http://img.blog.csdn.net/20160908200559535" alt="这里写图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 --version #就能看到python的版本啦</div></pre></td></tr></table></figure>
-<p>接下来是ipython了<br>ipython源码下载页面：<br><a href="https://pypi.python.org/pypi/ipython" target="_blank" rel="external">https://pypi.python.org/pypi/ipython</a><br>或者去Git上下载：<br><a href="https://github.com/ipython/ipython/downloads" target="_blank" rel="external">https://github.com/ipython/ipython/downloads</a><br><img src="http://img.blog.csdn.net/20160908201032567" alt="这里写图片描述"><br>下好了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tar -zxvf ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">cd ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
-<p>在终端输入ipython就可以用啦</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ipython</div></pre></td></tr></table></figure>
-<p><img src="http://img.blog.csdn.net/20160908201922462" alt="这里写图片描述"><br>竟然出来这东东，吓死我了。最后一句说的是缺少一个traitlets这个模块，那就安装呗。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install traitlets</div></pre></td></tr></table></figure>
-<p>后来又缺少了各种模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install xxx #就行了</div></pre></td></tr></table></figure></p>
-<p>安装失败的话还有可能是因为pip的版本不够高</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install --upgrade pip #升级一下</div></pre></td></tr></table></figure>
-<p>升级有可能会失败的，那就重新安装pip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate</div><div class="line"></div><div class="line">python3 get-pip.py</div></pre></td></tr></table></figure>
-<p>安装了各个模块之后，就可以用啦<img src="http://img.blog.csdn.net/20160908204913538" alt="这里写图片描述"><br>BINGO！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;下载源码&lt;br&gt;从python.org下载源码包&lt;br&gt;有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xz&lt;br&gt;Python-3.5.2.tar.xz&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
-    
-    </summary>
-    
-      <category term="python" scheme="https://qiil.github.io/qill.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://qiil.github.io/qill.github.io/tags/python/"/>
-    
-      <category term="Centos" scheme="https://qiil.github.io/qill.github.io/tags/Centos/"/>
-    
-      <category term="Ipython" scheme="https://qiil.github.io/qill.github.io/tags/Ipython/"/>
     
   </entry>
   
