@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-07-27T15:13:57.013Z</updated>
+  <updated>2017-07-30T15:49:50.205Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,385 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sails Waterline ORM之Model篇</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/30/sails-Waterline-ORM%E4%B9%8BModel%E7%AF%87/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/30/sails-Waterline-ORM之Model篇/</id>
+    <published>2017-07-30T15:41:06.000Z</published>
+    <updated>2017-07-30T15:49:50.205Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="sails-app默认使用Waterline-ORM，下面是一些Waterline关于Models的方法："><a href="#sails-app默认使用Waterline-ORM，下面是一些Waterline关于Models的方法：" class="headerlink" title="sails app默认使用Waterline ORM，下面是一些Waterline关于Models的方法："></a>sails app默认使用Waterline ORM，下面是一些Waterline关于Models的方法：</h3><p>这个部分关注于Waterline提供的model的方法，除此之外，一些其他的方法可以来自各种hooks。其通过底层的adapter来提供一些定制的功能，或者你也可以在app中手动编写特定的功能代码。</p>
+<p>总体来说，模块的方法都是异步的意味着你不能单单地调用他们并用上他们打的返回值。除此之外，你必需用到callback，或者promises。大多数的内建函数都会接受一个callback作为最后一个参数。如果callback没有给出，那么会返回一个可链接的querry对象，该对象拥有.where()和.exec()站一些方法</p>
+<ul>
+<li><p><strong>.count（[criteria,] callback）</strong><br>返回根据条件查询到的记录数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">User.count(&#123;<span class="attr">name</span>:<span class="string">'Flynn'</span>&#125;).exec(<span class="function"><span class="keyword">function</span> <span class="title">countCB</span>(<span class="params">error, found</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'There are '</span> + found + <span class="string">' users called "Flynn"'</span>);</div><div class="line"></div><div class="line">  <span class="comment">// There are 1 users called 'Flynn'</span></div><div class="line">  <span class="comment">// Don't forget to handle your errors</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>.create()</strong><br>创建一条记录</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用法</span></div><div class="line">Something.create(values).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err, records</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line"><span class="comment">// 样例</span></div><div class="line">User.create(&#123;<span class="attr">name</span>:<span class="string">'Finn'</span>&#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err, finn</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> res.serverError(err); &#125;</div><div class="line"></div><div class="line">  sails.log(<span class="string">'Finn\'s id is:'</span>, finn.id);</div><div class="line">  <span class="keyword">return</span> res.ok();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中：values是一个字典包含着查询条件。</p>
+<ul>
+<li><p><strong>.destory()</strong><br>按照给出的条件删除数据库中所有的记录</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用法</span></div><div class="line">Something.destroy(criteria).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line"><span class="comment">// 样例 删除所有 name为Finn的记录</span></div><div class="line">User.destroy(&#123;<span class="attr">name</span>:<span class="string">'Finn'</span>&#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">return</span> res.negotiate(err);</div><div class="line">  &#125;</div><div class="line">  sails.log(<span class="string">'Any users named Finn have now been deleted, if there were any.'</span>);</div><div class="line">  <span class="keyword">return</span> res.ok();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//样例2 删除id为3和97的记录</span></div><div class="line">User.destroy(&#123;</div><div class="line">  <span class="attr">id</span>: [ <span class="number">3</span>, <span class="number">97</span> ]</div><div class="line">&#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">return</span> res.negotiate(err);</div><div class="line">  &#125;</div><div class="line">  sails.log(<span class="string">'The records for troublesome users (3 and 97) have been deleted, if they still existed.'</span>);</div><div class="line">  <span class="keyword">return</span> res.ok();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>.find()</strong><br>根据给出条件查询数据库记录</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用法</span></div><div class="line">Something.find(criteria).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err, records</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line"><span class="comment">// 样例</span></div><div class="line">User.find(&#123;<span class="attr">name</span>:<span class="string">'Finn'</span>&#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err, usersNamedFinn</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">return</span> res.serverError(err);</div><div class="line">  &#125;</div><div class="line">  sails.log(<span class="string">'Wow, there are %d users named Finn.  Check it out:'</span>, usersNamedFinn.length, usersNamedFinn);</div><div class="line">  <span class="keyword">return</span> res.json(usersNamedFinn);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>.findone()</strong><br>按照给出条件查找特定的记录</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用法</span></div><div class="line">Something.findOne(criteria).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err, record</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line"><span class="comment">// 样例</span></div><div class="line">User.create(&#123;<span class="attr">name</span>:<span class="string">'Finn'</span>&#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err, finn</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> res.serverError(err); &#125;</div><div class="line"></div><div class="line">  sails.log(<span class="string">'Finn\'s id is:'</span>, finn.id);</div><div class="line">  <span class="keyword">return</span> res.ok();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Notes</strong></p>
+<blockquote>
+<p>*findone函数如果查询不到数据是不会产生错误的，他会返回一个<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">- **.findOrCreate()**</div><div class="line">1. 首先按照第一个参数检查是否有满足条件的记录，如果没有相关记录，那么会按照第二个参数创建记录</div><div class="line">2. 如果没有参数传入，该方法会返回第一条存在的记录</div><div class="line">3. 没有提供要创建的记录，该方法会根据条件查询记录或者创建一条记录。</div><div class="line"></div><div class="line">```javascript</div><div class="line">// 用法</div><div class="line">Eg.Model.findOrCreate( findCriteria , recordToCreate , [callback] )</div><div class="line"></div><div class="line">// 样例</div><div class="line">User.findOrCreate(&#123;name:&apos;Walter&apos;&#125;, &#123;name:&apos;Jessie&apos;&#125;).exec(function createFindCB(error, createdOrFoundRecords)&#123;</div><div class="line">  console.log(&apos;What\&apos;s cookin\&apos; &apos;+createdOrFoundRecords.name+&apos;?&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+</blockquote>
+</li>
+</ul>
+<p><a href="http://sailsjs.com/documentation/reference/waterline-orm/models/find-or-create" target="_blank" rel="external">详细参数请见</a></p>
+<ul>
+<li><p><strong>.native()</strong><br>.native()仅在数据库为MongoDB的时候可用。<br>返回当前Mongo的一个集合的实例，允许你用Mongo源生querry方法。Mongo源生方法请见<a href="https://docs.mongodb.com/" target="_blank" rel="external">Mongo-Docs</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 样例</span></div><div class="line">Pet.native(<span class="function"><span class="keyword">function</span>(<span class="params">err, collection</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> res.serverError(err);</div><div class="line"></div><div class="line">  collection.find(&#123;&#125;, &#123;</div><div class="line">    <span class="attr">name</span>: <span class="literal">true</span></div><div class="line">  &#125;).toArray(<span class="function"><span class="keyword">function</span> (<span class="params">err, results</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> res.serverError(err);</div><div class="line">    <span class="keyword">return</span> res.ok(results);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>.query()</strong><br>执行一次，原SQL的查询</p>
+<blockquote>
+<ul>
+<li><strong>注意</strong>：query()方法与其他的Waterine其他的model方法不一样，.query()是不基于promise和不可以用.exec()的。从另一个角度来说，这个方法是不利用Waterlines的默认延迟机制。除此之外，该方法还提供原生的数据库驱动。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用法</span></div><div class="line">SomeModel.query(sql, valuesToEscape, <span class="function"><span class="keyword">function</span>(<span class="params">err, rawResult</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line"><span class="comment">// 样例</span></div><div class="line">User.create(&#123;<span class="attr">name</span>:<span class="string">'Finn'</span>&#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err, finn</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> res.serverError(err); &#125;</div><div class="line"></div><div class="line">  sails.log(<span class="string">'Finn\'s id is:'</span>, finn.id);</div><div class="line">  <span class="keyword">return</span> res.ok();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>.stream(criteria)</strong><br>该方法用到node的流来管理model的数据<br>UserCOntroller.js<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 样例</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"></div><div class="line">  <span class="attr">testStream</span>: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (req.param(<span class="string">'startStream'</span>) &amp;&amp; req.isSocket)&#123;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> getSocket = req.socket;</div><div class="line"></div><div class="line">        <span class="comment">// Start the stream.  Pipe it to sockets.</span></div><div class="line">        User.stream(&#123;<span class="attr">name</span>:<span class="string">'Walter'</span>&#125;).pipe(getSocket.emit);</div><div class="line"></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">      res.view();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/view/users/testSocket.ejs<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 样例</span></div><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> <span class="title">startListening</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    socket.on(<span class="string">'gotUser'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(data.name + <span class="string">' number '</span> + data.id + <span class="string">' has joined the party'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"addButton"</span> onClick=<span class="string">"socket.get('/users/testStream/', &#123;startStream:true&#125;)"</span>&gt;Stream all the Users!&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>.update()</strong><br>按照搜索条件更新数据记录<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 样例</span></div><div class="line">User.update(&#123;<span class="attr">name</span>:<span class="string">'Walter Jr'</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">'Flynn'</span>&#125;).exec(<span class="function"><span class="keyword">function</span> <span class="title">afterwards</span>(<span class="params">err, updated</span>)</span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="comment">// handle error here- e.g. `res.serverError(err);`</span></div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Updated user to have name '</span> + updated[<span class="number">0</span>].name);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;sails-app默认使用Waterline-ORM，下面是一些Waterline关于Models的方法：&quot;&gt;&lt;a href=&quot;#sails-app默认使用Waterline-ORM，下面是一些Waterline关于Models的方法：&quot; class=&quot;heade
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="sails" scheme="https://qiil.github.io/qill.github.io/tags/sails/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sails request方法总结</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/30/sails-request%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/30/sails-request方法总结/</id>
+    <published>2017-07-30T15:40:16.000Z</published>
+    <updated>2017-07-30T15:48:41.819Z</updated>
+    
+    <content type="html"><![CDATA[<p>sails req接口提供了很多很好的方法，下面一个一个来看一下吧。</p>
+<ul>
+<li><p>req.accepted<br>可以一一个数组形式接受“媒体类型”的请求例如（text/html or application/json)这些，还会根据质量从高到底排序</p>
+</li>
+<li><p>req.acceptedCharsets<br>会返回一个包含着解码的数组</p>
+</li>
+<li><p>req.acceptedLanguages<br>返回一个数据包含请求体的可接受的语言</p>
+</li>
+<li><p>req.body<br>请求体的json对象，一般是包含请求传入的数据。</p>
+</li>
+<li><p>req.cookies<br>获取请求体cookies数据，是一个对象</p>
+</li>
+<li><p>req.fresh<br>一个用于说明用户登录的标志表示用户需要更新数据</p>
+</li>
+<li><p>req.headers<br>包含Http请求头的数据：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(req.headers);</div><div class="line"></div><div class="line">&#123; <span class="attr">host</span>: <span class="string">'localhost:1337'</span>,</div><div class="line">  <span class="attr">connection</span>: <span class="string">'keep-alive'</span>,</div><div class="line">  <span class="string">'cache-control'</span>: <span class="string">'no-cache'</span>,</div><div class="line">  <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36'</span>,</div><div class="line">  <span class="attr">accept</span>: <span class="string">'*/*'</span>,</div><div class="line">  <span class="string">'accept-encoding'</span>: <span class="string">'gzip, deflate, sdch'</span>,</div><div class="line">  <span class="string">'accept-language'</span>: <span class="string">'en-US,en;q=0.8,hi;q=0.6'</span>,</div><div class="line">  <span class="attr">cookie</span>: <span class="string">'sdfkslddklfk; sails.sid=s%3skdlfjkj1231lsdfnsc,m'</span> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>req.host<br>获取请求源的地址</p>
+</li>
+<li><p>req.ip<br>获取请求源的ip</p>
+</li>
+<li><p>req.isSockert<br>判断是否源自Socket.io的链接</p>
+</li>
+<li><p>req.method<br>获取请求方法</p>
+</li>
+<li><p>req.options<br>获取请求的行为，和请求的具体</p>
+</li>
+<li><p>req.params<br>截取GET请求路由的信息</p>
+</li>
+<li><p>req.path<br>获取请求的路径（除去动态询问的url）<br>EXAMPLE：加入请求的路径是：</p>
+<blockquote>
+<ul>
+<li><a href="http://localhost:1337/donor/37?name=foo#foobar" target="_blank" rel="external">http://localhost:1337/donor/37?name=foo#foobar</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>那么req.path返回的是：<br>/donor/37</p>
+<ul>
+<li><p>req.protocol<br>保存请求的协议</p>
+</li>
+<li><p>req.query<br>获取GET请求数据：例如这个GET请求：GET <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">req.query.q</div><div class="line">// -&gt; &quot;mudslide&quot;</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>req.secure<br>判断请求是否有TLS连接发送</p>
+</li>
+<li><p>req.singedCookies<br>这是一个包含所有标签cookies的字典</p>
+</li>
+<li><p>req.socket<br>如果当前请求是来自Socket.io用户的，那么req.socket只想这个Socket.io 的socket实例。</p>
+</li>
+<li><p>req.subdomains<br>一个数组包含了分拆的域名</p>
+</li>
+<li><p>req.url<br>获取整段url</p>
+</li>
+<li><p>req.xhr<br>一个值判断是否是AJAX请求</p>
+</li>
+<li><p>req.accepts()<br>检查请求是否为制定的格式</p>
+</li>
+<li><p>req.acceptsCharset()<br>返回这个请求是否是由对应的方式解码</p>
+</li>
+<li><p>req.allParams()<br>返回一个对象，包含所有的GET请求的数据</p>
+</li>
+<li><p>req.file()<br>上传文件相关</p>
+</li>
+<li><p>req.is()<br>传入一个字符串，判断这个请求头是否为传入字符串对应的头</p>
+</li>
+<li><p>req.params()<br>另一种获取GET请求数据的方式<br>req.query()获取的get请求类型是：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">req.params()可以获取的get请求的类型是：```/foo/:id</div></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<p>所以路由中用到正则的url需要用req.params()方法获取</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;sails req接口提供了很多很好的方法，下面一个一个来看一下吧。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;req.accepted&lt;br&gt;可以一一个数组形式接受“媒体类型”的请求例如（text/html or application/json)这些，还会根据质量从高到底排序&lt;/
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="sails" scheme="https://qiil.github.io/qill.github.io/tags/sails/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sails response方法总结</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/30/sails-response%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/30/sails-response方法总结/</id>
+    <published>2017-07-30T15:40:01.000Z</published>
+    <updated>2017-07-30T15:47:26.982Z</updated>
+    
+    <content type="html"><![CDATA[<p>以下是sails res的一些方法：</p>
+<ul>
+<li><p>res.attachment()<br>这个方法很奇怪，似乎官方设计的不是很完善，不建议用</p>
+</li>
+<li><p>res.badRequest()<br>返回一个400（“Bad Request”）状态码明确这个请求是不合法的，这通常意味着请求包含不合法的参数或请求头，或者说请求试着去做不符合你的app的逻辑的事。<br>EXAMPLE：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( req.param(<span class="string">'amount'</span>) &lt; <span class="number">500</span> )</div><div class="line">  <span class="keyword">return</span> res.badRequest(</div><div class="line">    <span class="string">'Transaction limit exceeded. Please try again with an amount less than $500.'</span></div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>res.clearCookie()<br>清除respond对应的cookie</p>
+</li>
+<li><p>res.cookie()<br>根据<figure class="highlight plain"><figcaption><span>的cookie</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```res.cookie(name, value [,options]);</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>res.created()<br>这个方法一般会发送201给用户，告诉用户资源已经成功创建</p>
+</li>
+<li><p>res.forbidden()<br>这个方法会返回403给用户，告诉用户权限不足</p>
+</li>
+<li><p>res.get()<br>返回当前的header的信息</p>
+</li>
+<li><p>res.json()<br>把res组织成JSON数据</p>
+</li>
+<li><p>res.jsonp()<br>和res.json类似</p>
+</li>
+<li><p>res.location()<br>设置定位回复，<br>和res.redirect()类似</p>
+</li>
+<li><p>res.notFound()<br>发送404表示找不到页面</p>
+</li>
+<li><p>res.ok()<br>发送200表示OK</p>
+</li>
+<li><p>res.redirect(url)<br>把用户重定向到制定的url</p>
+</li>
+<li><p>res.send()<br>发送一个简单的回复，statusCode默认设置为200<br>这个方法可用于适配其他终端的方法</p>
+</li>
+<li><p>res.serverError()<br>发送一个500表示服务端有一些错误发生了</p>
+</li>
+<li><p>res.set()<br>设置返回的 header 为特定的 value</p>
+</li>
+<li><p>res.status()<br>返回状态码</p>
+</li>
+<li><p>res.type()<br>设置“Content-Type”为给定的type</p>
+</li>
+<li><p>res.view()<br>回复一个HTML页面</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以下是sails res的一些方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;res.attachment()&lt;br&gt;这个方法很奇怪，似乎官方设计的不是很完善，不建议用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;res.badRequest()&lt;br&gt;返回一个400（“Bad Reques
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="sails" scheme="https://qiil.github.io/qill.github.io/tags/sails/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sails configuration分析</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/30/sails-configuration%E5%88%86%E6%9E%90/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/30/sails-configuration分析/</id>
+    <published>2017-07-30T15:39:43.000Z</published>
+    <updated>2017-07-30T15:46:22.392Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li><p>buleprint配置：<br>perfix：一些url字头/api/v2等<br>restPerfix：制定RESTful的url，restfulurl会添加到perfix后面<br>其他不会写。</p>
+</li>
+<li><p>bootstrap配置：<br>bootstrap配置能够用在所有的堆栈中，有以下例子：</p>
+<ol>
+<li>设置底层数据，查找或创建一个用户数据</li>
+<li>对数据库进行完整性检查</li>
+<li>利用设置的数据初始化数据库</li>
+</ol>
+</li>
+<li><p>connection配置：<br>首先适配器是一个在Sails app 和你的数据库连接一个比较重要的东西<br>全局的连接都在connection.js中配置，然后会加载到项目的config文件中，你也可以在config.local中指定你的配置<br>样例：<br>假设我们用sails-memory适配器(通常在开发环境中比较适用)，首先需要npm install sails-memory，然后在connection.js中配置</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">myApp/config/connections.js</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports.connections = &#123;</div><div class="line">  <span class="comment">// sails-disk is installed by default.</span></div><div class="line">  localDiskDb: &#123;</div><div class="line">    <span class="attr">adapter</span>: <span class="string">'sails-disk'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">memory</span>: &#123;</div><div class="line">    <span class="attr">adapter</span>: <span class="string">'sails-memory'</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>多个定义：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports.connections = &#123;</div><div class="line">  <span class="attr">localMysql</span>: &#123;</div><div class="line">    <span class="attr">adapter</span>: <span class="string">'sails-mysql'</span>,</div><div class="line">    <span class="attr">user</span>: <span class="string">'root'</span>,</div><div class="line">    <span class="attr">host</span>: <span class="string">'localhost'</span>,</div><div class="line">    <span class="attr">database</span>: <span class="string">'someDbase'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">remoteMysql</span>: &#123;</div><div class="line">    <span class="attr">adapter</span>: <span class="string">'sails-mysql'</span>,</div><div class="line">    <span class="attr">user</span>: <span class="string">'remoteUser'</span>,</div><div class="line">    <span class="attr">password</span>: <span class="string">'remotePassword'</span>,</div><div class="line">    <span class="attr">host</span>: <span class="string">'http://remote-mysql-host.com'</span>,</div><div class="line">    <span class="attr">database</span>: <span class="string">'remoteDbase'</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>当然你也可以在model中专门定义所用的数据库：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">myApp/config/models.js</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports.models = &#123;</div><div class="line"></div><div class="line">  <span class="attr">connection</span>: <span class="string">'memory'</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>cors配置<br>这是跨域请求（跨原始资源共享）的配置，然而我并不懂，请期待后续更新。<br>安全上的考虑，CORS是默认关闭的在sails app中，不过启用是很简单的<br>为了允许来自白名单上的信任的所有的域对你的app 的cross-origin请求一般会吧<br>allROutes设置为true并提供一个origin设置在。。。。</li>
+</ul>
+<ul>
+<li><p>csrf配置<br>一个CSRF保护的中间件的配置，这些选项都在csrf.js中设置好了，能从<a href="http://sailsjs.com/documentation/concepts/security/csrf" target="_blank" rel="external">这里</a>看到关于CSRF的文档<br>这些选项都是用来保护你的sails app抵御CSRF攻击的，一个潜在的攻击者不仅仅需要浏览器的缓存，还会需要可以刷新你app url的时间戳和，私密的CSRF token。<br><a href="http://sailsjs.com/documentation/reference/configuration/sails-config-csrf" target="_blank" rel="external">配置请点</a></p>
+</li>
+<li><p>globals配置<br>sails 关于全局变量的配置，例如开启lodash，async，models等</p>
+</li>
+<li><p>http配置<br>关于底层的http配置，一个sails app开启时需要按顺序经过的http中间件配置默认会经过这些中间件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">order: [</div><div class="line">      <span class="string">'startRequestTimer'</span>,</div><div class="line">      <span class="string">'cookieParser'</span>,</div><div class="line">      <span class="string">'session'</span>,</div><div class="line">      <span class="string">'myRequestLogger'</span>,</div><div class="line">      <span class="string">'bodyParser'</span>,</div><div class="line">      <span class="string">'handleBodyParserError'</span>,</div><div class="line">      <span class="string">'compress'</span>,</div><div class="line">      <span class="string">'methodOverride'</span>,</div><div class="line">      <span class="string">'poweredBy'</span>,</div><div class="line">      <span class="string">'$custom'</span>,</div><div class="line">      <span class="string">'router'</span>,</div><div class="line">      <span class="string">'www'</span>,</div><div class="line">      <span class="string">'favicon'</span>,</div><div class="line">      <span class="string">'404'</span>,</div><div class="line">      <span class="string">'500'</span></div><div class="line">    ]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可以对这些中间件进行重写例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">poweredBy: <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">      res.setHeader(<span class="string">'X-Powered-By'</span>, <span class="string">"Autobots"</span>);</div><div class="line">      next();</div><div class="line">    &#125;,</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>i18n配置<br>这个是一些全球化的配置，包括语言等其他东西。</p>
+</li>
+<li><p>log配置<br>主要配置日志输出等级，根据不同等级决定输出什么日志，</p>
+</li>
+<li><p>model配置<br>这个配置文件会被/app/model中的配置覆盖所以需要精准地设计数据表，还是建议到/app/model中直接设置，当然一些共用的配置在这里配还是比较方便的，例如connection默认用什么数据库等。</p>
+</li>
+<li><p>policies配置<br>这时权限控制配置，一般来说会默认把所有权限都关掉然后根据白名单为每一个controller中的每一个方法添加权限例如，其权限控制可以在/api/prolice中具体编辑：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">FileController</span>: &#123;</div><div class="line">    <span class="attr">upload</span>: [<span class="string">'isAuthenticated'</span>, <span class="string">'canWrite'</span>, <span class="string">'hasEnoughSpace'</span>]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>routes配置<br>路由配置，这里配置会覆盖restful的路由。</p>
+</li>
+<li><p>session配置<br>sails缓存的配置，session保存一些用户信息等东西。一般都会用到redis，这个配置和connection差不多。</p>
+</li>
+<li><p>views配置<br>这个是用作服务端渲染用到的view的配置，关于模板，主模板，还有模板引擎等</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;buleprint配置：&lt;br&gt;perfix：一些url字头/api/v2等&lt;br&gt;restPerfix：制定RESTful的url，restfulurl会添加到perfix后面&lt;br&gt;其他不会写。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;bootstrap配置
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="sails" scheme="https://qiil.github.io/qill.github.io/tags/sails/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sails Blueprint API总结</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/30/sails-Blueprint-API%E5%B0%8F%E8%AE%A1/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/30/sails-Blueprint-API小计/</id>
+    <published>2017-07-30T15:39:18.000Z</published>
+    <updated>2017-07-30T15:45:33.339Z</updated>
+    
+    <content type="html"><![CDATA[<p>###concept:<br>蓝图的目的：<br>根据restful的一些代码未每一个controller加上<br>find<br>findOne<br>create<br>update<br>destroy<br>populate<br>add<br>remove<br>这些方法，当然自己也可以重写这些方法。<br>蓝图的路由：<br>当蓝图允许的时候，骨架会检测你的controller，models，和相关配置去精准地定位你的路由，路由配置文件在你的config/routes.js中。<br>有三种蓝图路由能够在sails中支持：<br>restful 路由、shortcut路由和action路由。</p>
+<p>###蓝图：<br>激活/关闭 蓝图：<br>1.激活RESTful路由： sails.config.blueprints.rest = true，（一般在/config/blueprints.js)<br>Sails 会对每一个controller和model文件会创建同样的一个身份，例如api/controllers/PetController.js and api/models/Pet.js 会有同一个ID为 pet，如果两个文件都加入到一个sails app上面的话，sails会自动的为他们创建一条RESTful路由其URL为：/pet，无论这个app是否加载都一样。<br>2.激活Shortcut 路由：sails.config.blueprints.shortcuts = false<br>和RESTful路由一样，sails会对所有的controller/model对创建相同的ID，例如，POST /user and GET /user/create 这些Sails创建的路由当他加载 api/controllers/UserController.js 和 api/models/User.js 就会用到同样的代码相应<br>3.激活action路由：<br>Action会对每一个controller中的方法创建url例如在api/controllers/PetController.js 有:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports &#123;</div><div class="line">  <span class="attr">adore</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">    res.send(<span class="string">"I adore pets!"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后/pet/adore这条路由就会自动创建。<br>关于Action路由更多的问题就是一般来说都应该在生产的路由中把它关掉，然后我们再在/config/routes.js逐条配置更精确的路由。</p>
+<p>###API：</p>
+<ul>
+<li>addto：<br>利用post请求 /:model/:id/:association/:fk这条url为一个表中的数据添加一条记录。</li>
+<li>create：<br>利用post请求 /:model 这条url，post中的数据是整个文档（至少要有所有的require字段）</li>
+<li>destroy：<br>请求与url DELETE /:model/:id 根据给出的ID删除数据库中的ID这个数据，如果没有给出ID则返回404</li>
+<li>findone：<br>请求与url GET /:model/:id 返回model的一个记录，id是期望找到的用户的id只能用ID查询</li>
+<li>find：<br>请求与url GET /:model/:id 返回满足搜索条件的所有记录（以数组形式），搜索条件是一个字典</li>
+<li>remove：<br>请求与URL DELETE /:model/:id/:association/:fk 清除这个fk文档的association中的数据</li>
+<li>update：<br>请求与url PUT /:model/:id 传一个字典，更新id这个文档的在字典中的值</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###concept:&lt;br&gt;蓝图的目的：&lt;br&gt;根据restful的一些代码未每一个controller加上&lt;br&gt;find&lt;br&gt;findOne&lt;br&gt;create&lt;br&gt;update&lt;br&gt;destroy&lt;br&gt;populate&lt;br&gt;add&lt;br&gt;remove&lt;br
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="sails" scheme="https://qiil.github.io/qill.github.io/tags/sails/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sails application events与sails生命周期</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/07/30/sails-application-event/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/07/30/sails-application-event/</id>
+    <published>2017-07-30T15:38:36.000Z</published>
+    <updated>2017-07-30T15:43:27.570Z</updated>
+    
+    <content type="html"><![CDATA[<p>ready    app已经加载，并且bootstrap已经跑起来了，但还没开始监听请求。<br>lifted    app已经运行，并且监听请求。<br>lower    app已经关闭并且停止监听请求。<br>hook:<hook identity="">: loaded    The hook with the specified identity loaded and ran its initialize() method successfully.</hook></p>
+<p>sails生命周期：<br>1.加载配置覆盖，根据实际开发的配置覆盖默认配置<br>2.加载用户配置，就是加载其他的没有被覆盖但是框架中默认的配置<br>3.加载钩子，加载其他钩子core hook会是第一个加载的然后就是user hooks和installable hooks<br>4.明确路由，准备好路由和对应事件。<br>5.暴露全局变量，在钩子都准备好之后会暴露全局变量（例如sails对象，models的数据库，service方法，_（lodash）和async等）<br>6.初始化app运行，lift() === load() + initialize() 加载 + 初始化</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ready    app已经加载，并且bootstrap已经跑起来了，但还没开始监听请求。&lt;br&gt;lifted    app已经运行，并且监听请求。&lt;br&gt;lower    app已经关闭并且停止监听请求。&lt;br&gt;hook:&lt;hook identity=&quot;&quot;&gt;: loade
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="sails" scheme="https://qiil.github.io/qill.github.io/tags/sails/"/>
+    
+  </entry>
   
   <entry>
     <title>Rockmongo配置详解</title>
@@ -264,9 +643,9 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
       <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
     
     
-      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
-    
       <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
     
   </entry>
   
@@ -583,309 +962,6 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
     
       <category term="阅读与我" scheme="https://qiil.github.io/qill.github.io/categories/%E9%98%85%E8%AF%BB%E4%B8%8E%E6%88%91/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>python tkFileDialog模块简介</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/</id>
-    <published>2017-06-05T16:43:36.000Z</published>
-    <updated>2017-06-05T17:25:10.050Z</updated>
-    
-    <content type="html"><![CDATA[<p>tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。</p>
-<h4>函数简介</h4>
-
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.askopenfile</td>
-<td>在指定目录打开相应文件</td>
-</tr>
-<tr>
-<td>.asksaveasfilename</td>
-<td>保存文件到指定目录</td>
-</tr>
-<tr>
-<td>.askdirectory</td>
-<td>打开一个指定的文件夹</td>
-</tr>
-</tbody>
-</table>
-<h4>利用askopenfile打开文件</h4>
-
-<p>askopenfile函数会创建一个文件对话框对象。</p>
-<h5>Python2.7版本用法:</h5>
-
-<pre><code>from Tkinter import *from Tkinter import *
-import Tkinter, Tkconstants, tkFileDialog
-
-root = Tk()
-root.filename = tkFileDialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><h5>Python3本分用法:</h5>
-
-<pre><code>from tkinter import filedialog
-from tkinter import *
-
-root = Tk()
-root.filename =  filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg" alt="打开文件对话框"></center>
-
-<h4>利用asksaveasfilename保存文件</h4>
-
-<p>asksaveasfilename提供一个保存文件的对话框</p>
-<h5>Python2.7版本用法:</h5>
-
-<pre><code>from Tkinter import *
-import Tkinter, Tkconstants, tkFileDialog
-
-root = Tk()
-root.filename = tkFileDialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><h5>Python3本分用法:</h5>
-
-<pre><code>from tkinter import filedialog
-from tkinter import *
-
-root = Tk()
-root.filename =  filedialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><h4>利用askdirectory打开文件夹</h4>
-
-<h5>Python2.7与Pyhon3用法一样，如下：</h5>
-
-<pre><code>from  Tkinter import *
-import Tkinter, Tkconstants, tkFileDialog
-root = Tk()
-root.directory = tkFileDialog.askdirectory()
-print (root.directory)
-</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
-
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。&lt;/p&gt;
-&lt;h4&gt;函数简介&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;函数&lt;/th&gt;
-&lt;th&gt;
-    
-    </summary>
-    
-      <category term="python" scheme="https://qiil.github.io/qill.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://qiil.github.io/qill.github.io/tags/python/"/>
-    
-      <category term="Tkinter" scheme="https://qiil.github.io/qill.github.io/tags/Tkinter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《to the moon》游玩后有感</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/04/%E3%80%8Ato-the-moon%E3%80%8B%E6%B8%B8%E7%8E%A9%E5%90%8E%E6%9C%89%E6%84%9F/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/04/《to-the-moon》游玩后有感/</id>
-    <published>2017-06-04T09:41:40.000Z</published>
-    <updated>2017-06-06T03:18:47.444Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://cdn.steamstatic.com.8686c.com/steam/apps/206440/ss_1ad788262b8d672b5fd70299320c5c2323ba15ef.1920x1080.jpg" alt=""></p>
-<blockquote>
-<p>听说 《to the moon》是一款拥有神剧情的游戏。于是我就特意下载来玩一下，游戏只需要三小时，不过三小时已经足够刷新一个人的爱情观了。<br>此文有严重的“剧透”，高能预警～～</p>
-</blockquote>
-<p>在我看来没有其他方法比解出里面的“谜题”更好了</p>
-<h5>故事简介：</h5>
-
-<p>&emsp;&emsp;故事是主角们利用一个记忆改造机的东西去帮助一位即将去世的叫John的老爷爷完成一个去月亮的梦想。主角需要从John的老年-&gt;中年-&gt;青年-&gt;童年一直往下走然后改造John的记忆。把John爷爷从小培养成为了月球而努力的人，从而在长大之后变成一名宇航员然后坐上火箭去月球。主角们在寻找记忆标签的时候有一个很奇怪的现象：John一点都不想去月球！John满脑子只有他亡故的妻子–小溪。。。</p>
-<p>去月亮游记的“谜题”：</p>
-<h5>兔子，灯塔，鸭嘴兽。</h5>
-
-<p>《序章》</p>
-<ol>
-<li>为什么JOHN要去月亮？</li>
-<li>为什么灯塔上面放了一只兔子？ –听到主题曲《to the moon》</li>
-<li>为什么兔子是蓝色加黄色的？</li>
-<li>为什么鸭嘴兽在地下室，而且很脏？</li>
-</ol>
-<h5>ACT 1 其实我一直认为他们是灯塔。</h5>
-
-<ol>
-<li>为什么小溪一直闷闷不乐在折兔子，她看着John很烦躁，她不着急吗？</li>
-<li>为什么要在这座灯塔附近建屋子？</li>
-<li>为什么John喜欢吃腌橄榄？</li>
-<li>他们结婚了，但似乎John的母亲有点奇怪。</li>
-<li>为什么小溪喜欢看《国王的新衣》？</li>
-<li>伊利莎尔是什么样的人，为什么她会说其实她和小溪一样，但她是一个演员？</li>
-<li>为什么小溪会直接接受John的约会。</li>
-<li>为什么小溪说两个人在同一间放映室看电影就等于一起看电影？不应该坐一起？</li>
-<li>为什么John完全没有去月亮的意思？</li>
-</ol>
-<h5>ACT 2 和 ACT 3基本用来解密了，然后就不用多说了。</h5>
-
-<p>1.John去月亮就是因为想去（或许这样说会有点奇怪但是我认为这应该是没错的），在John一个人的时候，想必他已经把和小溪的点点滴滴回忆了一遍又一遍吧，所以我相信他已经想到了从前，如果我的假设没错的话那么他是回忆了多少次才能够做到不放过这些细节呢？</p>
-<p>2&amp;3.我一直认为他们是灯塔，这篇星空下有一只以月亮作为肚子的兔子呢，天是蓝蓝的，月亮也是黄黄的，那么兔子就是蓝色加黄色啦，放在灯塔上估计是John想要告诉小溪他已经知道她不停折兔子时的内心想法了。</p>
-<p>4.这是我唯一不知道怎么回答的问题了，如果John已经回忆起所有的东西了，不应该会漏掉鸭嘴兽吧？所以我只能归类为他老了，童年的东西已经不能记得很清楚了（感慨岁月蹉跎），但是鸭嘴兽是陪伴小溪一辈子的玩偶，不可能这都想不到吧？是因为曾经服用药物强制失忆的原因？</p>
-<p>5.小溪这是再说我一直记住我和你的童年那个晚上，那个对孤独的有自闭症的小溪无比重要的夜晚，让她认识到友情的夜晚啊！</p>
-<p>6.那是因为，小溪想要把所有有关灯塔，月亮，兔子有关的东西都放在身边，然而John只是傻傻的以为小溪只是执着，而且延续这她的奇怪想法。John也是傻得可以，但是反观我们现在，如果我们有John身上那么大的压力的时候，我们还会冷静地站在我们爱的人的角度从对方的角度思考吗？生活差点压垮了John，小溪她自己也非常明白，她觉得很内疚，但天生的性格使她不会向John表达她的想法。</p>
-<p>7.John怀念他的哥哥。每个人心中总有点小秘密对吧。。</p>
-<p>8.John的母亲也很想念他的哥哥，那个聪明，懂事的哥哥。所以John一直学他的哥哥，他强行改变了自己，他从一个内向的人变成一个开朗，健谈的人了。但他最原始还是内向、保守的，从他只有一个至好的朋友我们就能看到。他其实害怕社交，John也是一个伟大的人呢，试问现在谁还能想他那样把所有的包袱都揽在自己身上呢？</p>
-<p>9.初恋信物！！</p>
-<p>10.伊利也是内向的人！没错，这是她自己说的，每个人都会有自知之明的，她很明白她与世界是隔绝的，但外部的的“力量”使她更不敢变成像小溪一样的异类！所以她觉得小溪很勇敢–能保持自己，也很幸福–有John的爱情。而她可能每天晚上睡觉之前都会想到自己与世界的孤立，怕会偷偷地哭泣吧，然后第二天醒来又会“开心地”说今天又是新的一天啦，大家要加油喔！！</p>
-<p>11.小溪一直就喜欢John啦。。。</p>
-<p>12.这我还真不知道是什么意思呢。</p>
-<p>13.因为他根本就没有了那个晚上的记忆啦，是两位博士强行开启的记忆，他自己不想要的记忆他怎么会记得呢，如果想要想起小溪，就要先想起哥哥呀，这真是痛苦呢！！这也是要老了之后想开了才敢想起来的事情吧。</p>
-<p><center>完。<center><br><img src="http://www.funpcgame.com/images/To-The-Moon-2b.jpg" alt=""></center></center></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://cdn.steamstatic.com.8686c.com/steam/apps/206440/ss_1ad788262b8d672b5fd70299320c5c2323ba15ef.1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;
-    
-    </summary>
-    
-      <category term="阅读与我" scheme="https://qiil.github.io/qill.github.io/categories/%E9%98%85%E8%AF%BB%E4%B8%8E%E6%88%91/"/>
-    
-    
-      <category term="to the moon" scheme="https://qiil.github.io/qill.github.io/tags/to-the-moon/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>scnu毕业生赠字活动观字后感</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/04/scnu%E6%AF%95%E4%B8%9A%E7%94%9F%E8%B5%A0%E5%AD%97%E6%B4%BB%E5%8A%A8%E8%A7%82%E5%AD%97%E5%90%8E%E6%84%9F/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/04/scnu毕业生赠字活动观字后感/</id>
-    <published>2017-06-03T16:13:45.000Z</published>
-    <updated>2017-06-03T18:10:47.111Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;今天上完两节课后发现在学校中间广场竟然有一个scnu名家给毕业生赠自的活动。觉得这次学生会的活动挺有意思于是忍不住就去看看，O(∩_∩)O哈哈~差点错过了午饭。</p>
-<p>观看了各位老师的作品忍不住想作一评价，纯属个人观点，若是一下老师看到了!那是缘分：）</p>
-<p>&emsp;&emsp;雷YK老师，写字思定而后动，字体浓墨重笔，显其苍劲有力。但略显浮华，下笔略有犹豫，不够干脆，行文如挑战，写完一篇松一口大气。看上去就像是修为不太够的样子呢。<br>&emsp;&emsp;余DJ老师，字如作画，专注细节，但胸中未有成文，缺勾缺墨。从字上看，余老师应该是为人随和，粗中有细的人。</p>
-<p>&emsp;&emsp;孟DD老师，粗中有细，行云潇洒，一笔成章，然而我在写这篇博文的时候已经对您没印象了，sorry：）</p>
-<p>&emsp;&emsp;邝ZB老师，字体苍劲有力，功底深厚，写字时手腕没有一丝抖动，写字之前胸成成竹，行云流水尽显潇洒，看这位老师写字可真是心中舒畅至极。可惜老师周围环境太差，左边有一位一直与邝老师聊天的老师，右边有一位‘不识字’的老师，所以在我看的两个小时左右的时间上邝老师可是一直受到干扰从而有诸多败笔啊。</p>
-<p>&emsp;&emsp;邓FM老师，应该是摆摊的老师中文字功底最深厚的老师了。明明如此年长的老师，下笔却是非常干脆，有劲，大字潇洒，不拘一格令我大为赞叹。观赏完大字之后才发现邓老师写的落笔小字更是令我心惊，一笔成章，非常精细。更难得的是，邓老师每一福字都是心无旁骛得写，真是非常用心。</p>
-<p>&emsp;&emsp;学生会这个活动对于毕业生们真是有非常大的纪念意义的，辛苦scnu的各位老师了。你们顶着太阳，在北座前面的小广场上为毕业生写了一天的字。我看到了老师对我们的期望，看着师兄师姐拿着字画与老师们拍照留念我不禁想起了以前教过自己的老师，他（她）们在我们毕业的时候内心的对我们的祝福应该也像这些字画，简单而又充满着对莘莘学子的寄托罢。</p>
-<center>完。</center>
-
-<p><img src="http://imgmall.artxun.com/images/201008/goods_img/60166_P_1281645214618.jpg" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;emsp;&amp;emsp;今天上完两节课后发现在学校中间广场竟然有一个scnu名家给毕业生赠自的活动。觉得这次学生会的活动挺有意思于是忍不住就去看看，O(∩_∩)O哈哈~差点错过了午饭。&lt;/p&gt;
-&lt;p&gt;观看了各位老师的作品忍不住想作一评价，纯属个人观点，若是一下老师看到了!那
-    
-    </summary>
-    
-      <category term="人生观感" scheme="https://qiil.github.io/qill.github.io/categories/%E4%BA%BA%E7%94%9F%E8%A7%82%E6%84%9F/"/>
-    
-    
-      <category term="书法" scheme="https://qiil.github.io/qill.github.io/tags/%E4%B9%A6%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GF(2^8)运算一一（二）</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-%E8%BF%90%E7%AE%97%E4%B8%80%E4%B8%80%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（二）/</id>
-    <published>2017-06-03T16:06:47.000Z</published>
-    <updated>2017-06-03T16:09:05.201Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>具体的运算算法</strong><br><strong>加法：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//直接异或运算就ok了</div></pre></td></tr></table></figure>
-<p><strong>乘法：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">unsigned char GFmul(unsigned char a, unsigned char b)&#123;</div><div class="line">	unsigned char result = 0;</div><div class="line">	if ((b&amp;1)==1) result = a;</div><div class="line">	b = b &gt;&gt; 1;</div><div class="line">	for (int i = 0; i &lt; 8; i++)&#123;</div><div class="line">		if ((a&gt;127))</div><div class="line">			a = (a &lt;&lt; 1) ^ 0x1b;</div><div class="line">		else </div><div class="line">			a = a &lt;&lt; 1;</div><div class="line">		if((b&amp;1) == 1)&#123;</div><div class="line">            result ^= a;</div><div class="line">        &#125;</div><div class="line">        b &gt;&gt;= 1;</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>分析一下乘法原理：</strong><br>总共要循环8次，每一次循环都需要判断b的最低位是否为1，a的最高位是否为1。如果b的最低位为1，那么就结果result就要与a进行异或运算。再判断a最高位是否为1，如果是的话那么a在左移之后还要异或 1B。大概差不多了吧。</p>
-<p><strong>乘法逆元：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//生成逆元表函数</div><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">//查表函数</div><div class="line">unsigned char inverse(unsigned char b)&#123;</div><div class="line">	//初始化 </div><div class="line">	unsigned char result;</div><div class="line">	if (b == 0)&#123;</div><div class="line">		cout &lt;&lt; (int)b &lt;&lt; &quot;没有逆元&quot; &lt;&lt;endl; //0没有逆元</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		for (int i = 1; i &lt; 256; i++)&#123;</div><div class="line">			if (Inverse[i] == b) &#123;</div><div class="line">				result = Inverse[255-i];</div><div class="line">				return result;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>乘法逆元原理：</strong><br>在GF(2^8)这个群里如果有g^x <em> g^y == 1（g是其中一个生成元）那么就会有x+y == 255。回到函数里面，第一个我利用生成元：3做254次乘法（第一个元素是0第二个元素是3）得到了一个以3为生成元重新排列的群。第二个就是查表函数了。暴力搜索出b所在的位置，然后<em>*255-b所在的位置的元素</em></em>就是b的逆元。</p>
-<p><strong>离散对数：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含有所有生成元的文件，可以自己生成，也可以上网找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div><div class="line"></div><div class="line">int genrator(unsigned char a, unsigned char b)&#123; </div><div class="line">	if (b == 0)&#123;</div><div class="line">		cout &lt;&lt; (int)b &lt;&lt; &quot;没有离散对数！&quot; &lt;&lt;endl; </div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		//多次使用乘法直到找到为止；</div><div class="line">		unsigned char mi = 1; </div><div class="line">		int y = 0;</div><div class="line">		while(1)&#123;</div><div class="line">			mi = GFmul(mi, a); </div><div class="line">			y++;</div><div class="line">			if(mi == b) return y;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>离散对数原理：</strong><br>这里需要用户输入一个“生成元”和一个X，首先要保证用户输入的生成元是一个真实的生成元。所以需要加一个判断。之后就是利用生成元做多次乘法做到值为X为止，循环次数就是离散对数了。</p>
-<p><em>最后：仅是学生党随意写的用于交流学习，不喜勿喷，谢谢驻足的各位</em></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;具体的运算算法&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;加法：&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;
-    
-    </summary>
-    
-    
-      <category term="algorithm" scheme="https://qiil.github.io/qill.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GF(2^8)运算一一（一）</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-%E8%BF%90%E7%AE%97%E4%B8%80%E4%B8%80%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/</id>
-    <published>2017-06-03T16:06:37.000Z</published>
-    <updated>2017-06-03T16:08:27.818Z</updated>
-    
-    <content type="html"><![CDATA[<p>任务:<br>        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。</p>
-<p>首先分析一下思路：<br>加法思路：对每一位进行异或操作</p>
-<p>乘法：<br>①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结果，最后得出结果。<br>②利用无符号字符类型解释整形创建一个过度变量为result，然后根据字符b的最后一位决定结果值，如果b的最后一位是0则result等于上一个循环的result值，若b的最后一位是1，result值等于result异或a。需要做八次循环，每次循环一开始都要判断a是否大于127如果大于127则a需要左移一位并且异或1B，else a只需要左移一位。</p>
-<p>乘法逆元思路：<br>首先规定生成元是3（00000011，当然用其他生成元也可以，随便）然后生成一个以3为生成元的逆元表，然后查询用户输入的x查询到x之后利用255减去x所在位置那个位置的元素即为x的乘法逆元y</p>
-<p>离散对数思路：<br>用户输入生成元与X，多次调用乘法，调用乘法的次数则为所求的离散对数</p>
-<p>我大概用到的函数定义（忽略界面函数，输入输出函数等与算法无关的函数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;fstream&gt; </div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void set_genrator();           //用于开始设置生成元数组 </div><div class="line">void set_Inverse();           //用于开始设置逆元表</div><div class="line">unsigned char GFsum(unsigned char a, unsigned char b); //求和 </div><div class="line">unsigned char GFmul(unsigned char a, unsigned char b); //乘法 </div><div class="line">unsigned char inverse(unsigned char b);  //乘法逆元 </div><div class="line">bool judge_genrator(unsigned char a); //判断用户输入的生成元是否为生成元 </div><div class="line">int logarithm(unsigned char a, unsigned char b);  //离散对数</div><div class="line">int Genrator[256];           //保存生成元信息</div><div class="line">unsigned char Inverse[256];      //保存以3为生成元的逆元表</div></pre></td></tr></table></figure></p>
-<p>用于设置生成元数组用来判断用户输入的生成元是否为一个真实的生成元：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含所有生成元的记录文件，可以自己生成也可以网上去找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>生成逆元表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;任务:&lt;br&gt;        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。&lt;/p&gt;
-&lt;p&gt;首先分析一下思路：&lt;br&gt;加法思路：对每一
-    
-    </summary>
-    
-    
-      <category term="algorithm" scheme="https://qiil.github.io/qill.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu下安装gmp一些问题与解决方案</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/04/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85gmp%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/04/ubuntu下安装gmp一些问题与解决方案/</id>
-    <published>2017-06-03T16:04:36.000Z</published>
-    <updated>2017-06-03T16:05:49.927Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.ubuntu下安装gmp遇到 configure:error:no usable m4 in$path or /user/5bin解决方案:</p>
-<p>其实很简单，是因为你没有m4，安装它就OK了。</p>
-<p>sudo apt-get install m4</p>
-<p>done.</p>
-<hr>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.ubuntu下安装gmp遇到 configure:error:no usable m4 in$path or /user/5bin解决方案:&lt;/p&gt;
-&lt;p&gt;其实很简单，是因为你没有m4，安装它就OK了。&lt;/p&gt;
-&lt;p&gt;sudo apt-get install m4&lt;/p
-    
-    </summary>
-    
-      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
-    
-    
-      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
-    
-      <category term="gmp" scheme="https://qiil.github.io/qill.github.io/tags/gmp/"/>
     
   </entry>
   
