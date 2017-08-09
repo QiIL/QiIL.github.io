@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-07-30T15:49:50.205Z</updated>
+  <updated>2017-08-09T16:28:28.778Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实习半个月的感觉</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/08/09/%E5%AE%9E%E4%B9%A0%E5%8D%8A%E4%B8%AA%E6%9C%88%E7%9A%84%E6%84%9F%E8%A7%89/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/08/09/实习半个月的感觉/</id>
+    <published>2017-08-09T15:59:43.000Z</published>
+    <updated>2017-08-09T16:28:28.778Z</updated>
+    
+    <content type="html"><![CDATA[<p>今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。</p>
+<p>实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分层开发模式、接手了明哥留给我的KPI系统、看完了C后台的所有内容。看上去其实很多东西，但是我意识到我的时间还是很少。因为，我的毕设还没动手，我还不懂ES6的代码规范，我需要学会egg.js的框架知识以用于之后新版的C后台的开发，我需要首席async，promise等控制异步的模块，现在我自己的node知识只能说是半桶水，有很多原理我自己还是不清楚，我还需要快速地熟练mongodb的操作。</p>
+<p>或许这些可以慢慢来，但是在这互联网的时代，我自己深刻地意识到自己的压力，我或许想要发展成一个node工程师，然后再学习技术然后发展成一个数据处理或者数据挖掘清晰的python工程师，然后平时可以干干“坏事”。或许我是一个比较幸运的人，我一路走来，还有之后的路我都看到了困难与机会，我需要时刻给自己充电。</p>
+<p>但是这一周，过了三天了，每天从公司回来我都觉得很困，很累呀，真是蛋疼。在公司里面坐着的那张椅子是软垫的，坐得我的腰很辛苦，我都一度以为我的身体开始发虚了，难道真的是撸多了？今天晚上怒跑了华师一圈加上运动厂两圈，然后脖子终于舒服一点了。但是坐久了，腰还是一样，看来要加快健身的日程了。</p>
+<p>昨天和肥航逛了一个晚上，我发现了他对工作有点逃避，其实我似乎对新的东西也有着很多的逃避心里，就像现在的实习，我还不是因为我堂哥有个推荐我的机会我才会来面试的嘛，不然我肯定会拖很久才去实习的，不过在实习的时候我也很幸运，也学到了很多，怎么说呢，我现在的感觉就是一天真的事太短了点，现在已经是00.25分了，写道这里已经用了25分钟，在之前我还答应了猪猪，我写完这个，然后去睡觉的，但是一直停不了笔，真是蛋疼。</p>
+<p>后面还有挑战，继续加油吧！！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。&lt;/p&gt;
+&lt;p&gt;实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是R
+    
+    </summary>
+    
+      <category term="人生观感" scheme="https://qiil.github.io/qill.github.io/categories/%E4%BA%BA%E7%94%9F%E8%A7%82%E6%84%9F/"/>
+    
+    
+      <category term="feeling" scheme="https://qiil.github.io/qill.github.io/tags/feeling/"/>
+    
+      <category term="work" scheme="https://qiil.github.io/qill.github.io/tags/work/"/>
+    
+  </entry>
   
   <entry>
     <title>sails Waterline ORM之Model篇</title>
@@ -939,29 +970,6 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
       <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
     
       <category term="sources.list" scheme="https://qiil.github.io/qill.github.io/tags/sources-list/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《情书》读后感</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/06/%E3%80%8A%E6%83%85%E4%B9%A6%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/06/《情书》读后感/</id>
-    <published>2017-06-06T03:12:46.000Z</published>
-    <updated>2017-06-06T03:22:21.365Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://www.jiushixing.com/d/file/uploads/allimg/120227/2-12022G51T43K.jpg" alt=""><br>情书给的双线叙事方式，我还是不太习惯去了解吧，或许看书不够状态，所以脑海中的图片跟不上节奏，为什么渡边博子对藤井树这么依恋？藤井见博子第一面就知道两个人很像，藤井树对自己以前的不够勇敢很后悔，所以他一上来就会问博子能做他女朋友吗？</p>
-<p>他是一个害怕失去，而且不拘小节的人，但他又是勇敢的，这就是真实的写照吧，人若是体验过失去的滋味，若是上天愿意给第二次机会，试问又有谁不会牢牢把握住呢？对于我来说，若是对于某件事我做出了一个自认为不太好的选择，我之后总会想着要是当时能这样做就好了！但上天不会给自己这么多机会。偏偏藤井树就有这么一次机会，他内心最深处的记忆是一直存在的，所以他勇敢了。</p>
-<p>渡子是个怎样的人，我想说，我很希望有这样一个妻子，她对丈夫的爱是忠贞的，是一直忠贞的。虽然之后秋叶在一起，但她就像小溪（to the moon），她的内心很细腻，能记得和爱人的每一个瞬间，每一份感动，每一句话。她不善长表达，她在心底有想法也只会告诉她自已。至于藤井吧，天知道她是怎么被喜欢上的，但青春的柏拉图式的爱情都是这个狗样，他想进办法去吸引她，想迟办法去表达自己的情素，看来是那么傻，那么懵懵懂懂，那么可爱。现实总是这狗样，平时的冤家很有可能在将来会变成CP。个人经验总结一下的话就是：如果传出了感情绯闻，90%的可能不是空穴来风，反正我就是这样。我想着法子去了解我现在的爱人，想当初是那么的笨，那么的可爱，明明对方很明显的心思就是摸不透，我无时无刻不在想着怎么去表白，但似乎想到的都没用上，最多还是在“被迫无耐”下表白了，就像藤井树，天知道他会转学，不然还能多暗恋两年呢。或许他也会想，只要毕业了就上去表白吧～。青春总是没有好戏的，藤井树也选择了一棵比较饱满的麦穗，但他是幸运的，他的麦穗和最大的那稞是差不多的。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://www.jiushixing.com/d/file/uploads/allimg/120227/2-12022G51T43K.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;情书给的双线叙事方式，我还是不太习惯去了解吧，或许看书不够状态，所以脑海中的图片跟
-    
-    </summary>
-    
-      <category term="阅读与我" scheme="https://qiil.github.io/qill.github.io/categories/%E9%98%85%E8%AF%BB%E4%B8%8E%E6%88%91/"/>
-    
     
   </entry>
   
