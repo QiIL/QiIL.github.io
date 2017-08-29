@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="node,sails," />
+  <meta name="keywords" content="mongodb,node.js,script," />
 
 
 
@@ -42,17 +42,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="以下是sails res的一些方法：  res.attachment()这个方法很奇怪，似乎官方设计的不是很完善，不建议用  res.badRequest()返回一个400（“Bad Request”）状态码明确这个请求是不合法的，这通常意味着请求包含不合法的参数或请求头，或者说请求试着去做不符合你的app的逻辑的事。EXAMPLE： 12345if ( req.param(&apos;amount&apos;) &amp;">
-<meta name="keywords" content="node,sails">
+<meta name="description" content="mongo又一个优势就是-它是用js管理数据库的，所以我们能用js脚本来对mongodb进行更复杂的管理，比如我们对一些数据进行统计计算等。 实用js脚本进行交互的有点和缺点 无需任何驱动或者语言支持； 方便cron管理员定时任务； 数据格式问题，还有数据处理不慎会导致数据丢失  js脚本可用于以下任务 备份； 简单修改数据库数据； 调度map-reduce命令（抄的，我没试过）； 离线报告与离线">
+<meta name="keywords" content="mongodb,node.js,script">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sails response方法总结">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/07/30/sails-response方法总结/index.html">
+<meta property="og:title" content="mongodb shell执行js脚本">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/08/30/mongodb-shell执行js脚本/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="以下是sails res的一些方法：  res.attachment()这个方法很奇怪，似乎官方设计的不是很完善，不建议用  res.badRequest()返回一个400（“Bad Request”）状态码明确这个请求是不合法的，这通常意味着请求包含不合法的参数或请求头，或者说请求试着去做不符合你的app的逻辑的事。EXAMPLE： 12345if ( req.param(&apos;amount&apos;) &amp;">
-<meta property="og:updated_time" content="2017-07-30T15:47:26.982Z">
+<meta property="og:description" content="mongo又一个优势就是-它是用js管理数据库的，所以我们能用js脚本来对mongodb进行更复杂的管理，比如我们对一些数据进行统计计算等。 实用js脚本进行交互的有点和缺点 无需任何驱动或者语言支持； 方便cron管理员定时任务； 数据格式问题，还有数据处理不慎会导致数据丢失  js脚本可用于以下任务 备份； 简单修改数据库数据； 调度map-reduce命令（抄的，我没试过）； 离线报告与离线">
+<meta property="og:updated_time" content="2017-08-29T16:39:29.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sails response方法总结">
-<meta name="twitter:description" content="以下是sails res的一些方法：  res.attachment()这个方法很奇怪，似乎官方设计的不是很完善，不建议用  res.badRequest()返回一个400（“Bad Request”）状态码明确这个请求是不合法的，这通常意味着请求包含不合法的参数或请求头，或者说请求试着去做不符合你的app的逻辑的事。EXAMPLE： 12345if ( req.param(&apos;amount&apos;) &amp;">
+<meta name="twitter:title" content="mongodb shell执行js脚本">
+<meta name="twitter:description" content="mongo又一个优势就是-它是用js管理数据库的，所以我们能用js脚本来对mongodb进行更复杂的管理，比如我们对一些数据进行统计计算等。 实用js脚本进行交互的有点和缺点 无需任何驱动或者语言支持； 方便cron管理员定时任务； 数据格式问题，还有数据处理不慎会导致数据丢失  js脚本可用于以下任务 备份； 简单修改数据库数据； 调度map-reduce命令（抄的，我没试过）； 离线报告与离线">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +62,7 @@
   };
 </script>
 
-  <title> sails response方法总结 | Qill </title>
+  <title> mongodb shell执行js脚本 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -312,7 +312,7 @@
           
           
             
-              sails response方法总结
+              mongodb shell执行js脚本
             
           
         </h1>
@@ -321,8 +321,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-07-30T23:40:01+08:00" content="2017-07-30">
-            2017-07-30
+          <time itemprop="dateCreated" datetime="2017-08-30T00:22:36+08:00" content="2017-08-30">
+            2017-08-30
           </time>
         </span>
 
@@ -331,8 +331,8 @@
             &nbsp; | &nbsp; In
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Node-js之路/" itemprop="url" rel="index">
-                  <span itemprop="name">Node.js之路</span>
+                <a href="/categories/mongodb/" itemprop="url" rel="index">
+                  <span itemprop="name">mongodb</span>
                 </a>
               </span>
 
@@ -347,8 +347,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/07/30/sails-response方法总结/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/30/sails-response方法总结/" itemprop="commentsCount"></span>
+            <a href="/2017/08/30/mongodb-shell执行js脚本/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/30/mongodb-shell执行js脚本/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -362,48 +362,28 @@
       
 
       
-        <span itemprop="articleBody"><p>以下是sails res的一些方法：</p>
-<ul>
-<li><p>res.attachment()<br>这个方法很奇怪，似乎官方设计的不是很完善，不建议用</p>
-</li>
-<li><p>res.badRequest()<br>返回一个400（“Bad Request”）状态码明确这个请求是不合法的，这通常意味着请求包含不合法的参数或请求头，或者说请求试着去做不符合你的app的逻辑的事。<br>EXAMPLE：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( req.param(<span class="string">'amount'</span>) &lt; <span class="number">500</span> )</div><div class="line">  <span class="keyword">return</span> res.badRequest(</div><div class="line">    <span class="string">'Transaction limit exceeded. Please try again with an amount less than $500.'</span></div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>res.clearCookie()<br>清除respond对应的cookie</p>
-</li>
-<li><p>res.cookie()<br>根据<figure class="highlight plain"><figcaption><span>的cookie</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```res.cookie(name, value [,options]);</div></pre></td></tr></table></figure></p>
-</li>
-<li><p>res.created()<br>这个方法一般会发送201给用户，告诉用户资源已经成功创建</p>
-</li>
-<li><p>res.forbidden()<br>这个方法会返回403给用户，告诉用户权限不足</p>
-</li>
-<li><p>res.get()<br>返回当前的header的信息</p>
-</li>
-<li><p>res.json()<br>把res组织成JSON数据</p>
-</li>
-<li><p>res.jsonp()<br>和res.json类似</p>
-</li>
-<li><p>res.location()<br>设置定位回复，<br>和res.redirect()类似</p>
-</li>
-<li><p>res.notFound()<br>发送404表示找不到页面</p>
-</li>
-<li><p>res.ok()<br>发送200表示OK</p>
-</li>
-<li><p>res.redirect(url)<br>把用户重定向到制定的url</p>
-</li>
-<li><p>res.send()<br>发送一个简单的回复，statusCode默认设置为200<br>这个方法可用于适配其他终端的方法</p>
-</li>
-<li><p>res.serverError()<br>发送一个500表示服务端有一些错误发生了</p>
-</li>
-<li><p>res.set()<br>设置返回的 header 为特定的 value</p>
-</li>
-<li><p>res.status()<br>返回状态码</p>
-</li>
-<li><p>res.type()<br>设置“Content-Type”为给定的type</p>
-</li>
-<li><p>res.view()<br>回复一个HTML页面</p>
-</li>
-</ul>
+        <span itemprop="articleBody"><p>mongo又一个优势就是-它是用js管理数据库的，所以我们能用js脚本来对mongodb进行更复杂的管理，比如我们对一些数据进行统计计算等。</p>
+<h3 id="实用js脚本进行交互的有点和缺点"><a href="#实用js脚本进行交互的有点和缺点" class="headerlink" title="实用js脚本进行交互的有点和缺点"></a>实用js脚本进行交互的有点和缺点</h3><ol>
+<li>无需任何驱动或者语言支持；</li>
+<li>方便cron管理员定时任务；</li>
+<li>数据格式问题，还有数据处理不慎会导致数据丢失</li>
+</ol>
+<h3 id="js脚本可用于以下任务"><a href="#js脚本可用于以下任务" class="headerlink" title="js脚本可用于以下任务"></a>js脚本可用于以下任务</h3><ol>
+<li>备份；</li>
+<li>简单修改数据库数据；</li>
+<li>调度map-reduce命令（抄的，我没试过）；</li>
+<li>离线报告与离线任务；</li>
+<li>管理员的定时任务；</li>
+</ol>
+<h3 id="首先运行方式："><a href="#首先运行方式：" class="headerlink" title="首先运行方式："></a>首先运行方式：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$mongo</span> 127.0.0.1:27017/<span class="built_in">test</span> -quiet test.js</div></pre></td></tr></table></figure>
+<p>mongo: mongo客户端<br>127.0.0.1: 服务器ip地址<br>:27017: 服务器端口<br>/test: 数据库名<br>-quiet: 省略一些头信息<br>test.js: 要运行的脚本</p>
+<h3 id="其他的一些说明"><a href="#其他的一些说明" class="headerlink" title="其他的一些说明"></a>其他的一些说明</h3><ol>
+<li>通常使用两种方法打印获取到的结果：<br>print() =&gt; 普通js<br>printjson() =&gt; 格式化json打印，打印出来的格式会漂亮许多</li>
+<li>迭代器（iterator command）在脚本操作中将失效</li>
+<li>如何知道insert、delete、update等操作是否成功呢，请使用：<br>db.getLastErrorObj()<br>或者<br>db.getLastError()</li>
+<li>js shell的相关介绍见：<br><a href="https://developer.mozilla.org/En/SpiderMonkey/Introduction_to_the_JavaScript_shell" target="_blank" rel="external">https://developer.mozilla.org/En/SpiderMonkey/Introduction_to_the_JavaScript_shell</a></li>
+</ol>
+<p>以下为一点点示例，需要注意的是千万要注意异步问题，和数据校验的问题，毕竟数据无价：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">db.userreports.find().forEach(<span class="function"><span class="keyword">function</span> (<span class="params">report</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> assessment = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> id = report._id</div><div class="line">	<span class="keyword">var</span> assessment_point = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> key_point = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> o_point = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> sum_point = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; report.key_assessment.length; i++) &#123;</div><div class="line">		key_point += report.key_assessment[i].self_score * <span class="number">0.1</span> +</div><div class="line">			report.key_assessment[i].superior_score * <span class="number">0.9</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	key_point *= <span class="number">0.7</span>;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; report.object_assessment.length; j++) &#123;</div><div class="line">		o_point += report.object_assessment[j].self_score * <span class="number">0.1</span> +</div><div class="line">			report.object_assessment[j].superior_score * <span class="number">0.9</span>;</div><div class="line">	&#125;</div><div class="line">	o_point *= <span class="number">0.2</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; report.summary_assessment.length; j++) &#123;</div><div class="line">		sum_point += report.summary_assessment[j].self_score * <span class="number">0.1</span> +</div><div class="line">			report.summary_assessment[j].superior_score * <span class="number">0.9</span>;</div><div class="line">	&#125;</div><div class="line">	sum_point *= <span class="number">0.1</span>;</div><div class="line">	assessment_point = key_point + o_point + sum_point;</div><div class="line">	<span class="keyword">if</span> (assessment_point != <span class="literal">NaN</span>)&#123;</div><div class="line">		report.assessment_point = <span class="built_in">Number</span>(assessment_point.toFixed(<span class="number">1</span>));</div><div class="line">		db.userreports.save(report);</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -412,9 +392,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/node/" rel="tag">#node</a>
+            <a href="/tags/mongodb/" rel="tag">#mongodb</a>
           
-            <a href="/tags/sails/" rel="tag">#sails</a>
+            <a href="/tags/node-js/" rel="tag">#node.js</a>
+          
+            <a href="/tags/script/" rel="tag">#script</a>
           
         </div>
       
@@ -423,13 +405,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/30/sails-request方法总结/" rel="prev">sails request方法总结</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/30/sails-configuration分析/" rel="next">sails configuration分析</a>
+              <a href="/2017/08/29/谢谢你，明哥！/" rel="next">谢谢你，明哥！</a>
             
           </div>
         </div>
@@ -645,7 +625,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实用js脚本进行交互的有点和缺点"><span class="nav-number">1.</span> <span class="nav-text">实用js脚本进行交互的有点和缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js脚本可用于以下任务"><span class="nav-number">2.</span> <span class="nav-text">js脚本可用于以下任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首先运行方式："><span class="nav-number">3.</span> <span class="nav-text">首先运行方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他的一些说明"><span class="nav-number">4.</span> <span class="nav-text">其他的一些说明</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -698,9 +678,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/07/30/sails-response方法总结/';
-    var disqus_title = 'sails response方法总结';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/07/30/sails-response方法总结/';
+    var disqus_identifier = '2017/08/30/mongodb-shell执行js脚本/';
+    var disqus_title = 'mongodb shell执行js脚本';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/08/30/mongodb-shell执行js脚本/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
