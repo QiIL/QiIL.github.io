@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-08-09T16:28:28.778Z</updated>
+  <updated>2017-08-29T16:19:18.682Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>谢谢你，明哥！</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/08/29/%E8%B0%A2%E8%B0%A2%E4%BD%A0%EF%BC%8C%E6%98%8E%E5%93%A5%EF%BC%81/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/08/29/谢谢你，明哥！/</id>
+    <published>2017-08-29T15:52:33.000Z</published>
+    <updated>2017-08-29T16:19:18.682Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实，我想写这个很久了。最近一直在加班状态，加上回到宿舍就不太想动了。但是每当我在园区走回公司时，每看到这张凳子，还是不仅会想到你对我的启发。</p>
+<p>虽然只有短短的两周的接触，但是明哥你对我的影响无疑是深远的。我从你身上懂得了当事情很多的时候，就把事情都列出来，然后一点一点慢慢做处事方式。我现在也渐渐地去思考，我自己的工作是为了什么，自己的代码所干的事情是什么，为什么要这么干。也渐渐明白了你说的一天代码不及交流一下的感触了。最最重要的是，我拥有了你这个朋友，一个愿意把一个如此菜逼的我手把手教学两周的朋友。</p>
+<p>刚开始工作的第一周，我深知自己的技术水平真的是非常一般，无论是node、数据库等的知识还停留在幼儿园阶段，我自己也明白这都是我大学荒废时间的后果。但是开始工作的头两周真的是你改变了我。现在，我慢慢可以独立开发了，我的同事也都很友好而且，xj也非常有耐心。我能够独立负责好一个简单的项目了，而且也参与到公司的项目中去了。虽然最近加班很累，但我深刻地感觉到我每天都在一点一滴地进步着（随着踩下一个又一个的坑）哈哈。</p>
+<p>我舍友觉得我最近的加班好没有人性，虽然我也是这么觉得的，但是我觉得着也是锻炼我抗压的好机会呀。我会在将来的某个阶段离开这里，但离开的时候我一定要在公司被人认同，这也是你和我说的要有始有终。</p>
+<p>在实习阶段的我，现在还有很多东西要学呢。无论是技术还是为人处世，最近我也感受到在职场的一些不适合的言论了，幸好xj人很nice，每一次都会提醒我。或许是我一直随性习惯了吧，有些行为还是不太好改，但是我会努力的。</p>
+<p>恩还是这个凳子，这是你要离开的前一天我们在这里坐了一会儿，你和我谈互联网与人生规划，我和你谈人生理想。我知道了你是一个“不太幸运的人”，以前也错失了很多机会，但是我在这里也想祝福一下你，希望你以后能够工作顺利。以后或许我还能和你共事呢哈哈。或许之后你会是我的员工也未必噢！</p>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/%E6%98%8E%E5%93%A5.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实，我想写这个很久了。最近一直在加班状态，加上回到宿舍就不太想动了。但是每当我在园区走回公司时，每看到这张凳子，还是不仅会想到你对我的启发。&lt;/p&gt;
+&lt;p&gt;虽然只有短短的两周的接触，但是明哥你对我的影响无疑是深远的。我从你身上懂得了当事情很多的时候，就把事情都列出来，然后
+    
+    </summary>
+    
+      <category term="人生观感" scheme="https://qiil.github.io/qill.github.io/categories/%E4%BA%BA%E7%94%9F%E8%A7%82%E6%84%9F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>实习半个月的感觉</title>
@@ -945,31 +973,6 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
       <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
     
       <category term="io" scheme="https://qiil.github.io/qill.github.io/tags/io/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu 16.04 阿里源</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/06/Ubuntu-16-04-%E9%98%BF%E9%87%8C%E6%BA%90/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/06/Ubuntu-16-04-阿里源/</id>
-    <published>2017-06-06T04:52:55.000Z</published>
-    <updated>2017-06-07T17:10:53.337Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">添加阿里云源到如下列表中</div><div class="line">$ sudo vim /etc/apt/sources.list.d/aliyun.list <span class="comment">#修改</span></div><div class="line">更新列表</div><div class="line">$ sudo apt-get update</div></pre></td></tr></table></figure>
-<h3 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;操作步骤&quot;&gt;&lt;a href=&quot;#操作步骤&quot; class=&quot;headerlink&quot; title=&quot;操作步骤&quot;&gt;&lt;/a&gt;操作步骤&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre
-    
-    </summary>
-    
-      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
-    
-    
-      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
-    
-      <category term="sources.list" scheme="https://qiil.github.io/qill.github.io/tags/sources-list/"/>
     
   </entry>
   
