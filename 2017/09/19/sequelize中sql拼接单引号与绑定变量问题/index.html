@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="node," />
+  <meta name="keywords" content="sequelize,postgresql," />
 
 
 
@@ -42,17 +42,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：12345678910111213//test.jsfunction c ()&amp;#123;	b()&amp;#125;function b ()&amp;#123;	a()&amp;#125;function a ()&amp;#123;	setTimeout(function ()&amp;#123;		throw new Error(&apos;error">
-<meta name="keywords" content="node">
+<meta name="description" content="select query关于字符串绑定一个问题当你在拼接SQL的时候存在一种情况数据库为：PostgreSql12345678910sequelize.query(	&amp;#123;		query: &quot;SELECT * FROM X WHERE ajsonb obj @&amp;gt; &apos;[$num]&apos;::jsonb&quot;,		bind: &amp;#123;num: 1&amp;#125;	&amp;#125;,	&amp;#123; typ">
+<meta name="keywords" content="sequelize,postgresql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Node事件论调与错误处理">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/12/Node事件论调与错误处理/index.html">
+<meta property="og:title" content="sequelize中sql拼接单引号与绑定变量问题">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/09/19/sequelize中sql拼接单引号与绑定变量问题/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：12345678910111213//test.jsfunction c ()&amp;#123;	b()&amp;#125;function b ()&amp;#123;	a()&amp;#125;function a ()&amp;#123;	setTimeout(function ()&amp;#123;		throw new Error(&apos;error">
-<meta property="og:updated_time" content="2017-06-12T14:42:59.610Z">
+<meta property="og:description" content="select query关于字符串绑定一个问题当你在拼接SQL的时候存在一种情况数据库为：PostgreSql12345678910sequelize.query(	&amp;#123;		query: &quot;SELECT * FROM X WHERE ajsonb obj @&amp;gt; &apos;[$num]&apos;::jsonb&quot;,		bind: &amp;#123;num: 1&amp;#125;	&amp;#125;,	&amp;#123; typ">
+<meta property="og:updated_time" content="2017-09-19T15:44:39.985Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node事件论调与错误处理">
-<meta name="twitter:description" content="我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：12345678910111213//test.jsfunction c ()&amp;#123;	b()&amp;#125;function b ()&amp;#123;	a()&amp;#125;function a ()&amp;#123;	setTimeout(function ()&amp;#123;		throw new Error(&apos;error">
+<meta name="twitter:title" content="sequelize中sql拼接单引号与绑定变量问题">
+<meta name="twitter:description" content="select query关于字符串绑定一个问题当你在拼接SQL的时候存在一种情况数据库为：PostgreSql12345678910sequelize.query(	&amp;#123;		query: &quot;SELECT * FROM X WHERE ajsonb obj @&amp;gt; &apos;[$num]&apos;::jsonb&quot;,		bind: &amp;#123;num: 1&amp;#125;	&amp;#125;,	&amp;#123; typ">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +62,7 @@
   };
 </script>
 
-  <title> Node事件论调与错误处理 | Qill </title>
+  <title> sequelize中sql拼接单引号与绑定变量问题 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -312,7 +312,7 @@
           
           
             
-              Node事件论调与错误处理
+              sequelize中sql拼接单引号与绑定变量问题
             
           
         </h1>
@@ -321,8 +321,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-12T21:52:56+08:00" content="2017-06-12">
-            2017-06-12
+          <time itemprop="dateCreated" datetime="2017-09-19T23:38:21+08:00" content="2017-09-19">
+            2017-09-19
           </time>
         </span>
 
@@ -347,8 +347,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/12/Node事件论调与错误处理/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/12/Node事件论调与错误处理/" itemprop="commentsCount"></span>
+            <a href="/2017/09/19/sequelize中sql拼接单引号与绑定变量问题/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/19/sequelize中sql拼接单引号与绑定变量问题/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -362,13 +362,13 @@
       
 
       
-        <span itemprop="articleBody"><p>我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//test.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	b()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	a()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</div><div class="line">    &#125;, <span class="number">10</span>)</div><div class="line">&#125;</div><div class="line">a()</div></pre></td></tr></table></figure></p>
-<p>输出大概像这样（等待1秒）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">throw new Error(<span class="string">'error'</span>)</div><div class="line">Error: error</div><div class="line">    at Timeout._onTimeout (/home/qill/node_learning/test.js:30:9</div><div class="line">)</div><div class="line">    at ontimeout (timers.js:488:11)</div><div class="line">    at tryOnTimeout (timers.js:323:5)</div><div class="line">    at Timer.listOnTimeout (timers.js:283:5)</div></pre></td></tr></table></figure></p>
-<p>可以看到是没有堆栈追踪信息输出的。为什么呢，因为想要捕获一个未来才会执行到的函数的错误是不可能的，这会直接抛出未捕获的异常。那么我们就认证一下，是否真的如此<br>我们改一改代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//test.js</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  setTimeout (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    reject(<span class="string">'error'</span>)</div><div class="line">  &#125;, <span class="number">1000</span>);</div><div class="line">&#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">  <span class="built_in">console</span>.log(err.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果我们能够捕获这个异常的话应该会输出 error。运行结果（等待1秒后获得的输出）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">reject(<span class="string">'error'</span>)</div><div class="line">    ^</div><div class="line">ReferenceError: reject is not defined</div><div class="line">    at Timeout.setTimeout [as _onTimeout] (/home/qill/node_learn</div><div class="line">ing/test.js:21:5)</div><div class="line">    at ontimeout (timers.js:488:11)</div><div class="line">    at tryOnTimeout (timers.js:323:5)</div><div class="line">    at Timer.listOnTimeout (timers.js:283:5)</div></pre></td></tr></table></figure></p>
-<p>可见仍然是未捕获的异常，catch代码没有运行，因为try，catch是同步的而setTimeout是异步的try并不能捕获未来一秒后的异常。如果想要捕获这个异常要怎么办呢，办法是有的。<br>首先安装这个模块<br><code>$ npm i co</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> co = <span class="built_in">require</span>(<span class="string">'co'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutError</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>))</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">co(<span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">yield</span> timeoutError()</div><div class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">    <span class="built_in">console</span>.log(err.message)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>把setTimeout封装成一个promise，然后用co模块去获取promise返回的错误对象，然后输出然后输出这个错误对象的信息就可以了。运行结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">&gt; error</div></pre></td></tr></table></figure></p>
-<center>完。</center></span>
+        <span itemprop="articleBody"><h2 id="select-query关于字符串绑定一个问题"><a href="#select-query关于字符串绑定一个问题" class="headerlink" title="select query关于字符串绑定一个问题"></a>select query关于字符串绑定一个问题</h2><p>当你在拼接SQL的时候存在一种情况数据库为：PostgreSql<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sequelize.query(</div><div class="line">	&#123;</div><div class="line">		<span class="attr">query</span>: <span class="string">"SELECT * FROM X WHERE ajsonb obj @&gt; '[$num]'::jsonb"</span>,</div><div class="line">		<span class="attr">bind</span>: &#123;<span class="attr">num</span>: <span class="number">1</span>&#125;</div><div class="line">	&#125;,</div><div class="line">	&#123; <span class="attr">type</span>: sequelize.QueryTypes.SELECT &#125;</div><div class="line">)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">row</span>) </span>&#123;</div><div class="line">	<span class="comment">// *******</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>在这个情况下，你会得到这样一个错误：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123; SequelizeBaseError: invalid input syntax <span class="keyword">for</span> <span class="built_in">type</span> json</div><div class="line">    ***</div><div class="line">  name: <span class="string">'SequelizeDatabaseError'</span>,</div><div class="line">  message: <span class="string">'invalid input syntax for type json'</span>,</div><div class="line">  parent:</div><div class="line">   &#123; error: invalid input syntax <span class="keyword">for</span> <span class="built_in">type</span> json</div><div class="line">   	***</div><div class="line">     name: <span class="string">'error'</span>,</div><div class="line">     length: 145,</div><div class="line">     severity: <span class="string">'ERROR'</span>,</div><div class="line">     code: <span class="string">'22P02'</span>,</div><div class="line">     detail: <span class="string">'Token "$" is invalid.'</span>,</div><div class="line">     hint: undefined,</div><div class="line">     position: <span class="string">'1086'</span>,</div><div class="line">     internalPosition: undefined,</div><div class="line">     internalQuery: undefined,</div><div class="line">     <span class="built_in">where</span>: <span class="string">'JSON data, line 1: $...'</span>,</div><div class="line">     schema: undefined,</div><div class="line">     table: undefined,</div><div class="line">     column: undefined,</div><div class="line">     dataType: undefined,</div><div class="line">     constraint: undefined,</div><div class="line">     file: <span class="string">'json.c'</span>,</div><div class="line">     line: <span class="string">'1229'</span>,</div></pre></td></tr></table></figure></p>
+<p>关键在于 WHRE jsonb_obj @&gt; <strong>‘[$num]’:: jsonb</strong>这个位置，若是在SQL中存在单引号，sequelize会禁止你在“字符串”里面绑定添加绑定值。</p>
+<p>有人会想到，为什么不用 IN 的方法代替包含运算符呢？包含符号与IN符号还是存在区别的，包含符号判断的是在给出的对象里是否有对应的值，或者元素，IN符号是对应的元素，是否存在于给定的数组，如果需要给定的数组是动态的，那么我们不能确定数组的情况下需要用到包含运算符了。</p>
+<p>那么如何解决呢，<strong>解决的方法就是想方法吧sql中的“ ‘ ”去掉，因为PG的::json与::jsonb方法可以把一串字符串强行转换成json/jsonb格式，那么我们只要吧’[$num]’这一个整体变成字符串就行了所以上面的代码可以转换成</strong>：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sequelize.query(</div><div class="line">	&#123;</div><div class="line">		<span class="attr">query</span>: <span class="string">"SELECT * FROM X WHERE ajsonb obj @&gt; $num::jsonb"</span>,</div><div class="line">		<span class="attr">bind</span>: &#123;<span class="attr">num</span>: <span class="string">'[1]'</span>&#125;</div><div class="line">	&#125;,</div><div class="line">	&#123; <span class="attr">type</span>: sequelize.QueryTypes.SELECT &#125;</div><div class="line">)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">row</span>) </span>&#123;</div><div class="line">	<span class="comment">// *******</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>在这里面，num是一个字符串，sql中的单引号也已经去掉了，那么sequelize就可以成功解析，并且用上包含功能了。</p>
+<center>完</center></span>
       
     </div>
 
@@ -376,7 +376,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/node/" rel="tag">#node</a>
+            <a href="/tags/sequelize/" rel="tag">#sequelize</a>
+          
+            <a href="/tags/postgresql/" rel="tag">#postgresql</a>
           
         </div>
       
@@ -385,13 +387,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/17/搏击俱乐部-与内心邪恶的战争/" rel="prev">搏击俱乐部-与内心邪恶的战争</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/12/Node单线程的世界/" rel="next">Node单线程的世界</a>
+              <a href="/2017/08/30/mongodb-shell执行js脚本/" rel="next">mongodb shell执行js脚本</a>
             
           </div>
         </div>
@@ -607,7 +607,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#select-query关于字符串绑定一个问题"><span class="nav-number">1.</span> <span class="nav-text">select query关于字符串绑定一个问题</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -660,9 +660,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/12/Node事件论调与错误处理/';
-    var disqus_title = 'Node事件论调与错误处理';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/12/Node事件论调与错误处理/';
+    var disqus_identifier = '2017/09/19/sequelize中sql拼接单引号与绑定变量问题/';
+    var disqus_title = 'sequelize中sql拼接单引号与绑定变量问题';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/09/19/sequelize中sql拼接单引号与绑定变量问题/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
