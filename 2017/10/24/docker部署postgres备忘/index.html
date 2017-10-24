@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="python,Tkinter," />
+  <meta name="keywords" content="docker,postgresql," />
 
 
 
@@ -42,20 +42,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 函数简介     函数 功能     .askopenfile 在指定目录打开相应文件   .asksaveasfilename 保存文件到指定目录   .askdirectory 打开一个指定的文件夹    利用askopenfile打">
-<meta name="keywords" content="python,Tkinter">
+<meta name="description" content="12docker pull postgresdocker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres   postgres的用户机制需要postgres数据库中有一个用户，并且在Linux中有一个同名用户并拥有postgres安装目录的拥有者权限才能够用用特定的用户去连接postgres数据库">
+<meta name="keywords" content="docker,postgresql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python tkFileDialog模块简介">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/index.html">
+<meta property="og:title" content="docker部署postgres备忘">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/10/24/docker部署postgres备忘/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 函数简介     函数 功能     .askopenfile 在指定目录打开相应文件   .asksaveasfilename 保存文件到指定目录   .askdirectory 打开一个指定的文件夹    利用askopenfile打">
-<meta property="og:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg">
-<meta property="og:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png">
-<meta property="og:updated_time" content="2017-06-05T17:25:10.050Z">
+<meta property="og:description" content="12docker pull postgresdocker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres   postgres的用户机制需要postgres数据库中有一个用户，并且在Linux中有一个同名用户并拥有postgres安装目录的拥有者权限才能够用用特定的用户去连接postgres数据库">
+<meta property="og:updated_time" content="2017-10-24T05:44:06.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python tkFileDialog模块简介">
-<meta name="twitter:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 函数简介     函数 功能     .askopenfile 在指定目录打开相应文件   .asksaveasfilename 保存文件到指定目录   .askdirectory 打开一个指定的文件夹    利用askopenfile打">
-<meta name="twitter:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg">
+<meta name="twitter:title" content="docker部署postgres备忘">
+<meta name="twitter:description" content="12docker pull postgresdocker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres   postgres的用户机制需要postgres数据库中有一个用户，并且在Linux中有一个同名用户并拥有postgres安装目录的拥有者权限才能够用用特定的用户去连接postgres数据库">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +62,7 @@
   };
 </script>
 
-  <title> python tkFileDialog模块简介 | Qill </title>
+  <title> docker部署postgres备忘 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -315,7 +312,7 @@
           
           
             
-              python tkFileDialog模块简介
+              docker部署postgres备忘
             
           
         </h1>
@@ -324,8 +321,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-06T00:43:36+08:00" content="2017-06-06">
-            2017-06-06
+          <time itemprop="dateCreated" datetime="2017-10-24T13:42:15+08:00" content="2017-10-24">
+            2017-10-24
           </time>
         </span>
 
@@ -334,8 +331,8 @@
             &nbsp; | &nbsp; In
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/python/" itemprop="url" rel="index">
-                  <span itemprop="name">python</span>
+                <a href="/categories/linux琐碎事/" itemprop="url" rel="index">
+                  <span itemprop="name">linux琐碎事</span>
                 </a>
               </span>
 
@@ -350,8 +347,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/06/python-Tkinter图形界面基础/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/06/python-Tkinter图形界面基础/" itemprop="commentsCount"></span>
+            <a href="/2017/10/24/docker部署postgres备忘/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/24/docker部署postgres备忘/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -365,82 +362,13 @@
       
 
       
-        <span itemprop="articleBody"><p>tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。</p>
-<h4>函数简介</h4>
-
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.askopenfile</td>
-<td>在指定目录打开相应文件</td>
-</tr>
-<tr>
-<td>.asksaveasfilename</td>
-<td>保存文件到指定目录</td>
-</tr>
-<tr>
-<td>.askdirectory</td>
-<td>打开一个指定的文件夹</td>
-</tr>
-</tbody>
-</table>
-<h4>利用askopenfile打开文件</h4>
-
-<p>askopenfile函数会创建一个文件对话框对象。</p>
-<h5>Python2.7版本用法:</h5>
-
-<pre><code>from Tkinter import *from Tkinter import *
-import Tkinter, Tkconstants, tkFileDialog
-
-root = Tk()
-root.filename = tkFileDialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><h5>Python3本分用法:</h5>
-
-<pre><code>from tkinter import filedialog
-from tkinter import *
-
-root = Tk()
-root.filename =  filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg" alt="打开文件对话框"></center>
-
-<h4>利用asksaveasfilename保存文件</h4>
-
-<p>asksaveasfilename提供一个保存文件的对话框</p>
-<h5>Python2.7版本用法:</h5>
-
-<pre><code>from Tkinter import *
-import Tkinter, Tkconstants, tkFileDialog
-
-root = Tk()
-root.filename = tkFileDialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><h5>Python3本分用法:</h5>
-
-<pre><code>from tkinter import filedialog
-from tkinter import *
-
-root = Tk()
-root.filename =  filedialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
-print (root.filename)
-</code></pre><h4>利用askdirectory打开文件夹</h4>
-
-<h5>Python2.7与Pyhon3用法一样，如下：</h5>
-
-<pre><code>from  Tkinter import *
-import Tkinter, Tkconstants, tkFileDialog
-root = Tk()
-root.directory = tkFileDialog.askdirectory()
-print (root.directory)
-</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
-
+        <span itemprop="articleBody"><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker pull postgres</div><div class="line">docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>postgres的用户机制需要postgres数据库中有一个用户，并且在Linux中有一个同名用户并拥有postgres安装目录的拥有者权限才能够用用特定的用户去连接postgres数据库。<br>docker镜像会默认开放5432端口所以标准的容器链接是可以连上去的，docker官方pg给了一个默认的数据库名和用户名为initdb，如果需要自定义用户名则需要另外配置</li>
+</ul>
+</blockquote>
+<p>配置自定义用户名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ docker <span class="built_in">exec</span> -it containerid /bin/bash</div><div class="line">$ adduser <span class="built_in">test</span>  // 然后设置linux用户密码</div><div class="line">$ psql</div><div class="line">$ CREATE USER <span class="built_in">test</span> WITH PASSWORD <span class="string">'输入数据库用户密码'</span>;   <span class="comment">#注意数据库用户名与linux用户名需要同名</span></div><div class="line">$ ALTER USER <span class="built_in">test</span> WITH SUPERUSER; <span class="comment">#为用户赋权限，我为了方便直接给超级用户权限了</span></div><div class="line">$ \q  <span class="comment">#退出psql</span></div><div class="line">$ chown -R <span class="built_in">test</span> postgres数据库的安装目录</div><div class="line"><span class="comment">#postgres安装目录可以在 postgres.conf文件中看到 data_directory： /文件目录</span></div><div class="line"><span class="comment">#docker 一般默认进入的目录就是安装目录</span></div><div class="line">$ <span class="built_in">exit</span></div><div class="line">$ docker restart container id  <span class="comment">#重启容器就可以链接了</span></div></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -449,9 +377,9 @@ print (root.directory)
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/docker/" rel="tag">#docker</a>
           
-            <a href="/tags/Tkinter/" rel="tag">#Tkinter</a>
+            <a href="/tags/postgresql/" rel="tag">#postgresql</a>
           
         </div>
       
@@ -460,13 +388,11 @@ print (root.directory)
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/06/《情书》读后感/" rel="prev">《情书》读后感</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/04/《to-the-moon》游玩后有感/" rel="next">《to the moon》游玩后有感</a>
+              <a href="/2017/10/15/js合并MP3文件/" rel="next">js合并MP3文件</a>
             
           </div>
         </div>
@@ -682,7 +608,7 @@ print (root.directory)
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">函数简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">利用askopenfile打开文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Python2.7版本用法:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Python3本分用法:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">利用asksaveasfilename保存文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">Python2.7版本用法:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">Python3本分用法:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">利用askdirectory打开文件夹</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">Python2.7与Pyhon3用法一样，如下：</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -735,9 +661,9 @@ print (root.directory)
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/06/python-Tkinter图形界面基础/';
-    var disqus_title = 'python tkFileDialog模块简介';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/';
+    var disqus_identifier = '2017/10/24/docker部署postgres备忘/';
+    var disqus_title = 'docker部署postgres备忘';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/10/24/docker部署postgres备忘/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
