@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-10-24T05:44:06.972Z</updated>
+  <updated>2017-10-24T06:22:21.043Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,137 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jenkins部署检测gitlab仓库自动构建WIKI</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/10/24/jenkins%E9%83%A8%E7%BD%B2%E6%A3%80%E6%B5%8Bgitlab%E4%BB%93%E5%BA%93%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAWIKI/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/10/24/jenkins部署检测gitlab仓库自动构建WIKI/</id>
+    <published>2017-10-24T06:17:18.000Z</published>
+    <updated>2017-10-24T06:22:21.043Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Jenkins部署流程"><a href="#Jenkins部署流程" class="headerlink" title="Jenkins部署流程:"></a>Jenkins部署流程:</h3><p><img src="http://oqzgtjqen.bkt.clouddn.com/Jenkin%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8Bwhite.png" alt=""></p>
+<hr>
+<h3 id="Jenkins自动部署好处"><a href="#Jenkins自动部署好处" class="headerlink" title="Jenkins自动部署好处:"></a>Jenkins自动部署好处:</h3><ol>
+<li>开发者只需要关注开发,并且把代码合并到Git上即可.由代码仓库管理员审核代码后,合并到指定分支,即可部署到相关的服务器上.</li>
+<li>一切代码都由git仓库存储,可随时回滚代码,并且追述问题来源.(svn在不同的操作系统下会出现提交被覆盖的情况)</li>
+<li>部署任务执行成功后可以邮件通知相关开发人员与部署人员.</li>
+<li>若是遇到多任务按顺序部署可以通过配置相关部署顺序保证部署严格按照程序执行</li>
+</ol>
+<h3 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h3><blockquote>
+<ul>
+<li>ubuntu: jenkins服务器, (如果用windows作为jenkins服务器的话建议换掉,因为或许会有很多不知道的坑)</li>
+<li>centos: 目标服务器</li>
+</ul>
+</blockquote>
+<h3 id="插件准备"><a href="#插件准备" class="headerlink" title="插件准备"></a>插件准备</h3><blockquote>
+<ul>
+<li>Git Plugin</li>
+<li>GitLab Plugin</li>
+<li>Git client Plugin</li>
+<li>Gitlab Hook Plugin</li>
+<li>Publish Over SSH</li>
+<li>SSH plugin<br>没记错应该就是这么多,如果是用docker部署jenkins的话一开始会推荐一些可安装的插件,把他们都安装上了然后再装上上面的插件就肯定差不多了.</li>
+</ul>
+</blockquote>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><p><strong>路径:主页-&gt;设置-&gt;系统设置</strong></p>
+<ul>
+<li><strong>SSH remote host设置(用于在远端执行shell命令,可有可无):</strong><ul>
+<li><strong>Hostname: 远端主机ip</strong></li>
+<li><strong>Port: ssh端口一般为22</strong></li>
+<li><strong>Credentails: 远端主机的用户</strong></li>
+<li><strong>Pty: 不知道有什么用(勾选)</strong></li>
+<li><strong>serverAlivelnterval: 忘记了是什么,提示是写0为默认</strong></li>
+<li><strong>timeout: 连接超时设置: 0为默认</strong><br><strong>主要配置如图(未添加账号):</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/ssh-remote-host%E9%85%8D%E7%BD%AE.jpg" alt="配置远端的主机ssh"></p>
+<ul>
+<li><strong>添加账号:</strong><ul>
+<li><strong>用户名:此处为远端主机用户</strong></li>
+<li><strong>密码: 同上</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E8%B4%A6%E6%88%B7%E6%B7%BB%E5%8A%A0.jpg" alt="jenkins账号添加"><br>最后点击 check connection看看是否连接成功.</p>
+<ul>
+<li><strong>Publish over SSH设置(用于发送文件到远端并且通过ssh连接远端并且在远端执行对应命令):</strong><ul>
+<li><strong>Passpharse: 提取私钥密码(可以为空具体要看生成ssh key时具体输入了什么)</strong></li>
+<li><strong>Path to key: 私钥路径（优先级低）</strong></li>
+<li><strong>Key: 私钥(优先级高), 私钥和私钥路径只需要配置一个,若是同时配置则按优先级读取.</strong></li>
+<li><strong>SSH SERVERS:服务器配置</strong></li>
+<li><strong>Name: 服务器名(对应服务器名,可以随便起用于jenkins内部识别)</strong></li>
+<li><strong>Hostname: 服务器IP</strong></li>
+<li><strong>Username: 服务器用户名</strong></li>
+<li><strong>远端工作目录(*注意):　这必须为服务器上一个真实存在的目录</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/publish-over-ssh%E6%89%80%E6%9C%89%E9%85%8D%E7%BD%AE.jpg" alt=""></p>
+<h3 id="Job的配置"><a href="#Job的配置" class="headerlink" title="Job的配置"></a>Job的配置</h3><ul>
+<li><strong>新建一个自由风格的job:</strong></li>
+</ul>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E6%96%B0%E5%BB%BAjob.jpg" alt=""></p>
+<ul>
+<li><strong>源码管理仓库为git(对应配置):</strong><ul>
+<li><strong>Repository URL: 仓库url</strong></li>
+<li><strong>Credentials: 仓库用户添加用户上面曾经添加过,同之前步骤再添加一个账号:需要注意的是username需要为gitlab的用户名,密码为gitlab登录密码.</strong></li>
+<li><strong>Branch Specifier 监控的分支只有该分支改动后才会触发对应的钩子(钩子配置稍后详解)</strong></li>
+<li><strong>Repository browser:设置为自动就行了.</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86%E9%85%8D%E7%BD%AE.jpg" alt=""></p>
+<ul>
+<li><p><strong>构建触发器与gitlab webhook配置</strong>:</p>
+<ul>
+<li><strong>选择这个构建触发器,若是没有看到估计就是插件装少了</strong></li>
+<li><strong>其次就是gitlab的webhook配置了,进入gitlab项目选择设置中的webhook配置(具体看图)</strong></li>
+<li><strong>讲构建触发器上面的url和secret key分别复制到gitlab webhook的配置里面,然后添加,添加后点击测试出现http 200则为成功(出现404与403请移步坑记录)</strong><br><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-gitlab-webhook.jpg" alt="gitlab webhook"><br><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-gitlab-webhook%E9%85%8D%E7%BD%AE.jpg" alt="gitlab webhook配置"><br><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E6%9E%84%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8%E9%85%8D%E7%BD%AE.jpg" alt="jenkins构建触发器配置"></li>
+</ul>
+</li>
+<li><p><strong>构建配置</strong></p>
+<ul>
+<li><strong>选择发送文件并且通过ssh运行命令</strong></li>
+<li><strong>SSH Server为之前已经配置过的服务器名</strong></li>
+<li><strong>Source file为要发送的文件,支持正则,具体可点击右边小问号.我这里默认全部类型的文件</strong></li>
+<li><strong>Remove prefix需要过滤的文件</strong></li>
+<li><strong>Remote direcroty发送文件到远端一个目的文件夹(基于publish配置的远端文件夹下的文件夹若文件夹不存在则会被创建)</strong></li>
+<li><strong>通过ssh向远端发送的命令,我这里是在远端写了一个脚本然后运行远端的脚本来发布</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E6%9E%84%E5%BB%BA%E9%85%8D%E7%BD%AE.jpg" alt="构建配置"></p>
+<p><strong>终于大功告成了!!!!保存配置然后构建!!!</strong><br><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E6%9E%84%E5%BB%BA%E5%A4%B1%E8%B4%A5%E4%BE%8B%E5%AD%90.jpg" alt=""><br>我当时心情就是这样子:<br><img src="http://oqzgtjqen.bkt.clouddn.com/%E6%9A%B4%E8%B5%B0%E5%B4%A9%E6%BA%83.png" alt=""></p>
+<h3 id="最后问题肯定是解决了-要看请移步↓"><a href="#最后问题肯定是解决了-要看请移步↓" class="headerlink" title="最后问题肯定是解决了, 要看请移步↓"></a><strong>最后问题肯定是解决了, 要看请移步↓</strong></h3><h3 id="相关坑和对抗坑的记录"><a href="#相关坑和对抗坑的记录" class="headerlink" title="相关坑和对抗坑的记录"></a>相关坑和对抗坑的记录</h3><ol>
+<li><p>关于 SSH私钥，请用ssh-keygen -t rsa生成, windows下的putty等生成ssh key的工具请不要用!因为生成的私钥格式不一样.</p>
+</li>
+<li><p>windows下关于git的配置需要到: <strong>设置(Manage Jenkins)-&gt;全局工具配置(Global Tool Configuration)-&gt;下配置git可执行文件的目录:Path to Git executable:</strong>*<em>\bin\git.exe*</em>.linux下不用管这个.<br><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-git-%E5%85%A8%E5%B1%80%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE.jpg" alt=""></p>
+</li>
+<li><p>仓库链接不上:　用ssh连接的仓库是不可以连接的需要用ssh连接</p>
+</li>
+<li>关于jenkins用户添加:用户设置需要与对应的配置需要的账户密码一致.例如ssh需要远端服务器的账户密码,和gitlab仓库的账户的密码需要是gitlab的用户名与密码</li>
+<li>windows请远离,拥抱shell</li>
+<li>SSH发送命令提示命令不存在.一开始我以为是服务器上没有这个命令,我立马上服务器确认了这个命令存在后我就认为不是这并不是服务器的问题.然后我发现SSH执行脚本中cd的命令是可以执行的,然后我再尝试了其他的shell命令mkdir等也是可以执行的但是偏偏pm2的启动命令不可以执行(MMP).从网上搜索了一堆之后,我发现jenkins若是通过ssh发送命令到远端的服务器上时,需要该命令在jenkins服务器上的/usr/bin里面也要存在.一查我发现pm2这个命令的确不存在.我尝试了另一个存在的命令: mongo:</li>
+</ol>
+<p><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E6%9E%84%E5%BB%BA%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%88%90%E5%8A%9F%E4%BE%8B%E5%AD%90.jpg" alt="命令能够成功运行！"><br>命令是能够成功运行的！那就对了，我只要把pm2命令配置到 /usr/bin/里面就可以了.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先找出要运行的命令:</span></div><div class="line"><span class="built_in">which</span> sails</div><div class="line"><span class="comment"># 把命令的快捷方式添加到/usr/bin</span></div><div class="line">ln -s 上面sails的命令目录 /usr/bin/sails</div></pre></td></tr></table></figure></p>
+<p>修改脚本后再次构建:<br><img src="http://oqzgtjqen.bkt.clouddn.com/jenkins-%E6%9E%84%E5%BB%BA%E8%93%9D%E8%89%B2%E6%88%90%E5%8A%9F%E4%BE%8B%E5%AD%90.jpg" alt=""></p>
+<center><strong>大功告成!!</strong></center><br><center><img src="http://oqzgtjqen.bkt.clouddn.com/%E6%9A%B4%E8%B5%B0%E5%98%9A%E7%91%9F.png" alt=""></center><br><center>完</center>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Jenkins部署流程&quot;&gt;&lt;a href=&quot;#Jenkins部署流程&quot; class=&quot;headerlink&quot; title=&quot;Jenkins部署流程:&quot;&gt;&lt;/a&gt;Jenkins部署流程:&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://oqzgtjqen.bkt.c
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="jenkins" scheme="https://qiil.github.io/qill.github.io/tags/jenkins/"/>
+    
+      <category term="gitlab" scheme="https://qiil.github.io/qill.github.io/tags/gitlab/"/>
+    
+  </entry>
   
   <entry>
     <title>docker部署postgres备忘</title>
@@ -939,37 +1070,6 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
       <category term="tiny" scheme="https://qiil.github.io/qill.github.io/tags/tiny/"/>
     
       <category term="grammer_tree" scheme="https://qiil.github.io/qill.github.io/tags/grammer-tree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搏击俱乐部-关于精神病的一些思考</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/18/%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8-%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/18/搏击俱乐部-关于精神病的一些思考/</id>
-    <published>2017-06-18T15:54:10.000Z</published>
-    <updated>2017-06-18T16:48:57.099Z</updated>
-    
-    <content type="html"><![CDATA[<p>我对于这一部分的感受其实比分析每个人的左肩的恶魔与右肩上的天使更深刻。</p>
-<p>我回想到自己之前看过一部短片叫《精神分裂》，短片的主角看到了一个陨石砸到了自家的房顶，然后奇怪的事情发生了他的视界与真实偏移了91厘米，在主角的视界中他在真实世界中的身体位置不一样,具体就是这样子的。</p>
-<p><center><img src="http://s11.sinaimg.cn/middle/607247fbtb1205948a97a&amp;690" alt=""></center><br>然后他去看医生，医生就当做他是一个异想天开的普通人一样与他聊聊天，主角认为医生并不是很了解他。所以他只好放弃治疗了。</p>
-<p>从上帝视角来看，主角并不希望自己变成这个样子，想要变回来，他认为偏移了91厘米让自己的生活出现了极大的混乱，他认为这样子下去他很容易丢掉工作，他不敢让他母亲来探望自己，没事也不敢上街，不敢和他人交流。搏击俱乐部的主角虽然不是是这样子的，但是他拥有双重人格，导演思考角度很好，全篇基本是主角的独白。或许这样是对的，现实中的大多数人的角度去观察这些少数人所总结的事情不一定是正确的，更好的情况是我们能够拥有“上帝视角”，让这些少数人自己叙说他们自己，并且感受到他们的情况才能理解他们罢。</p>
-<p>我想到一句话：天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤。但是似乎没那么多人对所谓的大任很有欲望，或许上大街上抓那么几个人做一道选择题：A.假如上天会对你降临一些“灾难”，然后你能够身价多少多少，迎娶白富美。B.你能够平安的健康平庸的的过完你的一生。大多数人的选择会是什么？若是问我，我会回答我选B。</p>
-<p>如果说，谁想要一些难题来挑战自己，提升自己，会有很多人说好，来吧。但是，如果把难题和挑战换成病痛呢，说好的，我会觉得你不是傻逼就是真的很有种！</p>
-<p>说那么多，不是想说让我们去多多关心生活中的少数人群这种屁话。量子力学的一些周边的理论说，我们不能知道事物真实的样子是什么，我们只能看到我们能看到的东西，我们只能看到一定频段的光谱，只能听到一定频率的声波。但是我们看到的，和听到的就真的是事物原本的样子吗？进化论我们能知道，适者生存这个道理，所以我们想大多数人都是适者，这些少数人不一定是。所以，还是让我们多多关心他们吧:)。</p>
-<p>我想和大家分享《精神分裂》这部短片的结局，主角认为只有陨石再来一次才能救他，他等到了第二个陨石，他模仿第一次的时候发生的事情，去陨石附近。陨石掉下来了，当他醒来，他发现，他不仅水平偏移91厘米的问题没有进展，而且垂直方向也偏移了91厘米。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我对于这一部分的感受其实比分析每个人的左肩的恶魔与右肩上的天使更深刻。&lt;/p&gt;
-&lt;p&gt;我回想到自己之前看过一部短片叫《精神分裂》，短片的主角看到了一个陨石砸到了自家的房顶，然后奇怪的事情发生了他的视界与真实偏移了91厘米，在主角的视界中他在真实世界中的身体位置不一样,具体就
-    
-    </summary>
-    
-      <category term="电影观感" scheme="https://qiil.github.io/qill.github.io/categories/%E7%94%B5%E5%BD%B1%E8%A7%82%E6%84%9F/"/>
-    
-    
-      <category term="fight club" scheme="https://qiil.github.io/qill.github.io/tags/fight-club/"/>
     
   </entry>
   
