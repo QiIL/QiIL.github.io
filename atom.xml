@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-10-24T06:22:21.043Z</updated>
+  <updated>2017-11-17T13:25:16.185Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>被墙了的已编译的资源(不定时更新)</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/11/17/%E8%A2%AB%E5%A2%99%E4%BA%86%E7%9A%84%E5%B7%B2%E7%BC%96%E8%AF%91%E7%9A%84%E8%B5%84%E6%BA%90/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/11/17/被墙了的已编译的资源/</id>
+    <published>2017-11-17T13:22:35.000Z</published>
+    <updated>2017-11-17T13:25:16.185Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="被墙了的已编译的资源包"><a href="#被墙了的已编译的资源包" class="headerlink" title="被墙了的已编译的资源包"></a>被墙了的已编译的资源包</h3><hr>
+<p>可通过手动下载然后把已编译的资源包放到对应目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#包名</div><div class="line">npm images</div><div class="line">https://github.com/zhangyuanwei/node-images/releases/download/v3.0.1/linux-x64-57_binding.node</div></pre></td></tr></table></figure></p>
+<p><a href="http://oqzgtjqen.bkt.clouddn.com/binding.node" target="_blank" rel="external">node v8.x, linux x64,images包</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;被墙了的已编译的资源包&quot;&gt;&lt;a href=&quot;#被墙了的已编译的资源包&quot; class=&quot;headerlink&quot; title=&quot;被墙了的已编译的资源包&quot;&gt;&lt;/a&gt;被墙了的已编译的资源包&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;可通过手动下载然后把已编译的资源包放到对应目录下&lt;br&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端帖子经历</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/11/17/%E5%89%8D%E7%AB%AF%E5%B8%96%E5%AD%90%E7%BB%8F%E5%8E%86/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/11/17/前端帖子经历/</id>
+    <published>2017-11-17T13:22:05.000Z</published>
+    <updated>2017-11-17T13:26:40.642Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="webpack贴搬运"><a href="#webpack贴搬运" class="headerlink" title="webpack贴搬运:"></a>webpack贴搬运:</h3><ol>
+<li><a href="https://segmentfault.com/a/1190000006178770" target="_blank" rel="external">入门 Webpack，看这篇就够了</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;webpack贴搬运&quot;&gt;&lt;a href=&quot;#webpack贴搬运&quot; class=&quot;headerlink&quot; title=&quot;webpack贴搬运:&quot;&gt;&lt;/a&gt;webpack贴搬运:&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://segmentfault.
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>jenkins部署检测gitlab仓库自动构建WIKI</title>
@@ -911,11 +957,11 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
       <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
     
     
-      <category term="docker" scheme="https://qiil.github.io/qill.github.io/tags/docker/"/>
-    
       <category term="rockmongo" scheme="https://qiil.github.io/qill.github.io/tags/rockmongo/"/>
     
       <category term="mongodb" scheme="https://qiil.github.io/qill.github.io/tags/mongodb/"/>
+    
+      <category term="docker" scheme="https://qiil.github.io/qill.github.io/tags/docker/"/>
     
   </entry>
   
@@ -1006,70 +1052,6 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
       <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
     
       <category term="linux" scheme="https://qiil.github.io/qill.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用node做一个基于TCP的聊天程序</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/23/%E7%94%A8node%E5%81%9A%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%B5%8F%E8%A7%88%E7%A8%8B%E5%BA%8F/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/23/用node做一个文件夹浏览程序/</id>
-    <published>2017-06-23T09:21:01.000Z</published>
-    <updated>2017-06-23T09:59:34.767Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Github项目链接"><a href="#Github项目链接" class="headerlink" title="Github项目链接"></a>Github项目链接</h3><p><a href="https://github.com/QiIL/tcp-chat" target="_blank" rel="external">https://github.com/QiIL/tcp-chat</a></p>
-<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>首先用到的是 net 模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="服务器的具体细节："><a href="#服务器的具体细节：" class="headerlink" title="服务器的具体细节："></a>服务器的具体细节：</h3><p>1.有新的成员连接需要需要保存该成员，连接数加1<br>2.监听3000端口<br>3.监听断开连接事件，连接数减1，把该成员移除<br>4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所有人推送内容</p>
-<p>样例：<br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png" alt=""><br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat2.png" alt=""></p>
-<center>完。</center>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Github项目链接&quot;&gt;&lt;a href=&quot;#Github项目链接&quot; class=&quot;headerlink&quot; title=&quot;Github项目链接&quot;&gt;&lt;/a&gt;Github项目链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/QiIL/tcp-c
-    
-    </summary>
-    
-      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
-    
-    
-      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tiny语言语法树的生成</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/23/Tiny%E8%AF%AD%E8%A8%80%E8%AF%AD%E6%B3%95%E6%A0%91%E7%9A%84%E7%94%9F%E6%88%90/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/23/Tiny语言语法树的生成/</id>
-    <published>2017-06-23T02:01:03.000Z</published>
-    <updated>2017-06-23T10:00:25.823Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>用户按照Tiny语法编辑源程序（打开源程序文件：.tny文件）后生成改程序的语法树。</p>
-<h3 id="Github项目连接："><a href="#Github项目连接：" class="headerlink" title="Github项目连接："></a>Github项目连接：</h3><p><a href="https://github.com/QiIL/tiny-Grammar-analysis" target="_blank" rel="external">https://github.com/QiIL/tiny-Grammar-analysis</a></p>
-<h3 id="项目中的文件解释"><a href="#项目中的文件解释" class="headerlink" title="项目中的文件解释"></a>项目中的文件解释</h3><ol>
-<li>.tny文件：根据文法规则编辑的样例程序</li>
-<li>tree.py：定义多子树的树结构</li>
-<li>tiny_analisis.py：自上而下的递归子程序分析程序</li>
-<li>analisy_gui.py：程序界面相关</li>
-</ol>
-<h3 id="文法规则"><a href="#文法规则" class="headerlink" title="文法规则"></a>文法规则</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="formula">$ program -&gt; stmt-sequence</span></div><div class="line">$ stmt-sequence -&gt; statement &#123;; statement&#125;</div><div class="line"><span class="formula">$ statement -&gt; if-stmt | repeat-stmt | assign-stmt | read-stmt | write-stmt | return-stmt</span></div><div class="line">$ While-stmt --&gt; while  exp  do  stmt-sequence  endwhile</div><div class="line">Dowhile-stmt--&gt;do  stmt-sequence  while  exp </div><div class="line"><span class="formula">$ for-stmt--&gt;for identifier:=simple-exp  to  simple-exp  do  stmt-sequence enddo    步长递增1</span></div><div class="line">$ for-stmt--&gt;for identifier:=simple-exp  downto  simple-exp  do  stmt-sequence enddo    步长递减1</div><div class="line"><span class="formula">$ if-stmt -&gt; if exp then stmt-sequence [else stmt-sequence] end</span></div><div class="line">$ repeat-stmt -&gt; repeat stmt-sequence until exp</div><div class="line"><span class="formula">$ assign-stmt -&gt; identifier := exp</span></div><div class="line">$ read-stmt -&gt; read identifier</div><div class="line"><span class="formula">$ write-stmt -&gt; write exp</span></div><div class="line">$ return-stmt -&gt; return simple-exp</div><div class="line"><span class="formula">$ exp -&gt; simple-exp [comparison-op simple-exp]</span></div><div class="line">$ comparison-op -&gt; &lt; | =</div><div class="line"><span class="formula">$ simple-exp -&gt; term &#123;addop term&#125;</span></div><div class="line">$ adddop -&gt; + | -</div><div class="line"><span class="formula">$ term -&gt; factor &#123;mulop factor&#125;</span></div><div class="line">$ mulop -&gt; * | /</div><div class="line"><span class="formula">$ factor -&gt; ( exp ) | number | identifier</span></div></pre></td></tr></table></figure>
-<h3 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h3><p>使用了tkinter模块，所以请先安装tkinter模块，安装方法（ubuntu16.04）及运行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo install python-tk</div><div class="line">$ python analisy_gui.py</div></pre></td></tr></table></figure></p>
-<p>程序大概像这样：<br><img src="http://oqzgtjqen.bkt.clouddn.com/2017-06-23%2010-09-33%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
-<center>完。</center>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;功能&quot;&gt;&lt;a href=&quot;#功能&quot; class=&quot;headerlink&quot; title=&quot;功能&quot;&gt;&lt;/a&gt;功能&lt;/h3&gt;&lt;p&gt;用户按照Tiny语法编辑源程序（打开源程序文件：.tny文件）后生成改程序的语法树。&lt;/p&gt;
-&lt;h3 id=&quot;Github项目连接：&quot;&gt;&lt;a
-    
-    </summary>
-    
-      <category term="算法" scheme="https://qiil.github.io/qill.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="python" scheme="https://qiil.github.io/qill.github.io/tags/python/"/>
-    
-      <category term="tiny" scheme="https://qiil.github.io/qill.github.io/tags/tiny/"/>
-    
-      <category term="grammer_tree" scheme="https://qiil.github.io/qill.github.io/tags/grammer-tree/"/>
     
   </entry>
   
