@@ -1,0 +1,912 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="来自scnu的一个学生党" />
+
+
+
+  <meta name="keywords" content="jira," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Qill" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="JIRA REST API 标注 GET premission   /rest/api/2/mypermissions```1234567891011121314151617181920返回系统所有的权限,并且关乎是否当前用户拥有这些权限.你可以可选的提供一个特定的文本来获取这些权限(projectKey 或者 projectId 或者 issueKey 或者 issueId)当没有特殊字段提供的">
+<meta name="keywords" content="jira">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JIRA REST API部分标注">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/12/21/JIRA-REST-API部分标注/index.html">
+<meta property="og:site_name" content="Qill">
+<meta property="og:description" content="JIRA REST API 标注 GET premission   /rest/api/2/mypermissions```1234567891011121314151617181920返回系统所有的权限,并且关乎是否当前用户拥有这些权限.你可以可选的提供一个特定的文本来获取这些权限(projectKey 或者 projectId 或者 issueKey 或者 issueId)当没有特殊字段提供的">
+<meta property="og:updated_time" content="2017-12-21T02:59:28.544Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JIRA REST API部分标注">
+<meta name="twitter:description" content="JIRA REST API 标注 GET premission   /rest/api/2/mypermissions```1234567891011121314151617181920返回系统所有的权限,并且关乎是否当前用户拥有这些权限.你可以可选的提供一个特定的文本来获取这些权限(projectKey 或者 projectId 或者 issueKey 或者 issueId)当没有特殊字段提供的">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> JIRA REST API部分标注 | Qill </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Qill</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              JIRA REST API部分标注
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-12-21T10:56:53+08:00" content="2017-12-21">
+            2017-12-21
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/12/21/JIRA-REST-API部分标注/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/21/JIRA-REST-API部分标注/" itemprop="commentsCount"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="JIRA-REST-API-标注"><a href="#JIRA-REST-API-标注" class="headerlink" title="JIRA REST API 标注"></a>JIRA REST API 标注</h3><ul>
+<li>GET premission   <figure class="highlight plain"><figcaption><span>/rest/api/2/mypermissions```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">返回系统所有的权限,并且关乎是否当前用户拥有这些权限.你可以可选的提供一个特定的文本来获取这些权限(projectKey 或者 projectId 或者 issueKey 或者 issueId)</div><div class="line"></div><div class="line">当没有特殊字段提供的时候,会返回用户在任何一个项目都为的改权限都为true的权限.</div><div class="line"></div><div class="line">如果提供了项目相关的搜索字段,那么会返回当前用户在搜索项目中权限为ture的字段</div><div class="line"></div><div class="line">- `GET /rest/api/2/attachment/meta` 返回附件的元信息,指出器是否可用和最大的上传限制</div><div class="line"></div><div class="line">- `GET /rest/api/2/auditing/record` 获取审计报告相关信息(admin账号)</div><div class="line"></div><div class="line">paramter | type | description</div><div class="line">---- | ---- | ----</div><div class="line">offset | int | 跳过条数</div><div class="line">limit | int | 返回条数</div><div class="line">filter | string | 搜索条件，返回的每个记录都必定会满足提供的条件</div><div class="line">from | string | 时间戳,from参数限制为小于或等于否则的话返回结果很可能是空的</div><div class="line">to | string | 时间戳与from对应</div><div class="line"></div><div class="line">- `GET /rest/api/2/component/&#123;id&#125;` 获取模块详细信息</div></pre></td></tr></table></figure></li>
+</ul>
+<p>{<br>  “self”: “<a href="http://10.0.2.21:8080/rest/api/2/component/10001" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/component/10001</a>“,<br>  “id”: “10001”,<br>  “name”: “健康商城H5”,<br>  “lead”: {<br>    “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=yanlijun" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=yanlijun</a>“,<br>    “key”: “yanlijun”,<br>    “name”: “yanlijun”,<br>    “avatarUrls”: {<br>      “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10336</a>“,<br>      “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336</a>“,<br>      “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336</a>“,<br>      “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336</a>“<br>    },<br>    “displayName”: “晏力军”,<br>    “active”: true<br>  },<br>  “assigneeType”: “COMPONENT_LEAD”,<br>  “assignee”: {<br>    “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=yanlijun" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=yanlijun</a>“,<br>    “key”: “yanlijun”,<br>    “name”: “yanlijun”,<br>    “avatarUrls”: {<br>      “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10336</a>“,<br>      “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336</a>“,<br>      “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336</a>“,<br>      “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336</a>“<br>    },<br>    “displayName”: “晏力军”,<br>    “active”: true<br>  },<br>  “realAssigneeType”: “COMPONENT_LEAD”,<br>  “realAssignee”: {<br>    “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=yanlijun" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=yanlijun</a>“,<br>    “key”: “yanlijun”,<br>    “name”: “yanlijun”,<br>    “avatarUrls”: {<br>      “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10336</a>“,<br>      “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336</a>“,<br>      “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336</a>“,<br>      “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336</a>“<br>    },<br>    “displayName”: “晏力军”,<br>    “active”: true<br>  },<br>  “isAssigneeTypeValid”: true,<br>  “project”: “APP”,<br>  “projectId”: 10004<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/component/&#123;id&#125;/relatedIssueCounts` 获取模块问题数</div></pre></td></tr></table></figure></p>
+<p>{<br>  “self”: “<a href="http://10.0.2.21:8080/rest/api/2/component/10001" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/component/10001</a>“,<br>  “issueCount”: 21<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/issue/&#123;issueIdOrKey&#125;` 获取问题详细信息</div></pre></td></tr></table></figure></p>
+<p><a href="http://10.0.2.21:8080/rest/api/2/issue/APP-5502" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/APP-5502</a><br>{<br>  “expand”: “renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations”,<br>  “id”: “22587”,<br>  “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/22587" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/22587</a>“,<br>  “key”: “APP-5502”,<br>  “fields”: {<br>    “issuetype”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issuetype/10005" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issuetype/10005</a>“,<br>      “id”: “10005”,<br>      “description”: “jira.translation.issuetype.bug.name.desc”,<br>      “iconUrl”: “<a href="http://10.0.2.21:8080/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype" target="_blank" rel="external">http://10.0.2.21:8080/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype</a>“,<br>      “name”: “缺陷”,<br>      “subtask”: false,<br>      “avatarId”: 10303<br>    },<br>    “timespent”: null,<br>    “project”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/project/10004" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/project/10004</a>“,<br>      “id”: “10004”,<br>      “key”: “APP”,<br>      “name”: “健康猫App”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/projectavatar?pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?pid=10004&amp;avatarId=10501</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/projectavatar?size=small&amp;pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?size=small&amp;pid=10004&amp;avatarId=10501</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/projectavatar?size=xsmall&amp;pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?size=xsmall&amp;pid=10004&amp;avatarId=10501</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/projectavatar?size=medium&amp;pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?size=medium&amp;pid=10004&amp;avatarId=10501</a>“<br>      }<br>    },<br>    “fixVersions”: [],<br>    “aggregatetimespent”: null,<br>    “resolution”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/resolution/10000" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/resolution/10000</a>“,<br>      “id”: “10000”,<br>      “description”: “该问题的工作流程已完成。”,<br>      “name”: “完成”<br>    },<br>    “customfield_10310”: “com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@648bb4ca”,<br>    “customfield_10311”: null,<br>    “customfield_10312”: null,<br>    “customfield_10700”: null,<br>    “customfield_10701”: null,<br>    “customfield_10702”: null,<br>    “customfield_10703”: null,<br>    “customfield_10704”: null,<br>    “resolutiondate”: “2017-12-01T17:45:19.000+0800”,<br>    “workratio”: -1,<br>    “lastViewed”: “2017-12-07T11:34:15.281+0800”,<br>    “watches”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/APP-5502/watchers" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/APP-5502/watchers</a>“,<br>      “watchCount”: 2,<br>      “isWatching”: true<br>    },<br>    “created”: “2017-09-22T20:01:26.000+0800”,<br>    “priority”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/priority/3" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/priority/3</a>“,<br>      “iconUrl”: “<a href="http://10.0.2.21:8080/images/icons/priorities/medium.svg" target="_blank" rel="external">http://10.0.2.21:8080/images/icons/priorities/medium.svg</a>“,<br>      “name”: “普通”,<br>      “id”: “3”<br>    },<br>    “customfield_10100”: null,<br>    “labels”: [],<br>    “customfield_10214”: null,<br>    “customfield_10413”: null,<br>    “timeestimate”: null,<br>    “aggregatetimeoriginalestimate”: null,<br>    “versions”: [],<br>    “issuelinks”: [],<br>    “assignee”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>      “name”: “qiushiyu”,<br>      “key”: “qiushiyu”,<br>      “emailAddress”: “qiusy@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>      },<br>      “displayName”: “邱世余”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    },<br>    “updated”: “2017-12-01T17:45:19.000+0800”,<br>    “status”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/status/10204" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/status/10204</a>“,<br>      “description”: “关闭缺陷”,<br>      “iconUrl”: “<a href="http://10.0.2.21:8080/images/icons/statuses/generic.png" target="_blank" rel="external">http://10.0.2.21:8080/images/icons/statuses/generic.png</a>“,<br>      “name”: “关闭缺陷”,<br>      “id”: “10204”,<br>      “statusCategory”: {<br>        “self”: “<a href="http://10.0.2.21:8080/rest/api/2/statuscategory/3" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/statuscategory/3</a>“,<br>        “id”: 3,<br>        “key”: “done”,<br>        “colorName”: “green”,<br>        “name”: “Done”<br>      }<br>    },<br>    “components”: [],<br>    “timeoriginalestimate”: null,<br>    “description”: “1.轮播管理，轮播列表，编辑轮播图时喵村帖子，喵村主页类型的喵村ID，帖子ID显示为空，新增时是有输入对应字段的！\r\n\r\n!image-2017-09-22-20-01-31-190.png!”,<br>    “customfield_10210”: null,<br>    “customfield_10211”: null,<br>    “customfield_10212”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/customFieldOption/10145" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/customFieldOption/10145</a>“,<br>      “value”: “严重”,<br>      “id”: “10145”<br>    },<br>    “customfield_10410”: null,<br>    “timetracking”: {},<br>    “customfield_10411”: null,<br>    “customfield_10005”: null,<br>    “customfield_10203”: null,<br>    “customfield_10401”: null,<br>    “customfield_10204”: null,<br>    “customfield_10402”: null,<br>    “customfield_10600”: null,<br>    “customfield_10007”: null,<br>    “customfield_10205”: null,<br>    “customfield_10403”: null,<br>    “customfield_10008”: null,<br>    “customfield_10404”: null,<br>    “customfield_10206”: [{<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>      “name”: “zhufengru”,<br>      “key”: “zhufengru”,<br>      “emailAddress”: “zhufr@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>      },<br>      “displayName”: “朱丰茹”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    }, {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>      “name”: “qiushiyu”,<br>      “key”: “qiushiyu”,<br>      “emailAddress”: “qiusy@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>      },<br>      “displayName”: “邱世余”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    }],<br>    “attachment”: [{<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/attachment/16901" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/attachment/16901</a>“,<br>      “id”: “16901”,<br>      “filename”: “image-2017-09-22-20-01-31-190.png”,<br>      “author”: {<br>        “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>        “name”: “zhufengru”,<br>        “key”: “zhufengru”,<br>        “emailAddress”: “zhufr@healthmall.cn”,<br>        “avatarUrls”: {<br>          “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>          “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>          “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>          “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>        },<br>        “displayName”: “朱丰茹”,<br>        “active”: true,<br>        “timeZone”: “Asia/Shanghai”<br>      },<br>      “created”: “2017-09-22T20:01:12.000+0800”,<br>      “size”: 355358,<br>      “mimeType”: “text/plain”,<br>      “content”: “<a href="http://10.0.2.21:8080/secure/attachment/16901/image-2017-09-22-20-01-31-190.png" target="_blank" rel="external">http://10.0.2.21:8080/secure/attachment/16901/image-2017-09-22-20-01-31-190.png</a>“,<br>      “thumbnail”: “<a href="http://10.0.2.21:8080/secure/thumbnail/16901/_thumb_16901.png" target="_blank" rel="external">http://10.0.2.21:8080/secure/thumbnail/16901/_thumb_16901.png</a>“<br>    }],<br>    “customfield_10009”: null,<br>    “customfield_10207”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/customFieldOption/10100" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/customFieldOption/10100</a>“,<br>      “value”: “功能缺陷”,<br>      “id”: “10100”<br>    },<br>    “customfield_10405”: null,<br>    “aggregatetimeestimate”: null,<br>    “customfield_10208”: null,<br>    “customfield_10406”: null,<br>    “customfield_10209”: null,<br>    “customfield_10407”: null,<br>    “customfield_10408”: null,<br>    “customfield_10409”: null,<br>    “summary”: “【后台】#测试服#轮播管理，轮播列表，编辑页面字段值没有加载”,<br>    “creator”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>      “name”: “zhufengru”,<br>      “key”: “zhufengru”,<br>      “emailAddress”: “zhufr@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>      },<br>      “displayName”: “朱丰茹”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    },<br>    “subtasks”: [],<br>    “reporter”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>      “name”: “zhufengru”,<br>      “key”: “zhufengru”,<br>      “emailAddress”: “zhufr@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>      },<br>      “displayName”: “朱丰茹”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    },<br>    “customfield_10241”: null,<br>    “customfield_10000”: “1|i01nsn:”,<br>    “aggregateprogress”: {<br>      “progress”: 0,<br>      “total”: 0<br>    },<br>    “customfield_10001”: null,<br>    “customfield_10243”: null,<br>    “customfield_10245”: null,<br>    “customfield_10400”: null,<br>    “customfield_10313”: null,<br>    “customfield_10314”: [],<br>    “environment”: null,<br>    “customfield_10315”: null,<br>    “customfield_10316”: null,<br>    “duedate”: null,<br>    “progress”: {<br>      “progress”: 0,<br>      “total”: 0<br>    },<br>    “comment”: {<br>      “comments”: [{<br>        “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/22587/comment/15542" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/22587/comment/15542</a>“,<br>        “id”: “15542”,<br>        “author”: {<br>          “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>          “name”: “qiushiyu”,<br>          “key”: “qiushiyu”,<br>          “emailAddress”: “qiusy@healthmall.cn”,<br>          “avatarUrls”: {<br>            “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>          },<br>          “displayName”: “邱世余”,<br>          “active”: true,<br>          “timeZone”: “Asia/Shanghai”<br>        },<br>        “body”: “已解决”,<br>        “updateAuthor”: {<br>          “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>          “name”: “qiushiyu”,<br>          “key”: “qiushiyu”,<br>          “emailAddress”: “qiusy@healthmall.cn”,<br>          “avatarUrls”: {<br>            “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>          },<br>          “displayName”: “邱世余”,<br>          “active”: true,<br>          “timeZone”: “Asia/Shanghai”<br>        },<br>        “created”: “2017-09-23T15:31:43.000+0800”,<br>        “updated”: “2017-09-23T15:31:43.000+0800”<br>      }],<br>      “maxResults”: 1,<br>      “total”: 1,<br>      “startAt”: 0<br>    },<br>    “votes”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/APP-5502/votes" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/APP-5502/votes</a>“,<br>      “votes”: 0,<br>      “hasVoted”: false<br>    },<br>    “worklog”: {<br>      “startAt”: 0,<br>      “maxResults”: 20,<br>      “total”: 0,<br>      “worklogs”: []<br>    }<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/myself` 获取当前用户信息</div><div class="line"></div><div class="line">- `GET /rest/api/2/project` 获取项目信息</div><div class="line"></div><div class="line">paramter | type | description</div><div class="line">---- | ---- | ----</div><div class="line">expand | string | 额外参数定义期望返回的字段</div><div class="line">recent | int | 返回用户最近的项目</div><div class="line"></div><div class="line">- `GET /rest/api/2/project/&#123;projectId or Key&#125;` 获取项目信息详情</div><div class="line"></div><div class="line">- `GET /rest/api/2/project/IOT4LHOUSE/components` 获取项目的模块列表</div><div class="line"></div><div class="line">- `GET /rest/api/2/configuration` 如果启用或禁用Jira中的可选功能，则返回信息。 如果启用时间跟踪，则还会返回有关时间跟踪配置的详细信息。</div></pre></td></tr></table></figure></p>
+<p>{<br>  “votingEnabled”: true,<br>  “watchingEnabled”: true,<br>  “unassignedIssuesAllowed”: true,<br>  “subTasksEnabled”: true,<br>  “issueLinkingEnabled”: true,<br>  “timeTrackingEnabled”: true,<br>  “attachmentsEnabled”: true,<br>  “timeTrackingConfiguration”: {<br>    “workingHoursPerDay”: 8.0,<br>    “workingDaysPerWeek”: 5.0,<br>    “timeFormat”: “pretty”,<br>    “defaultUnit”: “minute”<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/application-properties` 获取app状态信息(需要权限)</div><div class="line"></div><div class="line">- Search ``` GET /rest/api/2/search</div></pre></td></tr></table></figure></p>
+<p>使用JQL语句搜索JIRA里面的issue.<br><strong>Sorting</strong>: JQL参数是一个完整的能够包括ORDER BY语句的JQL表达式<br><strong>Field</strong>: 字段参数(可以多次指定)提供一个逗号分离的参数列表返回.这可以用来检索一个字段的子集,一个特定的字段可以通过用一个减号作为前缀来排除.<br>通常来说,只有navigable的字段会被返回, note:在get-issue资源中会默认返回所有的字段<br><em>all - 返回所有的字段
+</em>navigable - 只包括navigable字段<br>summary, comment - 只包括详情和评论<br>-description - 包括除去了description的navigable字段<br><em>all -comment -包括除了评论的所有东西<br><em>*Properties</em></em>: 这个</p>
+<ul>
+<li><p>Get <code>GET /rest/api/2/serverInfo</code>获取jira服务器信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>GET /rest/api/2/status</code>获取所有issue状态配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/status/3"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"开发中"</span>,</div><div class="line">  <span class="attr">"iconUrl"</span>: <span class="string">"http://10.0.2.21:8080/images/icons/statuses/inprogress.png"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"开发中"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="string">"3"</span>,</div><div class="line">  <span class="attr">"statusCategory"</span>: &#123;</div><div class="line">    <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/4"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">"key"</span>: <span class="string">"indeterminate"</span>,</div><div class="line">    <span class="attr">"colorName"</span>: <span class="string">"yellow"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"进行中"</span></div><div class="line">  &#125;</div><div class="line">&#125;, </div><div class="line">  .</div><div class="line">  .</div><div class="line">  .</div><div class="line">,&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/status/10300"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"iconUrl"</span>: <span class="string">"http://10.0.2.21:8080/images/icons/statuses/generic.png"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"产品处理中"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="string">"10300"</span>,</div><div class="line">  <span class="attr">"statusCategory"</span>: &#123;</div><div class="line">    <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/4"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">"key"</span>: <span class="string">"indeterminate"</span>,</div><div class="line">    <span class="attr">"colorName"</span>: <span class="string">"yellow"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"进行中"</span></div><div class="line">  &#125;</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>GET /rest/api/2/statuscategory</code> 获取状态分类,与上一个对应</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/1"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"undefined"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"medium-gray"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"无分类"</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/2"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"new"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"blue-gray"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"待办"</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/4"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">4</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"indeterminate"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"yellow"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"进行中"</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/3"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">3</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"done"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"green"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"Done"</span></div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>GET /rest/api/2/user</code> 获取用户信息</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>用户key</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/user?username=liqiang"</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"liqiang"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"liqiang"</span>,</div><div class="line">  <span class="attr">"emailAddress"</span>: <span class="string">"liqiang@healthmall.cn"</span>,</div><div class="line">  <span class="attr">"avatarUrls"</span>: &#123;</div><div class="line">    <span class="attr">"48x48"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?avatarId=10346"</span>,</div><div class="line">    <span class="attr">"24x24"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10346"</span>,</div><div class="line">    <span class="attr">"16x16"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10346"</span>,</div><div class="line">    <span class="attr">"32x32"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10346"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"displayName"</span>: <span class="string">"李强"</span>,</div><div class="line">  <span class="attr">"active"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"timeZone"</span>: <span class="string">"Asia/Shanghai"</span>,</div><div class="line">  <span class="attr">"locale"</span>: <span class="string">"zh_CN"</span>,</div><div class="line">  <span class="attr">"groups"</span>: &#123;</div><div class="line">    <span class="attr">"size"</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">"items"</span>: []</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"applicationRoles"</span>: &#123;</div><div class="line">    <span class="attr">"size"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"items"</span>: []</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"expand"</span>: <span class="string">"groups,applicationRoles"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jira/" rel="tag">#jira</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/21/JIRA-接口接入估算/" rel="prev">JIRA 接口接入估算</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/17/被墙了的已编译的资源/" rel="next">被墙了的已编译的资源(不定时更新)</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+              <div id="disqus_thread">
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              </div>
+            <!--
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Qill" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Qill</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">来自scnu的一个学生党</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/QiIL" target="_blank">GitHub</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JIRA-REST-API-标注"><span class="nav-number">1.</span> <span class="nav-text">JIRA REST API 标注</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2017
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qill
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  <script type="text/javascript">
+    var disqus_shortname = 'qill';
+    var disqus_identifier = '2017/12/21/JIRA-REST-API部分标注/';
+    var disqus_title = 'JIRA REST API部分标注';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/12/21/JIRA-REST-API部分标注/';
+
+    function run_disqus_script(disqus_script){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }
+
+    run_disqus_script('count.js');
+    
+      run_disqus_script('embed.js');
+    
+  </script>
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

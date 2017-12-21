@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-11-17T13:25:16.185Z</updated>
+  <updated>2017-12-21T03:01:35.739Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,182 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VScode调试配置</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/12/21/VScode%E8%B0%83%E8%AF%95%E9%85%8D%E7%BD%AE/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/12/21/VScode调试配置/</id>
+    <published>2017-12-21T02:58:08.000Z</published>
+    <updated>2017-12-21T03:01:35.739Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="comment">// Use IntelliSense to learn about possible Node.js debug attributes.</span></div><div class="line">	<span class="comment">// Hover to view descriptions of existing attributes.</span></div><div class="line">	<span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></div><div class="line">	<span class="string">"version"</span>: <span class="string">"0.2.0"</span>,</div><div class="line">	<span class="string">"configurations"</span>: [</div><div class="line">		&#123;</div><div class="line">		 	<span class="string">"type"</span>: <span class="string">"node"</span>,</div><div class="line">		 	<span class="string">"request"</span>: <span class="string">"launch"</span>,</div><div class="line">		 	<span class="string">"name"</span>: <span class="string">"Launch Program"</span>,</div><div class="line">		 	<span class="string">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;/app.js"</span></div><div class="line">		&#125;,</div><div class="line">		&#123;</div><div class="line">			<span class="string">"name"</span>: <span class="string">"mocha"</span>,</div><div class="line">			<span class="string">"type"</span>: <span class="string">"node"</span>,</div><div class="line">			<span class="string">"request"</span>: <span class="string">"launch"</span>,</div><div class="line">			<span class="string">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;/node_modules/mocha/bin/_mocha"</span>,</div><div class="line">			<span class="string">"stopOnEntry"</span>: <span class="literal">false</span>,</div><div class="line">			<span class="string">"args"</span>: [<span class="string">"--no-timeouts"</span>, <span class="string">"--colors"</span>], <span class="comment">//you can specify paths to specific tests here</span></div><div class="line">			<span class="string">"cwd"</span>: <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">			<span class="string">"runtimeExecutable"</span>: <span class="literal">null</span>,</div><div class="line">			<span class="string">"env"</span>: &#123;</div><div class="line">				<span class="string">"NODE_ENV"</span>: <span class="string">"testing"</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>configurations[0]可以让vscode进入调试模式运行,跑到断点,然后配合F5,F10,F11等进行调试.<br>configurations[1]可以让vscode用调试模式跑单元测试样例.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;
+    
+    </summary>
+    
+    
+      <category term="vscode debug" scheme="https://qiil.github.io/qill.github.io/tags/vscode-debug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JIRA简单登录获取请求REST_API权限</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/12/21/JIRA%E7%AE%80%E5%8D%95%E7%99%BB%E5%BD%95%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82REST-API%E6%9D%83%E9%99%90/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/12/21/JIRA简单登录获取请求REST-API权限/</id>
+    <published>2017-12-21T02:57:46.000Z</published>
+    <updated>2017-12-21T03:01:11.804Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="JIRA-REST-API简单登录获取权限"><a href="#JIRA-REST-API简单登录获取权限" class="headerlink" title="JIRA REST API简单登录获取权限"></a>JIRA REST API简单登录获取权限</h2><h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>Jira的 REST API是被Jira提供的标准web接口限制和保护的.这意味如果你不登录,那么你访问Jira的是匿名访问的.更进一步,如果你登录了,但是并没有相关Jira的权限的话,也是不能够获取到Jira的REST API数据的.</p>
+<p>很多情况下,第一步用上Jira REST API是认证一个用户账号.任何针对Jira的账号都可以用于REST API,下面将会讲解一个简单的简单认证样例.</p>
+<h3 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h3><p>很多用户软件提供了一个简单的机制用于支持用户名密码登录并且自动构建一个必须的用户认证头部.例如你可以制定 -u 参数如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -D- -u fred:fred -X GET -H <span class="string">"Content-Type: application/json"</span> https://example.com:8081/rest/api/2/issue/createmeta</div></pre></td></tr></table></figure></p>
+<h3 id="提供基本的认证头部"><a href="#提供基本的认证头部" class="headerlink" title="提供基本的认证头部"></a>提供基本的认证头部</h3><p>如果你需要构造并且发送一个基本认证头部的话,下面这几个步骤是你需要做的:</p>
+<ol>
+<li>构建一个字符串,格式为 username:password</li>
+<li>Base64 编码这串字符串</li>
+<li>提供一个”Authorization”头部包括”Basic”参数在后面.例如 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```bash</div><div class="line">curl -D- -X GET -H &quot;Authorization: Basic ZnJlZDpmcmVk&quot; -H &quot;Content-Type: application/json&quot; &quot;https://your-domain.atlassian.net/rest/api/2/issue/QA-31&quot;</div></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="高级主题"><a href="#高级主题" class="headerlink" title="高级主题"></a>高级主题</h3><h4 id="认证挑战"><a href="#认证挑战" class="headerlink" title="认证挑战"></a>认证挑战</h4><p>因为JIRA给了一个默认等级给匿名的用户.这就不会提供了一个很典型的认证挑战.一些HTTP客户端希望在他们设置一个认证头文件之前去接受一个认证挑战,这就意味着这是不可能实现的.在这种情况下你可能需要去确认并且提供一个认证的头部(向上问讲述的那样子)</p>
+<h4 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h4><p>在连续的登录错误之后验证码是需要被触发的,如果验证码别触发了,你就不能够用基本认证来调用JIRA REST API了.<br>你可以从JIRA中检查相关错误返回,如果存在<code>X-Seraph-LoginReason</code> 头部并且其值为<code>AUTHENTICATION_DENIED</code>,这就意味着app拒绝登录并且拒绝检查密码,这最经常的情况就是验证码被触发了.</p>
+<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<li><a href="https://developer.atlassian.com/cloud/jira/platform/jira-rest-api-cookie-based-authentication/" target="_blank" rel="external">Jira REST API - Cookie-based Authentication</a></li>
+<li><a href="https://developer.atlassian.com/cloud/jira/platform/jira-rest-api-oauth-authentication/" target="_blank" rel="external">Jira REST API - OAuth authentication</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;JIRA-REST-API简单登录获取权限&quot;&gt;&lt;a href=&quot;#JIRA-REST-API简单登录获取权限&quot; class=&quot;headerlink&quot; title=&quot;JIRA REST API简单登录获取权限&quot;&gt;&lt;/a&gt;JIRA REST API简单登录获取权限&lt;/
+    
+    </summary>
+    
+    
+      <category term="jira Restful" scheme="https://qiil.github.io/qill.github.io/tags/jira-Restful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JIRA 接口接入估算</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/12/21/JIRA-%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5%E4%BC%B0%E7%AE%97/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/12/21/JIRA-接口接入估算/</id>
+    <published>2017-12-21T02:57:33.000Z</published>
+    <updated>2017-12-21T03:00:10.110Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="JIRA相关技术接入评估"><a href="#JIRA相关技术接入评估" class="headerlink" title="JIRA相关技术接入评估"></a>JIRA相关技术接入评估</h3><hr>
+<h4 id="主要接入工作"><a href="#主要接入工作" class="headerlink" title="主要接入工作"></a>主要接入工作</h4><ol>
+<li>同步KPI与JIRA平台账号</li>
+<li>KPI考核项可修改</li>
+<li>JIRA平台BASIC或者Oauth2.0认证用户对接</li>
+<li>KPI考核项目配置需求</li>
+<li>JIRA接口具体字段分析</li>
+<li>JQL搜索语言接入使用</li>
+</ol>
+<h4 id="主要接口"><a href="#主要接口" class="headerlink" title="主要接口"></a>主要接口</h4><ol>
+<li><code>GET /rest/api/2/auditing/record</code> 获取审计报告相关信息(admin账号)</li>
+<li><code>GET /rest/api/2/component</code> 获取模块简要信息</li>
+<li><code>GET /rest/api/2/component/{id}</code> 获取模块详细信息</li>
+<li><code>GET /rest/api/2/component/{id}/relatedIssueCounts</code> 获取模块问题数</li>
+<li><code>GET /rest/api/2/myself</code> 获取当前用户信息</li>
+<li><code>GET /rest/api/2/project</code> 获取项目信息</li>
+<li><code>GET /rest/api/2/project/{projectId or Key}</code> 获取项目信息详情</li>
+<li><code>GET /rest/api/2/project/IOT4LHOUSE/components</code> 获取项目的模块列表</li>
+<li><code>GET /rest/api/2/issue/{issueIdOrKey}</code> 获取ISSUE详细信息</li>
+<li><code>GET /rest/api/2/status</code> 获取所有issue状态配置</li>
+<li><code>GET /rest/api/2/search</code> 通过JQL语言搜索相关issue</li>
+</ol>
+<h4 id="相关难点与工作重点"><a href="#相关难点与工作重点" class="headerlink" title="相关难点与工作重点"></a>相关难点与工作重点</h4><ol>
+<li>JIRA与KPI的用户认证需要通过JIRA用户,并且需要用到相关的信息编码后进行认证,KPI平台原本的用户账号密码系统需要废除并重新与JIRA账户系统匹配.</li>
+<li>引入JIRA数据会导致KPI考核项目的改变需要重新定义考核表的结构,以前的数据需要备份,因为结构改变后数据会出现断层,并且之前相关的接口需要重写.</li>
+<li>JQL语言是Atlassian公司针对对与JIRA数据搜索的语言,需要学习理解并且用到项目上.</li>
+<li>JIRA中的接口文档为英文文档,相关字段意思需要与当前JIRA系统对照确认.</li>
+</ol>
+<h4 id="相关评估以及资源"><a href="#相关评估以及资源" class="headerlink" title="相关评估以及资源"></a>相关评估以及资源</h4><ol>
+<li>对接数据较多,明确需求能够使工作目标更明确.</li>
+<li>JIRA更详尽信息的相关rest api需要用到管理员账号.</li>
+</ol>
+<h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><p><a href="https://developer.atlassian.com/cloud/jira/platform/jira-rest-api-cookie-based-authentication/" target="_blank" rel="external">Jira REST API - Cookie-based Authentication</a><br><a href="https://developer.atlassian.com/cloud/jira/platform/jira-rest-api-oauth-authentication/" target="_blank" rel="external">Jira REST API - OAuth authentication</a><br><a href="https://docs.atlassian.com/jira/REST/cloud/#api/2/user/search/query-search" target="_blank" rel="external">Jira REAT API DOC</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;JIRA相关技术接入评估&quot;&gt;&lt;a href=&quot;#JIRA相关技术接入评估&quot; class=&quot;headerlink&quot; title=&quot;JIRA相关技术接入评估&quot;&gt;&lt;/a&gt;JIRA相关技术接入评估&lt;/h3&gt;&lt;hr&gt;
+&lt;h4 id=&quot;主要接入工作&quot;&gt;&lt;a href=&quot;#主要
+    
+    </summary>
+    
+    
+      <category term="jira Restful" scheme="https://qiil.github.io/qill.github.io/tags/jira-Restful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JIRA REST API部分标注</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/12/21/JIRA-REST-API%E9%83%A8%E5%88%86%E6%A0%87%E6%B3%A8/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/12/21/JIRA-REST-API部分标注/</id>
+    <published>2017-12-21T02:56:53.000Z</published>
+    <updated>2017-12-21T02:59:28.544Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="JIRA-REST-API-标注"><a href="#JIRA-REST-API-标注" class="headerlink" title="JIRA REST API 标注"></a>JIRA REST API 标注</h3><ul>
+<li>GET premission   <figure class="highlight plain"><figcaption><span>/rest/api/2/mypermissions```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">返回系统所有的权限,并且关乎是否当前用户拥有这些权限.你可以可选的提供一个特定的文本来获取这些权限(projectKey 或者 projectId 或者 issueKey 或者 issueId)</div><div class="line"></div><div class="line">当没有特殊字段提供的时候,会返回用户在任何一个项目都为的改权限都为true的权限.</div><div class="line"></div><div class="line">如果提供了项目相关的搜索字段,那么会返回当前用户在搜索项目中权限为ture的字段</div><div class="line"></div><div class="line">- `GET /rest/api/2/attachment/meta` 返回附件的元信息,指出器是否可用和最大的上传限制</div><div class="line"></div><div class="line">- `GET /rest/api/2/auditing/record` 获取审计报告相关信息(admin账号)</div><div class="line"></div><div class="line">paramter | type | description</div><div class="line">---- | ---- | ----</div><div class="line">offset | int | 跳过条数</div><div class="line">limit | int | 返回条数</div><div class="line">filter | string | 搜索条件，返回的每个记录都必定会满足提供的条件</div><div class="line">from | string | 时间戳,from参数限制为小于或等于否则的话返回结果很可能是空的</div><div class="line">to | string | 时间戳与from对应</div><div class="line"></div><div class="line">- `GET /rest/api/2/component/&#123;id&#125;` 获取模块详细信息</div></pre></td></tr></table></figure></li>
+</ul>
+<p>{<br>  “self”: “<a href="http://10.0.2.21:8080/rest/api/2/component/10001" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/component/10001</a>“,<br>  “id”: “10001”,<br>  “name”: “健康商城H5”,<br>  “lead”: {<br>    “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=yanlijun" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=yanlijun</a>“,<br>    “key”: “yanlijun”,<br>    “name”: “yanlijun”,<br>    “avatarUrls”: {<br>      “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10336</a>“,<br>      “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336</a>“,<br>      “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336</a>“,<br>      “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336</a>“<br>    },<br>    “displayName”: “晏力军”,<br>    “active”: true<br>  },<br>  “assigneeType”: “COMPONENT_LEAD”,<br>  “assignee”: {<br>    “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=yanlijun" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=yanlijun</a>“,<br>    “key”: “yanlijun”,<br>    “name”: “yanlijun”,<br>    “avatarUrls”: {<br>      “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10336</a>“,<br>      “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336</a>“,<br>      “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336</a>“,<br>      “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336</a>“<br>    },<br>    “displayName”: “晏力军”,<br>    “active”: true<br>  },<br>  “realAssigneeType”: “COMPONENT_LEAD”,<br>  “realAssignee”: {<br>    “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=yanlijun" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=yanlijun</a>“,<br>    “key”: “yanlijun”,<br>    “name”: “yanlijun”,<br>    “avatarUrls”: {<br>      “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10336</a>“,<br>      “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10336</a>“,<br>      “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10336</a>“,<br>      “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10336</a>“<br>    },<br>    “displayName”: “晏力军”,<br>    “active”: true<br>  },<br>  “isAssigneeTypeValid”: true,<br>  “project”: “APP”,<br>  “projectId”: 10004<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/component/&#123;id&#125;/relatedIssueCounts` 获取模块问题数</div></pre></td></tr></table></figure></p>
+<p>{<br>  “self”: “<a href="http://10.0.2.21:8080/rest/api/2/component/10001" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/component/10001</a>“,<br>  “issueCount”: 21<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/issue/&#123;issueIdOrKey&#125;` 获取问题详细信息</div></pre></td></tr></table></figure></p>
+<p><a href="http://10.0.2.21:8080/rest/api/2/issue/APP-5502" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/APP-5502</a><br>{<br>  “expand”: “renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations”,<br>  “id”: “22587”,<br>  “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/22587" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/22587</a>“,<br>  “key”: “APP-5502”,<br>  “fields”: {<br>    “issuetype”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issuetype/10005" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issuetype/10005</a>“,<br>      “id”: “10005”,<br>      “description”: “jira.translation.issuetype.bug.name.desc”,<br>      “iconUrl”: “<a href="http://10.0.2.21:8080/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype" target="_blank" rel="external">http://10.0.2.21:8080/secure/viewavatar?size=xsmall&amp;avatarId=10303&amp;avatarType=issuetype</a>“,<br>      “name”: “缺陷”,<br>      “subtask”: false,<br>      “avatarId”: 10303<br>    },<br>    “timespent”: null,<br>    “project”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/project/10004" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/project/10004</a>“,<br>      “id”: “10004”,<br>      “key”: “APP”,<br>      “name”: “健康猫App”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/projectavatar?pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?pid=10004&amp;avatarId=10501</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/projectavatar?size=small&amp;pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?size=small&amp;pid=10004&amp;avatarId=10501</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/projectavatar?size=xsmall&amp;pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?size=xsmall&amp;pid=10004&amp;avatarId=10501</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/projectavatar?size=medium&amp;pid=10004&amp;avatarId=10501" target="_blank" rel="external">http://10.0.2.21:8080/secure/projectavatar?size=medium&amp;pid=10004&amp;avatarId=10501</a>“<br>      }<br>    },<br>    “fixVersions”: [],<br>    “aggregatetimespent”: null,<br>    “resolution”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/resolution/10000" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/resolution/10000</a>“,<br>      “id”: “10000”,<br>      “description”: “该问题的工作流程已完成。”,<br>      “name”: “完成”<br>    },<br>    “customfield_10310”: “com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@648bb4ca”,<br>    “customfield_10311”: null,<br>    “customfield_10312”: null,<br>    “customfield_10700”: null,<br>    “customfield_10701”: null,<br>    “customfield_10702”: null,<br>    “customfield_10703”: null,<br>    “customfield_10704”: null,<br>    “resolutiondate”: “2017-12-01T17:45:19.000+0800”,<br>    “workratio”: -1,<br>    “lastViewed”: “2017-12-07T11:34:15.281+0800”,<br>    “watches”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/APP-5502/watchers" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/APP-5502/watchers</a>“,<br>      “watchCount”: 2,<br>      “isWatching”: true<br>    },<br>    “created”: “2017-09-22T20:01:26.000+0800”,<br>    “priority”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/priority/3" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/priority/3</a>“,<br>      “iconUrl”: “<a href="http://10.0.2.21:8080/images/icons/priorities/medium.svg" target="_blank" rel="external">http://10.0.2.21:8080/images/icons/priorities/medium.svg</a>“,<br>      “name”: “普通”,<br>      “id”: “3”<br>    },<br>    “customfield_10100”: null,<br>    “labels”: [],<br>    “customfield_10214”: null,<br>    “customfield_10413”: null,<br>    “timeestimate”: null,<br>    “aggregatetimeoriginalestimate”: null,<br>    “versions”: [],<br>    “issuelinks”: [],<br>    “assignee”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>      “name”: “qiushiyu”,<br>      “key”: “qiushiyu”,<br>      “emailAddress”: “qiusy@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>      },<br>      “displayName”: “邱世余”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    },<br>    “updated”: “2017-12-01T17:45:19.000+0800”,<br>    “status”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/status/10204" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/status/10204</a>“,<br>      “description”: “关闭缺陷”,<br>      “iconUrl”: “<a href="http://10.0.2.21:8080/images/icons/statuses/generic.png" target="_blank" rel="external">http://10.0.2.21:8080/images/icons/statuses/generic.png</a>“,<br>      “name”: “关闭缺陷”,<br>      “id”: “10204”,<br>      “statusCategory”: {<br>        “self”: “<a href="http://10.0.2.21:8080/rest/api/2/statuscategory/3" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/statuscategory/3</a>“,<br>        “id”: 3,<br>        “key”: “done”,<br>        “colorName”: “green”,<br>        “name”: “Done”<br>      }<br>    },<br>    “components”: [],<br>    “timeoriginalestimate”: null,<br>    “description”: “1.轮播管理，轮播列表，编辑轮播图时喵村帖子，喵村主页类型的喵村ID，帖子ID显示为空，新增时是有输入对应字段的！\r\n\r\n!image-2017-09-22-20-01-31-190.png!”,<br>    “customfield_10210”: null,<br>    “customfield_10211”: null,<br>    “customfield_10212”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/customFieldOption/10145" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/customFieldOption/10145</a>“,<br>      “value”: “严重”,<br>      “id”: “10145”<br>    },<br>    “customfield_10410”: null,<br>    “timetracking”: {},<br>    “customfield_10411”: null,<br>    “customfield_10005”: null,<br>    “customfield_10203”: null,<br>    “customfield_10401”: null,<br>    “customfield_10204”: null,<br>    “customfield_10402”: null,<br>    “customfield_10600”: null,<br>    “customfield_10007”: null,<br>    “customfield_10205”: null,<br>    “customfield_10403”: null,<br>    “customfield_10008”: null,<br>    “customfield_10404”: null,<br>    “customfield_10206”: [{<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>      “name”: “zhufengru”,<br>      “key”: “zhufengru”,<br>      “emailAddress”: “zhufr@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>      },<br>      “displayName”: “朱丰茹”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    }, {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>      “name”: “qiushiyu”,<br>      “key”: “qiushiyu”,<br>      “emailAddress”: “qiusy@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>      },<br>      “displayName”: “邱世余”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    }],<br>    “attachment”: [{<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/attachment/16901" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/attachment/16901</a>“,<br>      “id”: “16901”,<br>      “filename”: “image-2017-09-22-20-01-31-190.png”,<br>      “author”: {<br>        “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>        “name”: “zhufengru”,<br>        “key”: “zhufengru”,<br>        “emailAddress”: “zhufr@healthmall.cn”,<br>        “avatarUrls”: {<br>          “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>          “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>          “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>          “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>        },<br>        “displayName”: “朱丰茹”,<br>        “active”: true,<br>        “timeZone”: “Asia/Shanghai”<br>      },<br>      “created”: “2017-09-22T20:01:12.000+0800”,<br>      “size”: 355358,<br>      “mimeType”: “text/plain”,<br>      “content”: “<a href="http://10.0.2.21:8080/secure/attachment/16901/image-2017-09-22-20-01-31-190.png" target="_blank" rel="external">http://10.0.2.21:8080/secure/attachment/16901/image-2017-09-22-20-01-31-190.png</a>“,<br>      “thumbnail”: “<a href="http://10.0.2.21:8080/secure/thumbnail/16901/_thumb_16901.png" target="_blank" rel="external">http://10.0.2.21:8080/secure/thumbnail/16901/_thumb_16901.png</a>“<br>    }],<br>    “customfield_10009”: null,<br>    “customfield_10207”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/customFieldOption/10100" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/customFieldOption/10100</a>“,<br>      “value”: “功能缺陷”,<br>      “id”: “10100”<br>    },<br>    “customfield_10405”: null,<br>    “aggregatetimeestimate”: null,<br>    “customfield_10208”: null,<br>    “customfield_10406”: null,<br>    “customfield_10209”: null,<br>    “customfield_10407”: null,<br>    “customfield_10408”: null,<br>    “customfield_10409”: null,<br>    “summary”: “【后台】#测试服#轮播管理，轮播列表，编辑页面字段值没有加载”,<br>    “creator”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>      “name”: “zhufengru”,<br>      “key”: “zhufengru”,<br>      “emailAddress”: “zhufr@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>      },<br>      “displayName”: “朱丰茹”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    },<br>    “subtasks”: [],<br>    “reporter”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=zhufengru" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=zhufengru</a>“,<br>      “name”: “zhufengru”,<br>      “key”: “zhufengru”,<br>      “emailAddress”: “zhufr@healthmall.cn”,<br>      “avatarUrls”: {<br>        “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?avatarId=10122</a>“,<br>        “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10122</a>“,<br>        “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10122</a>“,<br>        “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10122</a>“<br>      },<br>      “displayName”: “朱丰茹”,<br>      “active”: true,<br>      “timeZone”: “Asia/Shanghai”<br>    },<br>    “customfield_10241”: null,<br>    “customfield_10000”: “1|i01nsn:”,<br>    “aggregateprogress”: {<br>      “progress”: 0,<br>      “total”: 0<br>    },<br>    “customfield_10001”: null,<br>    “customfield_10243”: null,<br>    “customfield_10245”: null,<br>    “customfield_10400”: null,<br>    “customfield_10313”: null,<br>    “customfield_10314”: [],<br>    “environment”: null,<br>    “customfield_10315”: null,<br>    “customfield_10316”: null,<br>    “duedate”: null,<br>    “progress”: {<br>      “progress”: 0,<br>      “total”: 0<br>    },<br>    “comment”: {<br>      “comments”: [{<br>        “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/22587/comment/15542" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/22587/comment/15542</a>“,<br>        “id”: “15542”,<br>        “author”: {<br>          “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>          “name”: “qiushiyu”,<br>          “key”: “qiushiyu”,<br>          “emailAddress”: “qiusy@healthmall.cn”,<br>          “avatarUrls”: {<br>            “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>          },<br>          “displayName”: “邱世余”,<br>          “active”: true,<br>          “timeZone”: “Asia/Shanghai”<br>        },<br>        “body”: “已解决”,<br>        “updateAuthor”: {<br>          “self”: “<a href="http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/user?username=qiushiyu</a>“,<br>          “name”: “qiushiyu”,<br>          “key”: “qiushiyu”,<br>          “emailAddress”: “qiusy@healthmall.cn”,<br>          “avatarUrls”: {<br>            “48x48”: “<a href="http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “24x24”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=small&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “16x16”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“,<br>            “32x32”: “<a href="http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901" target="_blank" rel="external">http://10.0.2.21:8080/secure/useravatar?size=medium&amp;ownerId=qiushiyu&amp;avatarId=12901</a>“<br>          },<br>          “displayName”: “邱世余”,<br>          “active”: true,<br>          “timeZone”: “Asia/Shanghai”<br>        },<br>        “created”: “2017-09-23T15:31:43.000+0800”,<br>        “updated”: “2017-09-23T15:31:43.000+0800”<br>      }],<br>      “maxResults”: 1,<br>      “total”: 1,<br>      “startAt”: 0<br>    },<br>    “votes”: {<br>      “self”: “<a href="http://10.0.2.21:8080/rest/api/2/issue/APP-5502/votes" target="_blank" rel="external">http://10.0.2.21:8080/rest/api/2/issue/APP-5502/votes</a>“,<br>      “votes”: 0,<br>      “hasVoted”: false<br>    },<br>    “worklog”: {<br>      “startAt”: 0,<br>      “maxResults”: 20,<br>      “total”: 0,<br>      “worklogs”: []<br>    }<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/myself` 获取当前用户信息</div><div class="line"></div><div class="line">- `GET /rest/api/2/project` 获取项目信息</div><div class="line"></div><div class="line">paramter | type | description</div><div class="line">---- | ---- | ----</div><div class="line">expand | string | 额外参数定义期望返回的字段</div><div class="line">recent | int | 返回用户最近的项目</div><div class="line"></div><div class="line">- `GET /rest/api/2/project/&#123;projectId or Key&#125;` 获取项目信息详情</div><div class="line"></div><div class="line">- `GET /rest/api/2/project/IOT4LHOUSE/components` 获取项目的模块列表</div><div class="line"></div><div class="line">- `GET /rest/api/2/configuration` 如果启用或禁用Jira中的可选功能，则返回信息。 如果启用时间跟踪，则还会返回有关时间跟踪配置的详细信息。</div></pre></td></tr></table></figure></p>
+<p>{<br>  “votingEnabled”: true,<br>  “watchingEnabled”: true,<br>  “unassignedIssuesAllowed”: true,<br>  “subTasksEnabled”: true,<br>  “issueLinkingEnabled”: true,<br>  “timeTrackingEnabled”: true,<br>  “attachmentsEnabled”: true,<br>  “timeTrackingConfiguration”: {<br>    “workingHoursPerDay”: 8.0,<br>    “workingDaysPerWeek”: 5.0,<br>    “timeFormat”: “pretty”,<br>    “defaultUnit”: “minute”<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- `GET /rest/api/2/application-properties` 获取app状态信息(需要权限)</div><div class="line"></div><div class="line">- Search ``` GET /rest/api/2/search</div></pre></td></tr></table></figure></p>
+<p>使用JQL语句搜索JIRA里面的issue.<br><strong>Sorting</strong>: JQL参数是一个完整的能够包括ORDER BY语句的JQL表达式<br><strong>Field</strong>: 字段参数(可以多次指定)提供一个逗号分离的参数列表返回.这可以用来检索一个字段的子集,一个特定的字段可以通过用一个减号作为前缀来排除.<br>通常来说,只有navigable的字段会被返回, note:在get-issue资源中会默认返回所有的字段<br><em>all - 返回所有的字段
+</em>navigable - 只包括navigable字段<br>summary, comment - 只包括详情和评论<br>-description - 包括除去了description的navigable字段<br><em>all -comment -包括除了评论的所有东西<br><em>*Properties</em></em>: 这个</p>
+<ul>
+<li><p>Get <code>GET /rest/api/2/serverInfo</code>获取jira服务器信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>GET /rest/api/2/status</code>获取所有issue状态配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/status/3"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"开发中"</span>,</div><div class="line">  <span class="attr">"iconUrl"</span>: <span class="string">"http://10.0.2.21:8080/images/icons/statuses/inprogress.png"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"开发中"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="string">"3"</span>,</div><div class="line">  <span class="attr">"statusCategory"</span>: &#123;</div><div class="line">    <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/4"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">"key"</span>: <span class="string">"indeterminate"</span>,</div><div class="line">    <span class="attr">"colorName"</span>: <span class="string">"yellow"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"进行中"</span></div><div class="line">  &#125;</div><div class="line">&#125;, </div><div class="line">  .</div><div class="line">  .</div><div class="line">  .</div><div class="line">,&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/status/10300"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"iconUrl"</span>: <span class="string">"http://10.0.2.21:8080/images/icons/statuses/generic.png"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"产品处理中"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="string">"10300"</span>,</div><div class="line">  <span class="attr">"statusCategory"</span>: &#123;</div><div class="line">    <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/4"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">"key"</span>: <span class="string">"indeterminate"</span>,</div><div class="line">    <span class="attr">"colorName"</span>: <span class="string">"yellow"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"进行中"</span></div><div class="line">  &#125;</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>GET /rest/api/2/statuscategory</code> 获取状态分类,与上一个对应</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/1"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"undefined"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"medium-gray"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"无分类"</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/2"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">2</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"new"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"blue-gray"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"待办"</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/4"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">4</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"indeterminate"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"yellow"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"进行中"</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/statuscategory/3"</span>,</div><div class="line">  <span class="attr">"id"</span>: <span class="number">3</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"done"</span>,</div><div class="line">  <span class="attr">"colorName"</span>: <span class="string">"green"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"Done"</span></div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>GET /rest/api/2/user</code> 获取用户信息</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>用户key</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"self"</span>: <span class="string">"http://10.0.2.21:8080/rest/api/2/user?username=liqiang"</span>,</div><div class="line">  <span class="attr">"key"</span>: <span class="string">"liqiang"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"liqiang"</span>,</div><div class="line">  <span class="attr">"emailAddress"</span>: <span class="string">"liqiang@healthmall.cn"</span>,</div><div class="line">  <span class="attr">"avatarUrls"</span>: &#123;</div><div class="line">    <span class="attr">"48x48"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?avatarId=10346"</span>,</div><div class="line">    <span class="attr">"24x24"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?size=small&amp;avatarId=10346"</span>,</div><div class="line">    <span class="attr">"16x16"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?size=xsmall&amp;avatarId=10346"</span>,</div><div class="line">    <span class="attr">"32x32"</span>: <span class="string">"http://10.0.2.21:8080/secure/useravatar?size=medium&amp;avatarId=10346"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"displayName"</span>: <span class="string">"李强"</span>,</div><div class="line">  <span class="attr">"active"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"timeZone"</span>: <span class="string">"Asia/Shanghai"</span>,</div><div class="line">  <span class="attr">"locale"</span>: <span class="string">"zh_CN"</span>,</div><div class="line">  <span class="attr">"groups"</span>: &#123;</div><div class="line">    <span class="attr">"size"</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">"items"</span>: []</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"applicationRoles"</span>: &#123;</div><div class="line">    <span class="attr">"size"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"items"</span>: []</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"expand"</span>: <span class="string">"groups,applicationRoles"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;JIRA-REST-API-标注&quot;&gt;&lt;a href=&quot;#JIRA-REST-API-标注&quot; class=&quot;headerlink&quot; title=&quot;JIRA REST API 标注&quot;&gt;&lt;/a&gt;JIRA REST API 标注&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;GET prem
+    
+    </summary>
+    
+    
+      <category term="jira" scheme="https://qiil.github.io/qill.github.io/tags/jira/"/>
+    
+  </entry>
   
   <entry>
     <title>被墙了的已编译的资源(不定时更新)</title>
@@ -42,17 +218,29 @@
     <link href="https://qiil.github.io/qill.github.io/2017/11/17/%E5%89%8D%E7%AB%AF%E5%B8%96%E5%AD%90%E7%BB%8F%E5%8E%86/"/>
     <id>https://qiil.github.io/qill.github.io/2017/11/17/前端帖子经历/</id>
     <published>2017-11-17T13:22:05.000Z</published>
-    <updated>2017-11-17T13:26:40.642Z</updated>
+    <updated>2017-12-21T03:02:28.856Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="webpack贴搬运"><a href="#webpack贴搬运" class="headerlink" title="webpack贴搬运:"></a>webpack贴搬运:</h3><ol>
+    <content type="html"><![CDATA[<h3 id="html-css"><a href="#html-css" class="headerlink" title="html, css:"></a>html, css:</h3><ol>
+<li><a href="http://www.w3school.com.cn/index.html" target="_blank" rel="external">w3school</a></li>
+</ol>
+<h3 id="webpack相关"><a href="#webpack相关" class="headerlink" title="webpack相关:"></a>webpack相关:</h3><ol>
 <li><a href="https://segmentfault.com/a/1190000006178770" target="_blank" rel="external">入门 Webpack，看这篇就够了</a></li>
+</ol>
+<h3 id="react"><a href="#react" class="headerlink" title="react:"></a>react:</h3><ol>
+<li><a href="https://doc.react-china.org/tutorial/tutorial.html" target="_blank" rel="external">react-china入门教程</a></li>
+<li><a href="https://doc.react-china.org/docs/hello-world.html" target="_blank" rel="external">react-china中文文档</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="external">阮一峰react入门实例教程</a></li>
+</ol>
+<h3 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h3><ol>
+<li><a href="http://www.cnblogs.com/dolphinX/p/3391351.html" target="_blank" rel="external">跨站脚本攻击XSS</a></li>
+<li><a href="http://www.cnblogs.com/dsky/archive/2012/04/06/2434768.html" target="_blank" rel="external">XSS跨站测试代码大全</a></li>
 </ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;webpack贴搬运&quot;&gt;&lt;a href=&quot;#webpack贴搬运&quot; class=&quot;headerlink&quot; title=&quot;webpack贴搬运:&quot;&gt;&lt;/a&gt;webpack贴搬运:&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://segmentfault.
+      &lt;h3 id=&quot;html-css&quot;&gt;&lt;a href=&quot;#html-css&quot; class=&quot;headerlink&quot; title=&quot;html, css:&quot;&gt;&lt;/a&gt;html, css:&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.w3school.com.cn/
     
     </summary>
     
@@ -910,148 +1098,6 @@ Change mongo_user, mongo_pass and mongo_db to yours, then you can log-in with co
       <category term="rockmongo" scheme="https://qiil.github.io/qill.github.io/tags/rockmongo/"/>
     
       <category term="mongodb" scheme="https://qiil.github.io/qill.github.io/tags/mongodb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker配置rockmongo</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/07/27/docker%E9%85%8D%E7%BD%AErockmongo/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/07/27/docker配置rockmongo/</id>
-    <published>2017-07-27T15:10:24.000Z</published>
-    <updated>2017-07-27T15:12:56.333Z</updated>
-    
-    <content type="html"><![CDATA[<p>###docker部署rockmongo<br>用到的工具：<br>三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf</p>
-<ul>
-<li>然后进入目录控制台：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker build -t rockmongo .</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>*docker构建加速可以看下面<a href="https://yq.aliyun.com/articles/29941" target="_blank" rel="external">这里</a></p>
-</blockquote>
-<ul>
-<li><p>构建完成后运行项目：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">### 查看镜像</span></div><div class="line">sudo docker images</div><div class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">rockmongo           latest              44f035828f9c        About an hour ago   220MB</div><div class="line">ubuntu              14.04               54333f1de4ed        3 days ago          188MB</div><div class="line"><span class="comment">### 根据REPOSITORY运行相关项目</span></div><div class="line">sudo docker run -d -p 8006:8006 --name rockmongo rockmongo</div><div class="line"><span class="comment">### 查看项目，看到真的跑起来了 ID 是第一条：3e18d38b5353这样子</span></div><div class="line">sudo docker ps -a</div><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</div><div class="line">3e18d38b5353        rockmongo           <span class="string">"/bin/sh -c 'servi..."</span>   33 minutes ago      Up 33 minutes       0.0.0.0:8006-&gt;8006/tcp   rockmongo</div></pre></td></tr></table></figure>
-</li>
-<li><p>这就算是部署完成了，但是里面config.php的配置是需要在本地改一改的，因为dockerfile是根据我本地配置的，难免不同机器上的是不一样的，那么说道配置就有两种方式</p>
-<ol>
-<li>是在download下来的配置文件config.php中修改（具体修改下面详细描述）然后重新构建（见上面第一步），这个比较麻烦。</li>
-<li>是在构建好项目后：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">### 查看项目</span></div><div class="line">sudo docker ps -a</div><div class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</div><div class="line">3e18d38b5353        rockmongo           <span class="string">"/bin/sh -c 'servi..."</span>   33 minutes ago      Up 33 minutes       0.0.0.0:8006-&gt;8006/tcp   rockmongo</div><div class="line"></div><div class="line"><span class="comment">### 进入项目内部</span></div><div class="line">sudo docker <span class="built_in">exec</span> -it  对应的CONTAINER ID  /bin/bash</div><div class="line"></div><div class="line"><span class="comment">### 现在进入项目内部了，进入app,就可以看到congfig.php了</span></div><div class="line">root@3e18d38b5353:<span class="comment"># ls</span></div><div class="line">app  bin  boot  build  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</div><div class="line">root@3e18d38b5353:/app<span class="comment"># ls</span></div><div class="line">CHANGELOG.txt  INSTALL.txt  LICENSE.txt  README.txt  app  config.php  config.sample.php  index.php  info.php  js  robots.txt  rock.php  themes</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>使用vim打开config.php按照本地的mongo编辑相关信息就可以了。只要保存好，就会自动重启项目的，然后浏览器登录localhost:8006就可以愉快地用上rockmongo了：<br><img src="http://oqzgtjqen.bkt.clouddn.com/docker_rockmongo" alt=""></p>
-</li>
-<li><p>最后关于config.php的配置选项详细可以看<a href="https://google.com" target="_blank" rel="external">这里</a></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;###docker部署rockmongo&lt;br&gt;用到的工具：&lt;br&gt;三个配置文件，1.config.php， 2.dockerfile  3. rockmongo.conf&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;然后进入目录控制台：&lt;figure class=&quot;highlight ba
-    
-    </summary>
-    
-      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
-    
-    
-      <category term="rockmongo" scheme="https://qiil.github.io/qill.github.io/tags/rockmongo/"/>
-    
-      <category term="mongodb" scheme="https://qiil.github.io/qill.github.io/tags/mongodb/"/>
-    
-      <category term="docker" scheme="https://qiil.github.io/qill.github.io/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nrm换环境工具</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/07/20/nrm%E6%8D%A2%E7%8E%AF%E5%A2%83%E5%B7%A5%E5%85%B7-1/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/07/20/nrm换环境工具-1/</id>
-    <published>2017-07-20T13:46:47.000Z</published>
-    <updated>2017-07-20T13:48:21.371Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="相关github链接："><a href="#相关github链接：" class="headerlink" title="相关github链接："></a>相关github链接：</h3><p><a href="https://github.com/Pana/nrm" target="_blank" rel="external">https://github.com/Pana/nrm</a></p>
-<p>因为镜像问题，有时用npm安装依赖会比较慢，这时我们通常都会考虑换一下环境，nrm就集成了一些常用的环境可供使用，而且命令也很简单，赶紧用起来吧！</p>
-<p>###Install<br>安装完node和npm后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g nrm</div></pre></td></tr></table></figure></p>
-<p>可以用nrm ls命令查看有什么镜像可用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ nrm ls</div><div class="line">* npm -----  https://registry.npmjs.org/</div><div class="line">  cnpm ----  http://r.cnpmjs.org/</div><div class="line">  taobao --  https://registry.npm.taobao.org/</div><div class="line">  nj ------  https://registry.nodejitsu.com/</div><div class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</div><div class="line">  skimdb -- https://skimdb.npmjs.com/registry</div></pre></td></tr></table></figure></p>
-<p>利用nrm use命令切换镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nrm use cnpm</div><div class="line">    Registry has been <span class="built_in">set</span> to: http://r.cnpmjs.org/</div><div class="line"><span class="comment">#表示切换成功了</span></div></pre></td></tr></table></figure></p>
-<p>nrm还可以通过命令添加镜像和删除镜像，具体就不一一介绍了，see you！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;相关github链接：&quot;&gt;&lt;a href=&quot;#相关github链接：&quot; class=&quot;headerlink&quot; title=&quot;相关github链接：&quot;&gt;&lt;/a&gt;相关github链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Pana/n
-    
-    </summary>
-    
-      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
-    
-    
-      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
-    
-      <category term="nrm" scheme="https://qiil.github.io/qill.github.io/tags/nrm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nrm换环境工具</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/07/13/nrm%E6%8D%A2%E7%8E%AF%E5%A2%83%E5%B7%A5%E5%85%B7/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/07/13/nrm换环境工具/</id>
-    <published>2017-07-12T16:02:45.000Z</published>
-    <updated>2017-07-12T16:03:53.506Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="相关github链接："><a href="#相关github链接：" class="headerlink" title="相关github链接："></a>相关github链接：</h3><p><a href="https://github.com/Pana/nrm" target="_blank" rel="external">https://github.com/Pana/nrm</a></p>
-<p>因为镜像问题，有时用npm安装依赖会比较慢，这时我们通常都会考虑缓缓环境，nrm就集成了一些常用的环境可供使用，而且命令也很简单，赶紧用起来吧！</p>
-<p>###Install<br>安装完node和npm后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g nrm</div></pre></td></tr></table></figure></p>
-<p>可以用nrm ls命令查看有什么镜像可用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ nrm ls</div><div class="line">* npm -----  https://registry.npmjs.org/</div><div class="line">  cnpm ----  http://r.cnpmjs.org/</div><div class="line">  taobao --  https://registry.npm.taobao.org/</div><div class="line">  nj ------  https://registry.nodejitsu.com/</div><div class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</div><div class="line">  skimdb -- https://skimdb.npmjs.com/registry</div></pre></td></tr></table></figure></p>
-<p>利用nrm use命令切换镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nrm use cnpm</div><div class="line">    Registry has been <span class="built_in">set</span> to: http://r.cnpmjs.org/</div><div class="line"><span class="comment">#表示切换成功了</span></div></pre></td></tr></table></figure></p>
-<p>nrm还可以通过命令添加镜像和删除镜像，具体就不一一介绍了，see you！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;相关github链接：&quot;&gt;&lt;a href=&quot;#相关github链接：&quot; class=&quot;headerlink&quot; title=&quot;相关github链接：&quot;&gt;&lt;/a&gt;相关github链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Pana/n
-    
-    </summary>
-    
-      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
-    
-    
-      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
-    
-      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nvm 换环境神器 nrm</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/07/12/nvm%20%E6%8D%A2%E7%8E%AF%E5%A2%83%E7%A5%9E%E5%99%A8%20nrm/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/07/12/nvm 换环境神器 nrm/</id>
-    <published>2017-07-12T15:56:39.000Z</published>
-    <updated>2017-07-12T16:00:43.731Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="相关github链接："><a href="#相关github链接：" class="headerlink" title="相关github链接："></a>相关github链接：</h3><p><a href="https://github.com/Pana/nrm" target="_blank" rel="external">https://github.com/Pana/nrm</a></p>
-<p>因为镜像问题，有时用npm安装依赖会比较慢，这时我们通常都会考虑缓缓环境，nrm就集成了一些常用的环境可供使用，而且命令也很简单，赶紧用起来吧！</p>
-<p>###Install<br>安装完node和npm后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g nrm</div></pre></td></tr></table></figure></p>
-<p>可以用nrm ls命令查看有什么镜像可用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ nrm ls</div><div class="line">* npm -----  https://registry.npmjs.org/</div><div class="line">  cnpm ----  http://r.cnpmjs.org/</div><div class="line">  taobao --  https://registry.npm.taobao.org/</div><div class="line">  nj ------  https://registry.nodejitsu.com/</div><div class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</div><div class="line">  skimdb -- https://skimdb.npmjs.com/registry</div></pre></td></tr></table></figure></p>
-<p>利用nrm use命令切换镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nrm use cnpm</div><div class="line">    Registry has been <span class="built_in">set</span> to: http://r.cnpmjs.org/</div><div class="line"><span class="comment">#表示切换成功了</span></div></pre></td></tr></table></figure></p>
-<p>nrm还可以通过命令添加镜像和删除镜像，具体就不一一介绍了，see you！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;相关github链接：&quot;&gt;&lt;a href=&quot;#相关github链接：&quot; class=&quot;headerlink&quot; title=&quot;相关github链接：&quot;&gt;&lt;/a&gt;相关github链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Pana/n
-    
-    </summary>
-    
-      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
-    
-    
-      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
-    
-      <category term="linux" scheme="https://qiil.github.io/qill.github.io/tags/linux/"/>
     
   </entry>
   
